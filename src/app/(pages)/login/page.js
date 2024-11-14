@@ -44,8 +44,7 @@ const Login = () => {
       .then((response) => {
         console.log("Google registration successful:", response.data);
         setLoading(false);
-        // Redirect or update state after successful Google registration
-        // Example: redirect to user dashboard
+        router.push("/");
       })
       .catch((error) => {
         setLoading(false);
