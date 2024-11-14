@@ -1,8 +1,9 @@
-import GoogleLogin from "./(pages)/home_page/page";
+import GoogleLogin from "@/components/GoogleLogin";
 
 export default function Home() {
   return (
     <div>
+      <GoogleLogin />
       This is the home page
     </div>
   );
