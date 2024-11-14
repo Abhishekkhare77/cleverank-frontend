@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import axios from "axios";
-
+import { useRouter } from "next/navigation";
 const Login = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -18,8 +19,7 @@ const Login = () => {
       .then((response) => {
         console.log("User logged in:", response.data);
         setLoading(false);
-        // Redirect or do further actions if login is successful
-        // Example: redirect to dashboard
+        router.push("/");
       })
       .catch((error) => {
         setLoading(false);
