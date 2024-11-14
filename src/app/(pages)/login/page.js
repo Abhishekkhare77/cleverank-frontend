@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import GoogleLogin from "@/components/GoogleLogin";
 const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -27,6 +28,31 @@ const Login = () => {
       });
   };
 
+  const handleGoogleRegister = (googleData) => {
+    setLoading(true);
+    console.log(googleData);
+
+    const options = {
+      method: "POST",
+      url: "http://127.0.0.1:8000/auth/google",
+      data: { email: googleData.email, name: googleData.name },
+    };
+    console.log(options);
+
+    axios
+      .request(options)
+      .then((response) => {
+        console.log("Google registration successful:", response.data);
+        setLoading(false);
+        // Redirect or update state after successful Google registration
+        // Example: redirect to user dashboard
+      })
+      .catch((error) => {
+        setLoading(false);
+        setError("Google registration failed. Please try again.");
+        console.error("Google registration error:", error);
+      });
+  };
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
@@ -74,8 +100,7 @@ const Login = () => {
         <div className="flex items-center justify-center my-4">
           <span className="text-gray-600">or</span>
         </div>
-        {/* Optionally, include a Google Login button */}
-        {/* <GoogleLogin onSuccess={handleGoogleLogin} /> */}
+        <GoogleLogin onSuccess={handleGoogleRegister} />
       </div>
     </div>
   );

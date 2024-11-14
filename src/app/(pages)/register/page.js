@@ -29,7 +29,7 @@ const page = () => {
       })
       .catch((error) => {
         setLoading(false);
-        setError("Registration failed. Please try again.");
+        setError("Registration failed. Please try again.", error);
       });
   };
 
