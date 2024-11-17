@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
+import { Button } from "./ui/button";
 
 const GoogleLogin = ({ onSuccess }) => {
   const { data: session, status } = useSession();
@@ -21,15 +22,17 @@ const GoogleLogin = ({ onSuccess }) => {
 
   if (status === "loading") {
     return (
-      <div className="w-fit sm:w-32 flex items-center border bg-white rounded-lg text-lg h-12 shadow-lg mt-4 md:mt-0">
-        <Image
-          src="/assets/GOOGLE.png"
-          alt="google"
-          width={30}
-          height={30}
-          className=" text-center mx-2"
-        />
-        <span>Google</span>
+      <div>
+        <Button className="w-full py-5" variant="outline" disabled>
+          <Image
+            src="/assets/google-icon.png"
+            alt="google"
+            width={22}
+            height={22}
+            className=" text-center mx-2"
+          />
+          <span>Loading...</span>
+        </Button>
       </div>
     );
   }
@@ -37,39 +40,41 @@ const GoogleLogin = ({ onSuccess }) => {
   if (status === "authenticated") {
     return (
       <div>
-        <button
-          className="w-fit sm:w-32 flex items-center border bg-white rounded-lg text-lg h-12 shadow-lg mt-4 md:mt-0"
+        <Button
+          className="w-full py-5"
+          variant="outline"
           onClick={signOut}
         >
           <Image
-            src="/assets/GOOGLE.png"
+            src="/assets/google-icon.png"
             alt="google"
-            width={30}
-            height={30}
+            width={22}
+            height={22}
             className=" text-center mx-2"
           />
-          <span className="hidden sm:block">Logout</span>
-        </button>
+          <span>Logout</span>
+        </Button>
       </div>
     );
   }
 
   return (
-    <button
-      className="flex items-center justify-center border-[1px] border-[#E5E5E5] shadow rounded-sm text-sm h-12 px-7 w-full py-5 sm:py-7"
+    <Button
+      className="w-full py-5"
+      variant="outline"
       onClick={() => signIn("google")}
     >
       <Image
-        src="/assets/GOOGLE.png"
+        src="/assets/google-icon.png"
         alt="google"
-        width={24}
-        height={24}
+        width={22}
+        height={22}
         className=" text-center mx-2"
       />
-      <span className="text-[#d93f21] text-sm lg:text-lg font-semibold">
+      <span>
         Google
       </span>
-    </button>
+    </Button>
   );
 };
 
