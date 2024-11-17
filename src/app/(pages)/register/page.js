@@ -3,8 +3,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import GoogleLogin from "@/components/GoogleLogin"; // Assuming GoogleLogin component exists
+import { toast } from "sonner";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
-const page = () => {
+const Page = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -50,12 +54,12 @@ const page = () => {
       .then((response) => {
         console.log("Google registration successful:", response.data);
         setLoading(false);
-        // Redirect or update state after successful Google registration
-        // Example: redirect to user dashboard
       })
       .catch((error) => {
         setLoading(false);
-        setError("Google registration failed. Please try again.");
+        toast.error("Google registration failed. Please try again.", {
+          position: "top-center",
+        });
         console.error("Google registration error:", error);
       });
   };
@@ -63,63 +67,62 @@ const page = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-semibold text-center text-gray-800 mb-4">
+        <h2 className="text-xl font-semibold text-center text-gray-800 mb-4">
           Create an Account
         </h2>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <form onSubmit={handleRegister}>
           <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-700">
-              Name
-            </label>
-            <input
+            <Label htmlFor="name">Name</Label>
+            <Input
               type="text"
               id="name"
               name="name"
-              className="w-full p-2 border border-gray-300 rounded-md"
+              className="w-full"
+              placeholder="John Doe"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700">
-              Email
-            </label>
-            <input
+            <Label htmlFor="email">Email</Label>
+            <Input
               type="email"
               id="email"
               name="email"
-              className="w-full p-2 border border-gray-300 rounded-md"
+              className="w-full"
+              placeholder="example@domain.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700">
-              Password
-            </label>
-            <input
+            <Label htmlFor="password">Password</Label>
+            <Input
               type="password"
               id="password"
+              placeholder="********"
               name="password"
-              className="w-full p-2 border border-gray-300 rounded-md"
+              className="w-full"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
-          <button
+          <Button
             type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none"
+            className="w-full py-5 bg-blue-500 hover:bg-blue-600"
             disabled={loading}
           >
             {loading ? "Registering..." : "Register"}
-          </button>
+          </Button>
         </form>
         <div className="flex items-center justify-center my-4">
-          <span className="text-gray-600">or</span>
+          <div className="w-full h-[1px] bg-gray-500"></div>
+          <span className="text-gray-500 px-2">or</span>
+          <div className="w-full h-[1px] bg-gray-500"></div>
         </div>
         <GoogleLogin onSuccess={handleGoogleRegister} />
       </div>
@@ -127,4 +130,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
