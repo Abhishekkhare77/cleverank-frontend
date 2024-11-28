@@ -121,7 +121,7 @@ const Page = () => {
 
   return (
     <>
-      <div >
+    
         <div className="my-6 text-xl font-semibold">Recommended Papers</div>
         <div className="grid grid-cols-5 gap-6">
           {researchPapers.map((paper, index) => (
@@ -148,7 +148,7 @@ const Page = () => {
             </Link>
           ))}
         </div>
-      </div>
+    
     </>
   );
 };

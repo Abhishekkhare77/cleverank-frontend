@@ -44,7 +44,7 @@ const Page = () => {
           {!isStarted && !isComplete ? (
             <Button
               className="px-8 py-1.5 text-sm"
-              onClick={handleStart} // Update state to show the next buttons
+              onClick={handleStart} 
             >
               Start
             </Button>
@@ -52,7 +52,7 @@ const Page = () => {
             <div className="flex gap-4">
               <Button
                 className="px-8 py-1.5 text-sm"
-                onClick={handleStartAssessment} // Open the modal
+                onClick={handleStartAssessment} 
               >
                 Start Assessment
               </Button>
@@ -63,7 +63,7 @@ const Page = () => {
               <div className="flex gap-4">
                 <Button
                   className="px-8 py-1.5 text-sm"
-                  onClick={handleComplete} // Mark as complete
+                  onClick={handleComplete} 
                 >
                   Complete
                 </Button>
@@ -75,12 +75,7 @@ const Page = () => {
           )}
         </div>
       </div>
-
-      <div className="">
-        <PdfRender />
-      </div>
-
-      {/* Modal for "Start Assessment" */}
+      <PdfRender />
       {isModalOpen && (
         <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
           <Card className="w-1/2 text-center">

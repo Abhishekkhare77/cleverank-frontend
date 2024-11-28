@@ -51,6 +51,6 @@ export default function SpeechToText({ isListening }) {
       value={text}
       onChange={(e) => setText(e.target.value)}
       disabled
-    ></Textarea>
+    />
   );
 }

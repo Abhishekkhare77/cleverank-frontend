@@ -94,7 +94,7 @@ const Page = () => {
             <div className=" w-1/3 flex flex-col ">
               <SpeechToText isListening={isListening} />
               <Button
-                className="px-6 py-2 mt-5"
+                className=" mt-5"
                 onClick={handleSubmit}
               >
                 Submit Answer
