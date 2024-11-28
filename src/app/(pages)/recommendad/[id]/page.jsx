@@ -13,9 +13,9 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 const Page = () => {
-  const [isStarted, setIsStarted] = useState(false); // State to track if "Start" is clicked
-  const [isComplete, setIsComplete] = useState(false); // State to track if "Complete" is clicked
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  const [isStarted, setIsStarted] = useState(false); 
+  const [isComplete, setIsComplete] = useState(false); 
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
   const handleStart = () => {
     setIsStarted(true);
@@ -26,11 +26,11 @@ const Page = () => {
   };
 
   const handleStartAssessment = () => {
-    setIsModalOpen(true); // Open the modal when "Start Assessment" is clicked
+    setIsModalOpen(true); 
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false); // Close the modal
+    setIsModalOpen(false); 
   };
 
   return (
