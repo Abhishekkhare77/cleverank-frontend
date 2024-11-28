@@ -1,4 +1,5 @@
 "use client";
+import PdfRender from "@/components/pdfView/PdfRender";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -75,8 +76,8 @@ const Page = () => {
         </div>
       </div>
 
-      <div className="border-2 h-[36rem] mt-6 w-[60rem] rounded-md text-center">
-        Pdf View
+      <div className="">
+        <PdfRender />
       </div>
 
       {/* Modal for "Start Assessment" */}
