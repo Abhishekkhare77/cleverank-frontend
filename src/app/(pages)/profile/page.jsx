@@ -55,7 +55,7 @@ const Page = () => {
         <div className="flex gap-10">
           <CircleUserRound className="h-28 w-28 " />
           <div className="">
-            <div className="text-2xl font-semibold ml-3">Gyan Prakash</div>
+            <div className="text-2xl font-semibold ml-3">Abhishek Khare</div>
             <div className="flex">
               <Award className="w-10 h-10 " />
               <Award className="w-10 h-10 " />
@@ -93,7 +93,7 @@ const Page = () => {
             </TabsContent>
           ))}
         </Tabs>
-   
+
       </div>
     </div>
   );
