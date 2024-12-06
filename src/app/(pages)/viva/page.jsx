@@ -2,6 +2,7 @@
 import CameraFeed from "@/components/CameraFeed";
 import SpeechToText from "@/components/SpeechToText";
 import { Button } from "@/components/ui/button";
+import { ThumbsDown, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -72,9 +73,22 @@ const Page = () => {
         <h2 className="text-lg font-semibold mb-4">
           Question {currentQuestion + 1}
         </h2>
-        <p className="text-gray-700 text-base mb-8">
-          {questions[currentQuestion]}
-        </p>
+        <div className="flex justify-between">
+          <p className="text-gray-700 text-base mb-8">
+            {questions[currentQuestion]}
+          </p>
+
+          <div className="flex gap-6">
+            <div className="flex flex-col items-center ">
+              <X  className="h-8 w-8"/>
+              <p className="text-xs">Don't Know</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <ThumbsDown />
+              <p className="text-xs">Dislike</p>
+            </div>
+          </div>
+        </div>
 
         {!showVideoUI ? (
           <div className="flex flex-col items-center justify-center w-[60rem] h-[28rem]">
