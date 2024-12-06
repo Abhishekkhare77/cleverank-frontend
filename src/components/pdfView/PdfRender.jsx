@@ -13,11 +13,11 @@ const PdfRender = () => {
     
 const defaultLayoutPluginInstance = defaultLayoutPlugin();
   return (
-    <div>
+    <div className='mt-4'>
       <Worker workerUrl="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js">
       <div
          style={{
-            height: '540px',
+            height: '590px',
             width: '900px',
             marginLeft: 'auto',
             marginRight: 'auto',
@@ -32,3 +32,5 @@ const defaultLayoutPluginInstance = defaultLayoutPlugin();
 };
 
 export default PdfRender;
+
+
