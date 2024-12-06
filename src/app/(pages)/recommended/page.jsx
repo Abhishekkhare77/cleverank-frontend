@@ -121,13 +121,14 @@ const Page = () => {
 
   return (
     <>
-    
-        <div className="my-6 text-xl font-semibold">Recommended Papers</div>
-        <div className="grid grid-cols-5 gap-6">
-          {researchPapers.map((paper, index) => (
-            <Link
-            href={`recommendad/${index}`}
-            >
+
+      <div className="my-6 text-xl font-semibold">Recommended Papers</div>
+      <div className="grid grid-cols-5 gap-6">
+        {researchPapers.map((paper, index) => (
+          <Link
+            key={index}
+            href={`recommended/${index}`}
+          >
 
             <Card key={index} className=" shadow-sm  hover:shadow">
               <CardHeader>
@@ -145,10 +146,10 @@ const Page = () => {
               </CardContent>
               <CardContent className=" -mt-4 ">{paper.title}</CardContent>
             </Card>
-            </Link>
-          ))}
-        </div>
-    
+          </Link>
+        ))}
+      </div>
+
     </>
   );
 };

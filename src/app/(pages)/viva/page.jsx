@@ -57,9 +57,8 @@ const Page = () => {
         {questions.map((_, index) => (
           <div key={index} className="flex items-center">
             <div
-              className={`w-8 h-8 rounded-full border-2 ${
-                completedSteps.includes(index + 1) ? "bg-black" : "bg-white"
-              }`}
+              className={`w-8 h-8 rounded-full border-2 ${completedSteps.includes(index + 1) ? "bg-black" : "bg-white"
+                }`}
             ></div>
 
             {index < questions.length - 1 && (
@@ -78,14 +77,14 @@ const Page = () => {
             {questions[currentQuestion]}
           </p>
 
-          <div className="flex gap-6">
-            <div className="flex flex-col items-center ">
-              <X  className="h-8 w-8"/>
-              <p className="text-xs">Don't Know</p>
+          <div className="flex items-center gap-6">
+            <div className="flex flex-col items-center cursor-pointer">
+              <X className="size-5" />
+              <p className="text-xs pt-2">Don&apos;t Know</p>
             </div>
-            <div className="flex flex-col items-center">
-              <ThumbsDown />
-              <p className="text-xs">Dislike</p>
+            <div className="flex flex-col items-center cursor-pointer">
+              <ThumbsDown className="size-5" />
+              <p className="text-xs pt-2">Dislike</p>
             </div>
           </div>
         </div>
