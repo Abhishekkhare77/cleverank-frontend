@@ -56,7 +56,7 @@ const Page = () => {
   if (!paper) return <div>Loading paper...</div>; // Loading state while fetching paper
 
   return (
-    <div className="py-6 flex flex-col lg:flex-row items-center lg:space-x-10">
+    <div className="py-6 flex flex-col lg:flex-row items-center">
       {/* Left Column: Paper Info */}
       <div className="flex flex-col space-y-6 w-full lg:w-1/2">
         <div className="font-bold text-2xl text-gray-800">{paper.paper_title}</div>
@@ -122,7 +122,7 @@ const Page = () => {
 
       {/* Modal for Assessment */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
+        <div className="fixed inset-0 flex justify-center items-center w-screen m-0 bg-black bg-opacity-50 z-50">
           <Card className="w-1/2 text-center">
             <CardHeader className="flex flex-row-reverse w-full">
               <X onClick={handleCloseModal} className="cursor-pointer" />
