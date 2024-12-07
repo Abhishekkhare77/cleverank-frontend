@@ -1,155 +1,90 @@
-import NavBar from "@/components/NavBar";
+"use client";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from "@/components/ui/card";
-import Link from "next/link";
-import React from "react";
 
 const Page = () => {
-  const researchPapers = [
-    {
-      title: "Advanced Techniques in Quantum Computing",
-      impact_factor: 90,
-      h_index: 3,
-      cover_picture:
-        "https://www.investopedia.com/thmb/mL2a2GAnrskc-ebuq-UT-GM_bwU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/quantum-computing.asp-FINAL-1-68635090f7534414b9173598fe0ad95c.png",
-    },
-    {
-      title: "Machine Learning Applications in Bioinformatics",
-      impact_factor: 90,
-      h_index: 3,
-      cover_picture:
-        "https://mdpi-res.com/bookfiles/book/3940/Bioinformatics_Applications_Based_On_Machine_Learning.jpg?v=1731117754",
-    },
-    {
-      title: "Nanotechnology in Sustainable Energy",
-      impact_factor: 90,
-      h_index: 3,
-      cover_picture:
-        "https://media.springernature.com/full/springer-static/cover-hires/book/978-3-030-33774-2",
-    },
-    {
-      title: "Blockchain Technology for Secure Transactions",
-      impact_factor: 90,
-      h_index: 3,
-      cover_picture:
-        "https://media.licdn.com/dms/image/v2/D4D12AQHFEnzhJpvL5A/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1655635596144?e=2147483647&v=beta&t=YzkUX5n7SGmtMQDum_uQXeseiVjj2fH56yTHPZO1p4Y",
-    },
-    {
-      title: "Artificial Intelligence in Healthcare",
-      impact_factor: 90,
-      h_index: 3,
-      cover_picture:
-        "https://media.springernature.com/full/springer-static/cover-hires/book/978-981-16-6265-2",
-    },
-    {
-      title: "Climate Change and Renewable Energy Solutions",
-      impact_factor: 90,
-      h_index: 3,
-      cover_picture:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4QXOU5kTJVLXB6fMj-0WE6a6Fz88Yh5BIfA&s",
-    },
-    {
-      title: "Innovations in 3D Printing for Medical Applications",
-      impact_factor: 90,
-      h_index: 3,
-      cover_picture:
-        "https://m.media-amazon.com/images/I/61+ZSe1uDcL._AC_UF1000,1000_QL80_.jpg",
-    },
-    {
-      title: "Cybersecurity Trends in the Era of IoT",
-      impact_factor: 90,
-      h_index: 3,
-      cover_picture:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSER8Urjdl7uUbUpkfTMj_p4niCy-dNeyGK8iqJ6L7EPlZZM5OvJkGK5f7KT64yTD3YmXw&usqp=CAU",
-    },
-    {
-      title: "Big Data Analytics for Smart Cities",
-      impact_factor: 90,
-      h_index: 3,
-      cover_picture:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIhA0RoICOY20hFfikcVD9ddslw5BivAfpnA&s",
-    },
-    {
-      title: "Gene Editing Techniques and Ethical Challenges",
-      impact_factor: 90,
-      h_index: 3,
-      cover_picture:
-        "https://media.springernature.com/full/springer-static/cover-hires/book/978-981-99-9338-3",
-    },
-    {
-      title: "Climate Change and Renewable Energy Solutions",
-      impact_factor: 90,
-      h_index: 3,
-      cover_picture:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4QXOU5kTJVLXB6fMj-0WE6a6Fz88Yh5BIfA&s",
-    },
-    {
-      title: "Innovations in 3D Printing for Medical Applications",
-      impact_factor: 90,
-      h_index: 3,
-      cover_picture:
-        "https://m.media-amazon.com/images/I/61+ZSe1uDcL._AC_UF1000,1000_QL80_.jpg",
-    },
-    {
-      title: "Cybersecurity Trends in the Era of IoT",
-      impact_factor: 90,
-      h_index: 3,
-      cover_picture:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSER8Urjdl7uUbUpkfTMj_p4niCy-dNeyGK8iqJ6L7EPlZZM5OvJkGK5f7KT64yTD3YmXw&usqp=CAU",
-    },
-    {
-      title: "Big Data Analytics for Smart Cities",
-      impact_factor: 90,
-      h_index: 3,
-      cover_picture:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIhA0RoICOY20hFfikcVD9ddslw5BivAfpnA&s",
-    },
-    {
-      title: "Gene Editing Techniques and Ethical Challenges",
-      impact_factor: 90,
-      h_index: 3,
-      cover_picture:
-        "https://media.springernature.com/full/springer-static/cover-hires/book/978-981-99-9338-3",
-    },
-  ];
+  const [papers, setPapers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPapers = async () => {
+      try {
+        const response = await fetch(
+          "http://127.0.0.1:8000/papers/get-papers-recommendation/1?limit=50"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch papers");
+        }
+        const data = await response.json();
+        setPapers(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPapers();
+  }, []);
+
+  if (loading) return <div>Loading papers...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <>
-
       <div className="my-6 text-xl font-semibold">Recommended Papers</div>
-      <div className="grid grid-cols-5 gap-6">
-        {researchPapers.map((paper, index) => (
-          <Link
-            key={index}
-            href={`recommended/${index}`}
-          >
-
-            <Card key={index} className=" shadow-sm  hover:shadow">
-              <CardHeader>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {papers.map((paper) => (
+          <Link key={paper._id} href={`/recommended/${paper._id}`}>
+            <Card className="shadow-lg hover:shadow-xl transition-shadow duration-200 w-64 h-96 flex flex-col">
+              <CardHeader className="relative flex-shrink-0">
                 <CardTitle>
-                  {" "}
                   <img
-                    src={paper.cover_picture}
-                    alt={paper.title}
-                    className="w-full h-64 object-cover rounded-lg"
+                    src={paper.image_url || "/fallback-image.png"}
+                    alt={`Cover for ${paper.paper_title}`}
+                    className="w-full h-48 object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = "/fallback-image.png"; // Fallback image
+                    }}
                   />
                 </CardTitle>
               </CardHeader>
-              <CardContent className="  text-gray-500">
-                IF: {paper.impact_factor} | H-Index: {paper.h_index}
+              <CardContent className="flex-1 p-2 overflow-hidden">
+                <div className="font-semibold text-gray-800 text-base px-1 line-clamp-2">
+                  {paper.paper_title}
+                </div>
+                <div className="mt-2 text-sm text-gray-500 px-1">
+                  <strong>Authors:</strong>{" "}
+                  {paper.author.length > 3
+                    ? `${paper.author
+                        .slice(0, 3)
+                        .map(
+                          (author) => `${author.first_name} ${author.last_name}`
+                        )
+                        .join(", ")}...`
+                    : paper.author
+                        .map(
+                          (author) => `${author.first_name} ${author.last_name}`
+                        )
+                        .join(", ")}
+                </div>
               </CardContent>
-              <CardContent className=" -mt-4 ">{paper.title}</CardContent>
+              <CardFooter className="flex justify-between p-2 text-xs text-gray-500">
+                <div>{paper.paper_type}</div>
+                <div>Year: {paper.year || "N/A"}</div>
+              </CardFooter>
             </Card>
           </Link>
         ))}
       </div>
-
     </>
   );
 };
