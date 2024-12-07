@@ -11,12 +11,12 @@ import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 const PdfRender = ({ file_url }) => {
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
   return (
-    <div className="mt-4">
+    <div>
       <Worker workerUrl="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js">
         <div
           style={{
-            height: "590px",
-            width: "900px",
+            height: "630px",
+            width: "650px",
             marginLeft: "auto",
             marginRight: "auto",
           }}

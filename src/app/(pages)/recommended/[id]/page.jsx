@@ -56,35 +56,54 @@ const Page = () => {
   if (!paper) return <div>Loading paper...</div>; // Loading state while fetching paper
 
   return (
-    <div className="py-3 flex flex-col items-center">
-      <div className="flex w-[60rem] justify-between items-center">
-        <div>
-          <div className="font-bold text-xl">{paper.paper_title}</div>
-          <div className="text-sm text-gray-500">
-            {paper.author.map((author, index) => (
-              <span key={index}>
-                {author.first_name} {author.last_name}
-                {index < paper.author.length - 1 && ", "}
+    <div className="py-6 flex flex-col lg:flex-row items-center lg:space-x-10">
+      {/* Left Column: Paper Info */}
+      <div className="flex flex-col space-y-6 w-full lg:w-1/2">
+        <div className="font-bold text-2xl text-gray-800">{paper.paper_title}</div>
+        <div className="text-sm text-gray-500 mb-4">
+          {paper.author.map((author, index) => (
+            <span key={index}>
+              {author.first_name} {author.last_name}
+              {index < paper.author.length - 1 && ", "}
+            </span>
+          ))}
+        </div>
+
+        {/* Abstract Section */}
+        <div className="bg-gray-100 p-4 rounded-md shadow-sm mb-6">
+          <h3 className="text-lg font-semibold text-gray-700">Abstract</h3>
+          <p className="text-sm text-gray-600 mt-2">{paper.paper_abstract}</p>
+        </div>
+
+        {/* Keywords Section */}
+        <div className="bg-gray-100 p-4 rounded-md shadow-sm mb-6">
+          <h3 className="text-lg font-semibold text-gray-700">Keywords</h3>
+          <div className="flex flex-wrap gap-2 mt-2">
+            {paper.keywords && paper.keywords.map((keyword, index) => (
+              <span key={index} className="bg-blue-100 text-blue-700 py-1 px-3 rounded-full text-xs">
+                {keyword}
               </span>
             ))}
           </div>
         </div>
-        <div>
+
+        {/* Paper Actions */}
+        <div className="flex flex-col items-center justify-start space-y-4">
           {!isStarted && !isComplete ? (
-            <Button className="px-8 py-1.5 text-sm" onClick={handleStart}>
+            <Button className="px-8 py-2 text-sm" onClick={handleStart}>
               Start
             </Button>
           ) : isComplete ? (
             <div className="flex gap-4">
-              <Button className="px-8 py-1.5 text-sm" onClick={handleStartAssessment}>
+              <Button className="px-8 py-2 text-sm" onClick={handleStartAssessment}>
                 Start Assessment
               </Button>
             </div>
           ) : (
             <>
-              <h1>7 days left</h1>
+              <h2 className="text-md text-gray-600">7 days left</h2>
               <div className="flex gap-4">
-                <Button className="px-8 py-1.5 text-sm" onClick={handleComplete}>
+                <Button className="px-8 py-2 text-sm" onClick={handleComplete}>
                   Complete
                 </Button>
                 <Button>
@@ -96,9 +115,12 @@ const Page = () => {
         </div>
       </div>
 
-      {/* Render PDF */}
-      <PdfRender file_url={paper.file_url} />
+      {/* Right Column: PDF Viewer */}
+      <div className="w-full lg:w-1/2 mt-6 lg:mt-0">
+        <PdfRender file_url={paper.file_url} />
+      </div>
 
+      {/* Modal for Assessment */}
       {isModalOpen && (
         <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
           <Card className="w-1/2 text-center">
