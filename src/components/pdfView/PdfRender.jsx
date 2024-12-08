@@ -9,7 +9,6 @@ import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 
 const PdfRender = ({ file_url }) => {
-
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
   return (
     <div>
@@ -23,7 +22,7 @@ const PdfRender = ({ file_url }) => {
           }}
         >
           <Viewer
-            fileUrl={file_url}
+            fileUrl={`https://cleverank.adnan-qasim.me/papers/get-paper-pdf/${file_url}`}
             plugins={[defaultLayoutPluginInstance]}
           />
         </div>

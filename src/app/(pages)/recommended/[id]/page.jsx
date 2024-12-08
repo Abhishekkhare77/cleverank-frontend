@@ -27,7 +27,7 @@ const Page = () => {
 
     const fetchPaper = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/papers/get-paper/${id}`);
+        const response = await fetch(`https://cleverank.adnan-qasim.me/papers/get-paper/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch paper");
         }
@@ -121,7 +121,7 @@ const Page = () => {
 
       {/* Right Column: PDF Viewer */}
       <div className="w-full lg:w-1/2 mt-6 lg:mt-0">
-        <PdfRender file_url={paper.file_url} />
+        <PdfRender file_url={paper._id} />
       </div>
 
       {/* Modal for Assessment */}

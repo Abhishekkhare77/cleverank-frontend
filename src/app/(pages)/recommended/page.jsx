@@ -18,7 +18,7 @@ const Page = () => {
     const fetchPapers = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/papers/get-papers-recommendation/1?limit=50"
+          "https://cleverank.adnan-qasim.me/papers/get-papers-recommendation/1?limit=50"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch papers");
@@ -48,7 +48,11 @@ const Page = () => {
               <CardHeader className="relative flex-shrink-0">
                 <CardTitle>
                   <img
-                    src={paper.image_url || "/fallback-image.png"}
+                    src={
+                      // paper.image_url ||
+                      // "/fallback-image.png" ||
+                      `https://cleverank.adnan-qasim.me/papers/get-paper-images/${paper._id}`
+                    }
                     alt={`Cover for ${paper.paper_title}`}
                     className="w-full h-48 object-cover"
                     onError={(e) => {
