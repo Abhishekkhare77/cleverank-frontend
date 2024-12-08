@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const page = () => {
+const Page = () => {
   const [academicDetails, setAcademicDetails] = useState([]);
   const [streamDetails, setStreamDetails] = useState([]);
   const [interestDetails, setInterestDetails] = useState([]);
@@ -142,4 +142,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

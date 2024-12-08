@@ -57,7 +57,7 @@ const Page = () => {
     setIsModalOpen(false);
   };
 
-  if (!paper) return <div>Loading paper...</div>; // Loading state while fetching paper
+  if (!paper) return <div>Loading paper...</div>;
 
   return (
     <div className="py-6 flex flex-col lg:flex-row items-center">
