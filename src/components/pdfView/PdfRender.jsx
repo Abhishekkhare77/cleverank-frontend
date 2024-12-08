@@ -9,6 +9,18 @@ import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 
 const PdfRender = ({ file_url }) => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    // Set state to true once it's client-side
+    setIsClient(true);
+  }, []);
+
+  // Only render the viewer if we're on the client side
+  if (!isClient) {
+    return null;
+  }
+
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
   return (
     <div>
