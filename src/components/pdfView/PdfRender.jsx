@@ -22,7 +22,7 @@ const PdfRender = ({ file_url }) => {
           }}
         >
           <Viewer
-            fileUrl={`https://cleverank.adnan-qasim.me/papers/get-paper-pdf/${file_url}`}
+            fileUrl={file_url}
             plugins={[defaultLayoutPluginInstance]}
           />
         </div>
