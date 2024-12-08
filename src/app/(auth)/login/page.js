@@ -21,7 +21,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     axios
-      .post("http://127.0.0.1:8000/auth/login", { email, password })
+      .post("https://cleverank.adnan-qasim.me/auth/login", { email, password })
       .then((response) => {
         console.log("User logged in:", response.data);
         setLoading(false);
@@ -39,7 +39,7 @@ const Login = () => {
 
     const options = {
       method: "POST",
-      url: "http://127.0.0.1:8000/auth/google",
+      url: "https://cleverank.adnan-qasim.me/auth/google",
       data: { email: googleData.email, name: googleData.name },
     };
     console.log(options);

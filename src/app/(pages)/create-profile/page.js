@@ -15,7 +15,7 @@ const Page = () => {
   useEffect(() => {
     // Fetch academic details on load
     axios
-      .get("http://127.0.0.1:8000/category/academic_details")
+      .get("https://cleverank.adnan-qasim.me/category/academic_details")
       .then((response) => {
         setAcademicDetails(response.data);
         console.log(response.data);
@@ -27,7 +27,7 @@ const Page = () => {
       // Fetch stream details when course is selected
       axios
         .get(
-          `http://127.0.0.1:8000/category/stream_details?course_id=${selectedCourseId}`
+          `https://cleverank.adnan-qasim.me/category/stream_details?course_id=${selectedCourseId}`
         )
         .then((response) => {
           setStreamDetails(response.data);
@@ -41,7 +41,7 @@ const Page = () => {
       // Fetch interest details when stream is selected
       axios
         .get(
-          `http://127.0.0.1:8000/category/interest_details?course_id=${selectedCourseId}&stream_id=${selectedStreamId}`
+          `https://cleverank.adnan-qasim.me/category/interest_details?course_id=${selectedCourseId}&stream_id=${selectedStreamId}`
         )
         .then((response) => {
           setInterestDetails(response.data);
@@ -55,7 +55,7 @@ const Page = () => {
       // Fetch focus details when interest is selected
       axios
         .get(
-          `http://127.0.0.1:8000/category/focus_details?course_id=${selectedCourseId}&stream_id=${selectedStreamId}&interest_id=${selectedInterestId}`
+          `https://cleverank.adnan-qasim.me/category/focus_details?course_id=${selectedCourseId}&stream_id=${selectedStreamId}&interest_id=${selectedInterestId}`
         )
         .then((response) => {
           setFocusDetails(response.data);

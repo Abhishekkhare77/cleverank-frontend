@@ -20,7 +20,7 @@ const Page = () => {
     e.preventDefault();
     setLoading(true);
     axios
-      .post("http://127.0.0.1:8000/auth/register", {
+      .post("https://cleverank.adnan-qasim.me/auth/register", {
         email,
         name,
         password,
@@ -44,7 +44,7 @@ const Page = () => {
 
     const options = {
       method: "POST",
-      url: "http://127.0.0.1:8000/auth/google",
+      url: "https://cleverank.adnan-qasim.me/auth/google",
       data: { email: googleData.email, name: googleData.name },
     };
     console.log(options);

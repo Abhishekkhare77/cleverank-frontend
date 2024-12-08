@@ -27,7 +27,7 @@ const Page = () => {
 
     const fetchPaper = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/papers/get-paper/${id}`);
+        const response = await fetch(`https://cleverank.adnan-qasim.me/papers/get-paper/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch paper");
         }
