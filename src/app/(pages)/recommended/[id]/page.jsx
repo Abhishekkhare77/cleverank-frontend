@@ -1,13 +1,17 @@
 // pages/papers/[id]/page.tsx
 'use client';
 
-// import PdfRender from "@/components/pdfView/PdfRender";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Download, X } from "lucide-react";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
+import dynamic from "next/dynamic";
+
+const PdfRender = dynamic(() => import("@/components/pdfView/PdfRender"), {
+  ssr: false,
+});
 
 const Page = () => {
   const [paper, setPaper] = useState(null);
@@ -117,7 +121,7 @@ const Page = () => {
 
       {/* Right Column: PDF Viewer */}
       <div className="w-full lg:w-1/2 mt-6 lg:mt-0">
-        {/* <PdfRender file_url={paper.file_url} /> */}
+        <PdfRender file_url={paper.file_url} />
       </div>
 
       {/* Modal for Assessment */}
