@@ -25,7 +25,7 @@ const Login = () => {
       .then((response) => {
         console.log("User logged in:", response.data);
         setLoading(false);
-        router.push("/");
+        router.push("/dashboard");
       })
       .catch((error) => {
         setLoading(false);
@@ -49,7 +49,7 @@ const Login = () => {
       .then((response) => {
         console.log("Google registration successful:", response.data);
         setLoading(false);
-        router.push("/");
+        router.push("/dashboard");
       })
       .catch((error) => {
         setLoading(false);
