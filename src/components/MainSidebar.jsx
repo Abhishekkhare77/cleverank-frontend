@@ -1,24 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Check, ChevronsUpDown, GalleryVerticalEnd, Search } from "lucide-react"
-
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
 import {
     Sidebar,
     SidebarContent,
@@ -26,20 +8,26 @@ import {
     SidebarGroupContent,
     SidebarGroupLabel,
     SidebarHeader,
-    SidebarInput,
     SidebarInset,
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
     SidebarProvider,
     SidebarRail,
-    SidebarTrigger,
+    SidebarTrigger
 } from "@/components/ui/sidebar"
+import { Separator } from "./ui/separator"
+import Link from "next/link"
+
 const data = {
     navMain: [
         {
             title: "Dashboard",
-            url: "#",
+            url: "/dashboard",
+        },
+        {
+            title: "Leaderboard",
+            url: "/leaderboard",
         },
         {
             title: "Papers",
@@ -112,12 +100,8 @@ const data = {
             ],
         },
         {
-            title: "Leaderboard",
-            url: "#",
-        },
-        {
             title: "Merchandise",
-            url: "#",
+            url: "/merchandise",
         },
         {
             title: "Profile",
@@ -170,34 +154,47 @@ const data = {
     ],
 }
 
-
 export default function MainSidebar({ children }) {
-
     return (
         <SidebarProvider>
             <Sidebar>
                 <SidebarHeader>
-                    <SidebarMenu>
+                    <SidebarMenu className="flex flex-row items-center justify-between px-5">
                         <h1 className="flex items-center justify-center font-bold py-3">Cleverank</h1>
+                        <SidebarTrigger className="-ml-1" />
                     </SidebarMenu>
                 </SidebarHeader>
                 <SidebarContent>
-                    {data.navMain.map((navItem, index) => (
-                        <SidebarGroup key={index}>
-                            <SidebarGroupLabel>{navItem.title}</SidebarGroupLabel>
-                            <SidebarGroupContent>
-                                <SidebarMenu>
-                                    {navItem.items && navItem.items.map((subItem, subIndex) => (
-                                        <SidebarMenuItem key={subIndex}>
-                                            <SidebarMenuButton asChild>
-                                                <a href={subItem.url}>{subItem.title}</a>
-                                            </SidebarMenuButton>
-                                        </SidebarMenuItem>
-                                    ))}
-                                </SidebarMenu>
-                            </SidebarGroupContent>
-                        </SidebarGroup>
-                    ))}
+                    <SidebarMenu>
+                        {data.navMain.map((navItem) => (
+                            navItem.items ? (
+                                <SidebarGroup key={navItem.title}>
+                                    <SidebarGroupLabel>{navItem.title}</SidebarGroupLabel>
+                                    <SidebarGroupContent>
+                                        <SidebarMenu>
+                                            {navItem.items.map((subItem) => (
+                                                <SidebarMenuItem key={subItem.title}>
+                                                    <SidebarMenuButton asChild>
+                                                        <Link href={subItem.url}>
+                                                            <span>{subItem.title}</span>
+                                                        </Link>
+                                                    </SidebarMenuButton>
+                                                </SidebarMenuItem>
+                                            ))}
+                                        </SidebarMenu>
+                                    </SidebarGroupContent>
+                                </SidebarGroup>
+                            ) : (
+                                <SidebarMenuItem key={navItem.title} className="px-2">
+                                    <SidebarMenuButton asChild>
+                                        <Link href={navItem.url}>
+                                            <span>{navItem.title}</span>
+                                        </Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            )
+                        ))}
+                    </SidebarMenu>
                 </SidebarContent>
                 <SidebarRail />
             </Sidebar>
@@ -207,4 +204,3 @@ export default function MainSidebar({ children }) {
         </SidebarProvider>
     )
 }
-

@@ -7,7 +7,7 @@ const layout = ({ children }) => {
     <div>
       <NavBar />
       <MainSidebar>
-        <div className="container mx-auto px-8">{children}</div>
+        <div className="max-w-6xl">{children}</div>
       </MainSidebar>
     </div>
   );
