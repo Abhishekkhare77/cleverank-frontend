@@ -56,7 +56,7 @@ const Page = () => {
                     alt={`Cover for ${paper.paper_title}`}
                     className="w-full h-48 object-cover"
                     onError={(e) => {
-                      e.currentTarget.src = "/fallback-image.png"; // Fallback image
+                      e.currentTarget.src = "/fallback-image.jpg"; // Fallback image
                     }}
                   />
                 </CardTitle>
@@ -69,16 +69,16 @@ const Page = () => {
                   <strong>Authors:</strong>{" "}
                   {paper.author.length > 3
                     ? `${paper.author
-                        .slice(0, 3)
-                        .map(
-                          (author) => `${author.first_name} ${author.last_name}`
-                        )
-                        .join(", ")}...`
+                      .slice(0, 3)
+                      .map(
+                        (author) => `${author.first_name} ${author.last_name}`
+                      )
+                      .join(", ")}...`
                     : paper.author
-                        .map(
-                          (author) => `${author.first_name} ${author.last_name}`
-                        )
-                        .join(", ")}
+                      .map(
+                        (author) => `${author.first_name} ${author.last_name}`
+                      )
+                      .join(", ")}
                 </div>
               </CardContent>
               <CardFooter className="flex justify-between p-2 text-xs text-gray-500">
