@@ -39,130 +39,137 @@ const data = {
     navMain: [
         {
             title: "Dashboard",
+            url: "#",
+        },
+        {
+            title: "Papers",
+            url: "#",
             items: [
                 {
-                    title: "Installation",
+                    title: "Recommendation",
                     url: "#",
                 },
                 {
-                    title: "Project Structure",
+                    title: "Search",
+                    url: "#",
+                },
+                {
+                    title: "Reading",
+                    url: "#",
+                },
+                {
+                    title: "Assessment",
                     url: "#",
                 },
             ],
         },
         {
-            title: "Building Your Application",
+            title: "Personal",
             url: "#",
             items: [
                 {
-                    title: "Routing",
+                    title: "Library",
                     url: "#",
                 },
                 {
-                    title: "Data Fetching",
-                    url: "#",
-                    isActive: true,
-                },
-                {
-                    title: "Rendering",
+                    title: "Feedback",
                     url: "#",
                 },
                 {
-                    title: "Caching",
+                    title: "Tracks",
                     url: "#",
                 },
                 {
-                    title: "Styling",
-                    url: "#",
-                },
-                {
-                    title: "Optimizing",
-                    url: "#",
-                },
-                {
-                    title: "Configuring",
-                    url: "#",
-                },
-                {
-                    title: "Testing",
-                    url: "#",
-                },
-                {
-                    title: "Authentication",
-                    url: "#",
-                },
-                {
-                    title: "Deploying",
-                    url: "#",
-                },
-                {
-                    title: "Upgrading",
-                    url: "#",
-                },
-                {
-                    title: "Examples",
+                    title: "Goals",
                     url: "#",
                 },
             ],
         },
         {
-            title: "API Reference",
+            title: "College",
             url: "#",
             items: [
                 {
-                    title: "Components",
+                    title: "Library",
                     url: "#",
                 },
                 {
-                    title: "File Conventions",
+                    title: "Class",
                     url: "#",
                 },
                 {
-                    title: "Functions",
+                    title: "Students",
                     url: "#",
                 },
                 {
-                    title: "next.config.js Options",
+                    title: "Groups",
                     url: "#",
                 },
                 {
-                    title: "CLI",
-                    url: "#",
-                },
-                {
-                    title: "Edge Runtime",
+                    title: "Tracks",
                     url: "#",
                 },
             ],
         },
         {
-            title: "Architecture",
+            title: "Leaderboard",
+            url: "#",
+        },
+        {
+            title: "Merchandise",
+            url: "#",
+        },
+        {
+            title: "Profile",
             url: "#",
             items: [
                 {
-                    title: "Accessibility",
+                    title: "Personal",
                     url: "#",
                 },
                 {
-                    title: "Fast Refresh",
+                    title: "Academic",
                     url: "#",
                 },
                 {
-                    title: "Next.js Compiler",
+                    title: "Research",
                     url: "#",
                 },
                 {
-                    title: "Supported Browsers",
+                    title: "Badges",
                     url: "#",
                 },
                 {
-                    title: "Turbopack",
+                    title: "Bounty",
+                    url: "#",
+                },
+            ],
+        },
+        {
+            title: "Settings",
+            url: "#",
+            items: [
+                {
+                    title: "Security",
+                    url: "#",
+                },
+                {
+                    title: "Feedback",
+                    url: "#",
+                },
+                {
+                    title: "Support",
+                    url: "#",
+                },
+                {
+                    title: "Logout",
                     url: "#",
                 },
             ],
         },
     ],
 }
+
 
 export default function MainSidebar({ children }) {
 
@@ -175,15 +182,15 @@ export default function MainSidebar({ children }) {
                     </SidebarMenu>
                 </SidebarHeader>
                 <SidebarContent>
-                    {data.navMain.map((item) => (
-                        <SidebarGroup key={item.title}>
-                            <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
+                    {data.navMain.map((navItem, index) => (
+                        <SidebarGroup key={index}>
+                            <SidebarGroupLabel>{navItem.title}</SidebarGroupLabel>
                             <SidebarGroupContent>
                                 <SidebarMenu>
-                                    {item.items.map((item) => (
-                                        <SidebarMenuItem key={item.title}>
-                                            <SidebarMenuButton asChild isActive={item.isActive}>
-                                                <a href={item.url}>{item.title}</a>
+                                    {navItem.items && navItem.items.map((subItem, subIndex) => (
+                                        <SidebarMenuItem key={subIndex}>
+                                            <SidebarMenuButton asChild>
+                                                <a href={subItem.url}>{subItem.title}</a>
                                             </SidebarMenuButton>
                                         </SidebarMenuItem>
                                     ))}
