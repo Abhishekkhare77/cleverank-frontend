@@ -16,7 +16,6 @@ import {
     SidebarRail,
     SidebarTrigger
 } from "@/components/ui/sidebar"
-import { Separator } from "./ui/separator"
 import Link from "next/link"
 
 const data = {
@@ -35,19 +34,19 @@ const data = {
             items: [
                 {
                     title: "Recommendation",
-                    url: "#",
+                    url: "/recommended",
                 },
                 {
                     title: "Search",
-                    url: "#",
+                    url: "/papers/search",
                 },
                 {
                     title: "Reading",
-                    url: "#",
+                    url: "/papers/reading",
                 },
                 {
                     title: "Assessment",
-                    url: "#",
+                    url: "/assessment",
                 },
             ],
         },
@@ -57,19 +56,19 @@ const data = {
             items: [
                 {
                     title: "Library",
-                    url: "#",
+                    url: "/personal/library",
                 },
                 {
                     title: "Feedback",
-                    url: "#",
+                    url: "/personal/feedback",
                 },
                 {
                     title: "Tracks",
-                    url: "#",
+                    url: "/personal/tracks",
                 },
                 {
                     title: "Goals",
-                    url: "#",
+                    url: "/personal/goals",
                 },
             ],
         },
@@ -79,23 +78,23 @@ const data = {
             items: [
                 {
                     title: "Library",
-                    url: "#",
+                    url: "/college/library",
                 },
                 {
                     title: "Class",
-                    url: "#",
+                    url: "/college/class",
                 },
                 {
                     title: "Students",
-                    url: "#",
+                    url: "/college/students",
                 },
                 {
                     title: "Groups",
-                    url: "#",
+                    url: "/college/groups",
                 },
                 {
                     title: "Tracks",
-                    url: "#",
+                    url: "/college/tracks",
                 },
             ],
         },
@@ -109,23 +108,23 @@ const data = {
             items: [
                 {
                     title: "Personal",
-                    url: "#",
+                    url: "/profile/personal",
                 },
                 {
                     title: "Academic",
-                    url: "#",
+                    url: "/profile/academic",
                 },
                 {
                     title: "Research",
-                    url: "#",
+                    url: "/profile/research",
                 },
                 {
                     title: "Badges",
-                    url: "#",
+                    url: "/profile/badges",
                 },
                 {
                     title: "Bounty",
-                    url: "#",
+                    url: "/profile/bounty",
                 },
             ],
         },
@@ -135,15 +134,15 @@ const data = {
             items: [
                 {
                     title: "Security",
-                    url: "#",
+                    url: "/settings/security",
                 },
                 {
                     title: "Feedback",
-                    url: "#",
+                    url: "/settings/feedback",
                 },
                 {
                     title: "Support",
-                    url: "#",
+                    url: "/settings/support",
                 },
                 {
                     title: "Logout",
