@@ -66,7 +66,7 @@ export default function CameraFeed({ text }) {
     formData.append("user_id", "6749840a652be6c64056eadd");
 
     try {
-      await axios.post('http://127.0.0.1:8000/answers/answer-assessment/', formData, {
+      await axios.post('http://127.0.0.1:8000/answers/answer-assessment', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
