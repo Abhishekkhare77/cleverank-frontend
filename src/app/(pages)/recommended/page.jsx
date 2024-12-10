@@ -40,11 +40,11 @@ const Page = () => {
 
   return (
     <>
-      <div className="my-6 text-xl font-semibold">Recommended Papers</div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+      <div className="pb-5 text-xl font-semibold">Recommended Papers</div>
+      <div className="flex flex-wrap items-center gap-5 w-full">
         {papers.map((paper) => (
           <Link key={paper._id} href={`/recommended/${paper._id}`}>
-            <Card className="shadow-lg hover:shadow-xl transition-shadow duration-200 w-64 h-96 flex flex-col">
+            <Card className="shadow hover:shadow-lg transition-shadow duration-200 w-64 h-96 flex flex-col p-1">
               <CardHeader className="relative flex-shrink-0">
                 <CardTitle>
                   <img
@@ -52,7 +52,7 @@ const Page = () => {
                     alt={`Cover for ${paper.paper_title}`}
                     className="w-full h-48 object-cover"
                     onError={(e) => {
-                      e.currentTarget.src = "/fallback-image.png"; // Fallback image
+                      e.currentTarget.src = "/fallback-image.png";
                     }}
                   />
                 </CardTitle>
@@ -65,16 +65,16 @@ const Page = () => {
                   <strong>Authors:</strong>{" "}
                   {paper.author.length > 3
                     ? `${paper.author
-                        .slice(0, 3)
-                        .map(
-                          (author) => `${author.first_name} ${author.last_name}`
-                        )
-                        .join(", ")}...`
+                      .slice(0, 3)
+                      .map(
+                        (author) => `${author.first_name} ${author.last_name}`
+                      )
+                      .join(", ")}...`
                     : paper.author
-                        .map(
-                          (author) => `${author.first_name} ${author.last_name}`
-                        )
-                        .join(", ")}
+                      .map(
+                        (author) => `${author.first_name} ${author.last_name}`
+                      )
+                      .join(", ")}
                 </div>
               </CardContent>
               <CardFooter className="flex justify-between p-2 text-xs text-gray-500">

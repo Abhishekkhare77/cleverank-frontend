@@ -60,7 +60,7 @@ const Page = () => {
   if (!paper) return <div>Loading paper...</div>;
 
   return (
-    <div className="py-6 flex flex-col lg:flex-row items-center">
+    <div className="py-6 flex flex-col lg:flex-row items-center max-w-6xl">
       {/* Left Column: Paper Info */}
       <div className="flex flex-col space-y-6 w-full lg:w-1/2">
         <div className="font-bold text-2xl text-gray-800">{paper.paper_title}</div>

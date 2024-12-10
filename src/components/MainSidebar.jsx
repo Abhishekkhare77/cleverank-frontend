@@ -159,7 +159,7 @@ export default function MainSidebar({ children }) {
             <Sidebar>
                 <SidebarHeader>
                     <SidebarMenu className="flex flex-row items-center justify-between px-5">
-                        <h1 className="flex items-center justify-center font-bold py-3">Cleverank</h1>
+                        <Link href={"/"} className="flex items-center justify-center font-bold py-3">Cleverank</Link>
                         <SidebarTrigger className="-ml-1" />
                     </SidebarMenu>
                 </SidebarHeader>
@@ -198,7 +198,9 @@ export default function MainSidebar({ children }) {
                 <SidebarRail />
             </Sidebar>
             <SidebarInset>
-                {children}
+                <div className="p-5">
+                    {children}
+                </div>
             </SidebarInset>
         </SidebarProvider>
     )
