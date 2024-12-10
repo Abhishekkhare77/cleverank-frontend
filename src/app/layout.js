@@ -1,17 +1,11 @@
-import localFont from "next/font/local";
+import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import Authprovider from "@/Authorize/Authprovider/Authprovider";
 import { Toaster } from "@/components/ui/sonner";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const nunito_sans = Nunito_Sans({
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata = {
@@ -22,9 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${nunito_sans.className} antialiased`}>
         <Toaster richColors />
         <Authprovider>{children}</Authprovider>
       </body>
