@@ -19,10 +19,12 @@ import {
 } from "@/components/ui/sidebar"
 import { Separator } from "./ui/separator";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function NavMain({
   items
 }) {
+  const pathname = usePathname();
   return (
     (<SidebarGroup>
       <Separator className="mb-3 -mt-3" />
@@ -46,7 +48,7 @@ export function NavMain({
                 <SidebarMenuSub>
                   {item.items?.map((subItem) => (
                     <SidebarMenuSubItem key={subItem.title}>
-                      <SidebarMenuSubButton asChild>
+                      <SidebarMenuSubButton asChild isActive={pathname.includes(subItem.url)}>
                         <Link href={subItem.url}>
                           <span>{subItem.title}</span>
                         </Link>

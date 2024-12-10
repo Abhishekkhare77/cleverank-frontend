@@ -8,19 +8,18 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function NavProjects({
   projects
 }) {
-
-  const { open } = useSidebar();
-
+  const pathname = usePathname();
   return (
     (<SidebarGroup className="group-data-[collapsible=icon]:hidden">
       <SidebarMenu>
         {projects.map((item) => (
           <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton asChild>
+            <SidebarMenuButton asChild isActive={pathname.includes(item.url)}>
               <Link href={item.url}>
                 <item.icon />
                 <span>{item.name}</span>
