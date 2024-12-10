@@ -32,7 +32,7 @@ export default function CameraFeed() {
 
     mediaRecorder.ondataavailable = (event) => {
       if (event.data && event.data.size > 0) {
-        setRecordedChunks((prevChunks) => [...prevChunks, event.data]); // Append new chunk
+        setRecordedChunks((prevChunks) => [...prevChunks, event.data]);
       }
     };
 
