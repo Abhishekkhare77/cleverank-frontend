@@ -39,15 +39,14 @@ import {
 } from "@/components/ui/sidebar"
 import Image from "next/image"
 import { Tooltip } from "./ui/tooltip"
+import Link from "next/link"
 
-// This is sample data.
 const data = {
   navMain: [
     {
       title: "Papers",
       url: "#",
       icon: ScrollText,
-      isActive: true,
       items: [
         {
           title: "Recommendation",
@@ -190,9 +189,13 @@ export function AppSidebar({
   return (
     (<Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <div className="flex items-center justify-center py-3">
-          <Image src={"/logo.png"} width={100} height={100} alt="logo" />
-        </div>
+        <Link href={"/dashboard"} className="flex items-center justify-center py-3">
+          {open ? <Image src={"/logo.png"} width={100} height={100} alt="logo" /> : (
+            <div className="bg-gray-100 rounded-md border px-2 py-1 flex items-center font-semibold">
+              <span>c</span> <span className="underline">r</span>
+            </div>
+          )}
+        </Link>
       </SidebarHeader>
       <SidebarContent>
         <NavProjects projects={data.projects} />
