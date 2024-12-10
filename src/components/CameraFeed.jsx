@@ -2,7 +2,9 @@ import { useCallback, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
 import axios from 'axios';
 
-export default function CameraFeed() {
+export default function CameraFeed({ text }) {
+
+  console.log(text);
   const webcamRef = useRef(null);
   const mediaRecorderRef = useRef(null);
 
@@ -60,6 +62,7 @@ export default function CameraFeed() {
     const videoBlob = new Blob(recordedChunks, { type: 'video/webm' });
     const formData = new FormData();
     formData.append('assessment_video', videoBlob, 'video.webm');
+    formData.append('answer_text', text);
 
     try {
       await axios.post('http://127.0.0.1:8000/answers/answer-assessment/', formData, {

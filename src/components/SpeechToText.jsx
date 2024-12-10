@@ -1,9 +1,8 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { Textarea } from "./ui/textarea";
 
-export default function SpeechToText({ isListening }) {
-  const [text, setText] = useState("");
+export default function SpeechToText({ isListening, text, setText }) {
   const recognition = useRef(null);
 
   useEffect(() => {
@@ -47,7 +46,7 @@ export default function SpeechToText({ isListening }) {
       rows={15}
       cols={15}
       placeholder="Your Answer"
-      className="w-full border border-gray-300 p-3 rounded-md resize-none" 
+      className="w-full border border-gray-300 p-3 rounded-md resize-none"
       value={text}
       onChange={(e) => setText(e.target.value)}
       disabled

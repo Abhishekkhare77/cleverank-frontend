@@ -20,6 +20,7 @@ const Page = () => {
   const [timeLeft, setTimeLeft] = useState(10);
   const [completedSteps, setCompletedSteps] = useState([]);
   const [isListening, setIsListening] = useState(false);
+  const [text, setText] = useState("");
 
   const router = useRouter();
 
@@ -100,9 +101,9 @@ const Page = () => {
           </div>
         ) : (
           <div className="flex  gap-6">
-            <CameraFeed />
+            <CameraFeed text={text} />
             <div className=" w-1/3 flex flex-col ">
-              <SpeechToText isListening={isListening} />
+              <SpeechToText isListening={isListening} text={text} setText={setText} />
               <Button className=" mt-5" onClick={handleSubmit}>
                 Submit Answer
               </Button>
