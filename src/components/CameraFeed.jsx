@@ -66,6 +66,8 @@ export default function CameraFeed() {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
+      }).then((response) => {
+        console.log(response.data);
       });
       console.log('Upload successful');
     } catch (error) {
@@ -74,14 +76,16 @@ export default function CameraFeed() {
   }, [recordedChunks]);
 
   return (
-    <div>
-      <Webcam
-        audio={true}
-        ref={webcamRef}
-        screenshotFormat="image/jpeg"
-        width="100%"
-        videoConstraints={{ facingMode: 'user' }}
-      />
+    <div >
+      <div className='bg-gray-100 rounded-md'>
+        <Webcam
+          audio={true}
+          ref={webcamRef}
+          screenshotFormat="image/jpeg"
+          videoConstraints={{ facingMode: 'user' }}
+          style={{ borderRadius: '8px', height: '24rem', width: '50rem' }}
+        />
+      </div>
       <div>
         {!isRecording ? (
           <button onClick={handleStartRecording}>Start Recording</button>

@@ -52,7 +52,7 @@ const Page = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center my-5 mx-36">
+    <div className="flex flex-col justify-center my-5 max-w-6xl">
       <div className="flex items-center mb-6">
         {questions.map((_, index) => (
           <div key={index} className="flex items-center">
