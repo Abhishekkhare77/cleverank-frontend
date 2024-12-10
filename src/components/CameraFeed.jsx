@@ -63,6 +63,7 @@ export default function CameraFeed({ text }) {
     const formData = new FormData();
     formData.append('assessment_video', videoBlob, 'video.webm');
     formData.append('answer_text', text);
+    formData.append("user_id", "6749840a652be6c64056eadd");
 
     try {
       await axios.post('http://127.0.0.1:8000/answers/answer-assessment/', formData, {
