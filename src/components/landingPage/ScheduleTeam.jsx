@@ -1,6 +1,8 @@
 import React from "react";
 import { Button } from "../ui/button";
 import TitleSubTitle from "../TitleSubTitle";
+import { Card } from "../ui/card";
+import ShowMore from "./ShowMore";
 
 const ScheduleTeam = () => {
   return (
@@ -47,6 +49,8 @@ const ScheduleTeam = () => {
         title="See why our users love Cal.com"
         subtitle="Read the impact we've had from those who matter most - our customers."
       />
+      <ShowMore />
+      <Card className="h-64 mt-20"></Card>
     </div>
   );
 };

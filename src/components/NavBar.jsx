@@ -2,7 +2,7 @@ import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 
 const NavBar = () => {
   return (
@@ -15,9 +15,13 @@ const NavBar = () => {
         quality={100}
         className="object-cover "
       />
-      <div className="flex  gap-4">
-        <Button> Log in </Button>
-        <Button> Sign Up</Button>
+      <div className="flex  gap-2">
+        <Link href={"/login"} className={buttonVariants()}>
+          Login
+        </Link>
+        <Link href={"/institute-login"} className={buttonVariants()}>
+          Institute login
+        </Link>
       </div>
     </div>
   );
