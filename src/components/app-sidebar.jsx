@@ -45,7 +45,7 @@ const data = {
   navMain: [
     {
       title: "Papers",
-      url: "#",
+      url: "/recommended",
       icon: ScrollText,
       items: [
         {
@@ -68,7 +68,7 @@ const data = {
     },
     {
       title: "Personal",
-      url: "#",
+      url: "/personal/library",
       icon: User,
       items: [
         {
@@ -91,7 +91,7 @@ const data = {
     },
     {
       title: "College",
-      url: "#",
+      url: "/college/library",
       icon: School,
       items: [
         {
@@ -118,7 +118,7 @@ const data = {
     },
     {
       title: "Profile",
-      url: "#",
+      url: "/profile/personal",
       icon: UserCog,
       items: [
         {
@@ -145,7 +145,7 @@ const data = {
     },
     {
       title: "Settings",
-      url: "#",
+      url: "/settings/security",
       icon: Settings2,
       items: [
         {
