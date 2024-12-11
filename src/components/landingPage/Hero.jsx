@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import HeroCardAnimation from "./HeroCardAnimation";
 
 const Hero = () => {
   const Image = [
@@ -34,11 +35,13 @@ const Hero = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className=" w-1/2 flex justify-end ">
-          <img
+          {/* <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPx7zWwNhPBcu1qzwMlhVfEo1WVvoMwwGctT6TMs09GKsi98feFdPLqc3kxtBGnGDP0Tk&usqp=CAU"
             alt="img"
             className="object-cover h-96  "
-          />
+          /> */}
+
+          <HeroCardAnimation />
         </CardContent>
       </Card>
       <div className=" border-b border-t flex justify-between items-center py-5 mt-6 px-2">

@@ -53,35 +53,36 @@ const ShowMore = () => {
   };
 
   return (
-    <div className="py-8">
-      <div className="container mx-auto px-4">
-        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.slice(0, visibleCount).map((testimonial, index) => (
-            <div
-              key={index}
-              className="bg-white shadow-md rounded-lg p-6 border border-gray-200 hover:shadow-lg transition"
-            >
-              <div className="mb-4">
-                <h2 className="text-lg font-semibold">{testimonial.name}</h2>
-                {testimonial.role && (
-                  <p className="text-sm text-gray-600">{testimonial.role}</p>
-                )}
-                {testimonial.handle && (
-                  <p className="text-sm text-blue-500">{testimonial.handle}</p>
-                )}
-              </div>
-              <p className="text-gray-800">{testimonial.text}</p>
+    <div className="relative py-8">
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {testimonials.slice(0, visibleCount).map((testimonial, index) => (
+          <div
+            key={index}
+            className="bg-gray-100 rounded-lg p-6 border border-gray-200"
+          >
+            <div className="mb-4">
+              <h2 className="text-lg font-semibold">{testimonial.name}</h2>
+              {testimonial.role && (
+                <p className="text-sm text-gray-600">{testimonial.role}</p>
+              )}
+              {testimonial.handle && (
+                <p className="text-sm text-blue-500">{testimonial.handle}</p>
+              )}
             </div>
-          ))}
-        </div>
-        {visibleCount < testimonials.length && (
-          <div className="flex justify-center mt-8">
-            <Button variants="" className="px-6 py-2 " onClick={handleShowMore}>
-              Show more
-            </Button>
+            <p className="text-gray-800">{testimonial.text}</p>
           </div>
-        )}
+        ))}
       </div>
+      {visibleCount < testimonials.length && (
+        <div className=" absolute bg-gradient-to-t from-gray-50/70 via-gray-50/80 to-gray-100/50 h-80 w-full bottom-6  flex justify-center mt-8">
+          <Button
+            className="px-6 py-2 absolute bottom-16 "
+            onClick={handleShowMore}
+          >
+            Show more
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
