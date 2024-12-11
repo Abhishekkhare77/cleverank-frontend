@@ -17,7 +17,8 @@ const questions = [
 const Page = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showVideoUI, setShowVideoUI] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(10);
+  const [timeLeft, setTimeLeft] = useState(30);
+  const [answerTimer, setAnswerTimer] = useState(180);
   const [completedSteps, setCompletedSteps] = useState([]);
   const [isListening, setIsListening] = useState(false);
   const [text, setText] = useState("");
@@ -34,6 +35,17 @@ const Page = () => {
     }
   }, [timeLeft, showVideoUI]);
 
+  useEffect(() => {
+    if (answerTimer > 0) {
+      const timer = setTimeout(() => setAnswerTimer(answerTimer - 1), 1000);
+      return () => clearTimeout(timer);
+    } else {
+      currentQuestion < questions.length - 1
+        ? setCurrentQuestion(currentQuestion + 1)
+        : router.push("/score");
+    }
+  }, [answerTimer, router, currentQuestion]);
+
   const handleAnswer = () => {
     setShowVideoUI(true);
     setIsListening(true);
@@ -42,6 +54,8 @@ const Page = () => {
   const handleSubmit = () => {
     setCompletedSteps((prev) => [...prev, currentQuestion + 1]);
     setIsListening(false);
+    setAnswerTimer(180);
+    setText("");
 
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
@@ -53,7 +67,7 @@ const Page = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center my-5 max-w-6xl">
+    <div className="flex flex-col justify-center my-5 max-w-6xl mx-auto">
       <div className="flex items-center mb-6">
         {questions.map((_, index) => (
           <div key={index} className="flex items-center">
@@ -78,7 +92,10 @@ const Page = () => {
             {questions[currentQuestion]}
           </p>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 my-2">
+            {showVideoUI && <div className="rounded-full p-3 border size-10 flex items-center justify-center">
+              <div className="text-xs font-bold">{answerTimer}s</div>
+            </div>}
             <div className="flex flex-col items-center cursor-pointer">
               <X className="size-5" />
               <p className="text-xs pt-2">Don&apos;t Know</p>
