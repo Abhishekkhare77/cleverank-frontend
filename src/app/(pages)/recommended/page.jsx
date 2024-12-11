@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   Card,
@@ -8,12 +8,22 @@ import {
   CardTitle,
   CardFooter,
 } from "@/components/ui/card";
-import { Book, Play, ThumbsDown, ThumbsUp } from "lucide-react";
+import { Book, Pause, Play, ThumbsDown, ThumbsUp } from "lucide-react";
 
 const Page = () => {
   const [papers, setPapers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audio] = useState(new Audio("https://storage.googleapis.com/clever_rank_answer_bucket/audios/6759437fda3ae6f021102382_None"));
+  const [duration, setDuration] = useState(0); // Total duration of the audio
+  const [progress, setProgress] = useState(0); // Progress for the animation
+  const progressBarRef = useRef(null);
+
+  const handleTimeUpdate = () => {
+    setProgress((audio.currentTime / audio.duration) * 100);
+  };
+
 
   useEffect(() => {
     const fetchPapers = async () => {
@@ -36,8 +46,47 @@ const Page = () => {
     fetchPapers();
   }, []);
 
+  useEffect(() => {
+    // When the audio starts playing, update the duration
+    audio.addEventListener("loadedmetadata", () => {
+      setDuration(audio.duration);
+    });
+
+    // Listen to time updates while the audio is playing
+    audio.addEventListener("timeupdate", handleTimeUpdate);
+
+    // Reset progress when audio ends
+    audio.addEventListener("ended", () => {
+      setIsPlaying(false);
+      setProgress(0);
+    });
+
+    // Cleanup event listeners on component unmount
+    return () => {
+      audio.removeEventListener("loadedmetadata", () => setDuration(audio.duration));
+      audio.removeEventListener("timeupdate", handleTimeUpdate);
+      audio.removeEventListener("ended", () => {
+        setIsPlaying(false);
+        setProgress(0);
+      });
+    };
+  }, [audio]);
+
   if (loading) return <div>Loading papers...</div>;
   if (error) return <div>Error: {error}</div>;
+
+  const handlePlayPause = () => {
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+  const circleLength = 2 * Math.PI * 50; // Radius = 50, so circumference = 2πr = 2π(50)
+  const strokeDasharray = circleLength; // Full circle
+  const strokeDashoffset = circleLength - (progress / 100) * circleLength; // Calculate how much of the circle to "cut off" based on progress
+
 
   return (
     <>
@@ -93,7 +142,43 @@ const Page = () => {
                 <div className="text-gray-500 p-1.5 bg-gray-100 rounded-full"><ThumbsDown className="size-5" /></div>
               </div>
               <div className="flex items-center justify-end">
-                <div className="text-[#59C009] p-1.5 border-2 border-[#59C009] rounded-full mr-4"><Play className="size-5" /></div>
+                <div className="flex items-center mr-2">
+                  {/* Circular Progress */}
+                  <div className="relative">
+                    <svg className="size-10" viewBox="0 0 120 120">
+                      <circle
+                        cx="60"
+                        cy="60"
+                        r="50"
+                        stroke="#d1d1d1"
+                        strokeWidth="10"
+                        fill="none"
+                      />
+                      <circle
+                        cx="60"
+                        cy="60"
+                        r="50"
+                        stroke="#59C009"
+                        strokeWidth="10"
+                        fill="none"
+                        strokeDasharray={strokeDasharray}
+                        strokeDashoffset={strokeDashoffset}
+                        strokeLinecap="round"
+                        transform="rotate(-90 60 60)" // Rotate to make the animation start from top
+                        className="transition-all duration-300 ease-in-out"
+                      />
+                    </svg>
+
+                    {/* Play/Pause Button */}
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#59C009] p-1 border-1 border-[#59C009] rounded-full">
+                      {!isPlaying ? (
+                        <Play onClick={handlePlayPause} className="size-5 cursor-pointer" />
+                      ) : (
+                        <Pause onClick={handlePlayPause} className="size-5 cursor-pointer" />
+                      )}
+                    </div>
+                  </div>
+                </div>
                 <Link href={`/recommended/${paper._id}`} className="text-base font-semibold bg-[#59C009] text-gray-50 px-5 py-2 flex items-center justify-center gap-1 rounded-full"><Book className="size-5" /> Read</Link>
               </div>
             </div>
