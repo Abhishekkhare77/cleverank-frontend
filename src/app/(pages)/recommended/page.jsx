@@ -8,7 +8,17 @@ import {
   CardTitle,
   CardFooter,
 } from "@/components/ui/card";
-import { Book, Pause, Play, ThumbsDown, ThumbsUp } from "lucide-react";
+import { Book, CircleDot, Pause, Play, ThumbsDown, ThumbsUp } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
 
 const Page = () => {
   const [papers, setPapers] = useState([]);
@@ -93,8 +103,8 @@ const Page = () => {
       <div className="text-xl font-semibold">Recommended Papers</div>
       <div className="text-gray-500 text-sm pb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia modi soluta nam.</div>
       <div className="flex flex-col gap-3">
-        {papers.map((paper) => (
-          <Card key={paper._id} className="relative shadow-sm hover:shadow transition-shadow duration-200 w-full flex rounded-sm bg-[#F9F9F9] items-center justify-between pr-3">
+        {papers.map((paper, index) => (
+          <Card key={paper._id} className={`relative shadow-sm hover:shadow transition-shadow duration-200 w-full flex rounded-sm ${index % 2 === 0 ? "bg-[#F9F9F9]" : "bg-white"} items-center justify-between pr-3`}>
             <div className="flex items-center">
 
               <CardHeader className="relative flex-shrink-0">
@@ -102,7 +112,7 @@ const Page = () => {
                   <img
                     src={paper.image_url || "/fallback-image.png"}
                     alt={`Cover for ${paper.paper_title}`}
-                    className="w-full h-28 object-cover border"
+                    className="w-full h-36 object-cover border"
                     onError={(e) => {
                       e.currentTarget.src = "/fallback-image.png";
                     }}
@@ -130,10 +140,9 @@ const Page = () => {
                         )
                         .join(", ")}
                   </div>
-                  <div><strong> Paper Type : {" "}</strong>{paper.paper_type}</div>
                 </div>
 
-                <div className="line-clamp-2 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ab nisi laboriosam expedita dicta unde porro modi necessitatibus quis. Repellendus atque perspiciatis rerum ea nam odit, fuga minus iste laborum temporibus omnis!</div>
+                <div className="line-clamp-3 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ab nisi laboriosam expedita dicta unde porro modi necessitatibus quis. Repellendus atque perspiciatis rerum ea nam odit, fuga minus iste laborum temporibus omnis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis animi ipsum blanditiis.</div>
               </CardContent>
             </div>
             <div className="flex flex-col items-end justify-end">
@@ -179,7 +188,29 @@ const Page = () => {
                     </div>
                   </div>
                 </div>
-                <Link href={`/recommended/${paper._id}`} className="text-base font-semibold bg-[#59C009] text-gray-50 px-5 py-2 flex items-center justify-center gap-1 rounded-full"><Book className="size-5" /> Read</Link>
+                <Dialog className="w-[30rem]">
+                  <DialogTrigger><div className="text-base font-semibold bg-[#59C009] text-gray-50 px-5 py-2 flex items-center justify-center gap-1 rounded-full"><Book className="size-5" /> Read</div></DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>{paper.paper_title}</DialogTitle>
+                      <DialogDescription>
+                        <span>This action cannot be undone. This will permanently delete your account
+                          and remove your data from our servers. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad dolores explicabo recusandae! Doloribus fuga maiores cum consectetur eius, quo exercitationem voluptas obcaecati rerum optio quis debitis numquam aliquid deleniti! Asperiores, sapiente molestiae?
+                        </span>
+
+                        <h2 className="text-lg font-semibold leading-none tracking-tight py-5 text-black">What you will learn: </h2>
+                        <div className="space-y-2">
+                          <div className="flex items-center gap-2"><CircleDot size={18} /> <span>Test Lorem, ipsum dolor.</span></div>
+                          <div className="flex items-center gap-2"><CircleDot size={18} /> <span>Test Lorem, ipsum dolor.</span></div>
+                          <div className="flex items-center gap-2"><CircleDot size={18} /> <span>Test Lorem, ipsum dolor.</span></div>
+                        </div>
+                      </DialogDescription>
+                      <DialogFooter>
+                        <Link href={`/recommended/${paper._id}`} className="text-base font-semibold bg-[#59C009] text-gray-50 px-5 py-2 flex items-center justify-center gap-1 rounded-full mt-3">Start Reading</Link>
+                      </DialogFooter>
+                    </DialogHeader>
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </Card>
