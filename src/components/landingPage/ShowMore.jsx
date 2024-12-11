@@ -5,11 +5,6 @@ import { Button } from "../ui/button";
 const ShowMore = () => {
   const testimonials = [
     {
-      name: "David V. K.",
-      role: "Digital Marketer Marketing and Advertising Small-Business (50 or fewer emp.)",
-      text: "Without a doubt the best calendar/scheduling application I have ever used. It has all of the advanced features I need while also being insanely intuitive and straightforward for both end-users and booking recipients.",
-    },
-    {
       name: "Guillermo Rauch",
       handle: "@rauchg",
       text: "Coolest domain. Check. Coolest mission. Check. Coolest product. Check. cal.com",
@@ -69,7 +64,7 @@ const ShowMore = () => {
                 <p className="text-sm text-blue-500">{testimonial.handle}</p>
               )}
             </div>
-            <p className="text-gray-800">{testimonial.text}</p>
+            <p className="text-[#71717a]">{testimonial.text}</p>
           </div>
         ))}
       </div>
