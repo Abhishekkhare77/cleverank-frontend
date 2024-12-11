@@ -60,23 +60,25 @@ const Page = () => {
   if (!paper) return <div>Loading paper...</div>;
 
   return (
-    <div className="py-6 flex flex-col lg:flex-row items-center max-w-6xl">
+    <div className="py-2 flex flex-col xl:flex-row items-center">
       {/* Left Column: Paper Info */}
-      <div className="flex flex-col space-y-6 w-full lg:w-1/2">
-        <div className="font-bold text-2xl text-gray-800">{paper.paper_title}</div>
-        <div className="text-sm text-gray-500 mb-4">
-          {paper.author.map((author, index) => (
-            <span key={index}>
-              {author.first_name} {author.last_name}
-              {index < paper.author.length - 1 && ", "}
-            </span>
-          ))}
+      <div className="flex flex-col space-y-3 w-full max-w-xl">
+        <div>
+          <div className="font-bold text-2xl text-gray-800">{paper.paper_title}</div>
+          <div className="text-sm text-gray-500">
+            {paper.author.map((author, index) => (
+              <span key={index}>
+                {author.first_name} {author.last_name}
+                {index < paper.author.length - 1 && ", "}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Abstract Section */}
-        <div className="bg-gray-100 p-4 rounded-md shadow-sm mb-6">
+        <div className="bg-gray-100 p-4 rounded-md shadow-sm mb-6 ">
           <h3 className="text-lg font-semibold text-gray-700">Abstract</h3>
-          <p className="text-sm text-gray-600 mt-2">{paper.paper_abstract}</p>
+          <p className="text-sm text-gray-600 mt-2 h-64 overflow-y-auto">{paper.paper_abstract}</p>
         </div>
 
         {/* Keywords Section */}
@@ -84,7 +86,7 @@ const Page = () => {
           <h3 className="text-lg font-semibold text-gray-700">Keywords</h3>
           <div className="flex flex-wrap gap-2 mt-2">
             {paper.keywords && paper.keywords.map((keyword, index) => (
-              <span key={index} className="bg-blue-100 text-blue-700 py-1 px-3 rounded-full text-xs">
+              <span key={index} className="bg-green-100 text-green-700 py-1 px-3 rounded-full text-xs">
                 {keyword}
               </span>
             ))}
@@ -94,19 +96,19 @@ const Page = () => {
         {/* Paper Actions */}
         <div className="flex flex-col items-center justify-start space-y-4">
           {!isStarted && !isComplete ? (
-            <Button className="px-8 py-2 text-sm" onClick={handleStart}>
-              Start
+            <Button className="px-8 py-2 text-sm w-1/2" onClick={handleStart}>
+              Start Reading
             </Button>
           ) : isComplete ? (
-            <div className="flex gap-4">
-              <Button className="px-8 py-2 text-sm" onClick={handleStartAssessment}>
+            <div className="flex gap-4 w-1/2">
+              <Button className="px-8 py-2 text-sm w-full" onClick={handleStartAssessment}>
                 Start Assessment
               </Button>
             </div>
           ) : (
-            <>
-              <h2 className="text-md text-gray-600">7 days left</h2>
-              <div className="flex gap-4">
+            <div className="flex items-center justify-between w-full">
+              <h2 className="text-lg font-bold tracking-tight text-pretty  text-gray-700">7 days left</h2>
+              <div className="flex gap-2">
                 <Button className="px-8 py-2 text-sm" onClick={handleComplete}>
                   Complete
                 </Button>
@@ -114,13 +116,13 @@ const Page = () => {
                   <Download />
                 </Button>
               </div>
-            </>
+            </div>
           )}
         </div>
       </div>
 
       {/* Right Column: PDF Viewer */}
-      <div className="w-full lg:w-1/2 mt-6 lg:mt-0">
+      <div className="w-full mx-5 mt-6 sm:-mt-4">
         <PdfRender file_url={paper.file_url} />
       </div>
 
