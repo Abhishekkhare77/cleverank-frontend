@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import TitleSubTitle from "../TitleSubTitle";
 import { Card } from "../ui/card";
 import ShowMore from "./ShowMore";
+import { ChevronRight } from "lucide-react";
 
 const ScheduleTeam = () => {
   return (
@@ -50,7 +51,23 @@ const ScheduleTeam = () => {
         subtitle="Read the impact we've had from those who matter most - our customers."
       />
       <ShowMore />
-      <Card className="h-64 mt-20"></Card>
+      <Card className="h-64 mt-20 relative flex items-center justify-center">
+        <img
+          src="https://cal.com/_next/image?url=%2Fsquares-footer.png&w=1080&q=100"
+          alt="img"
+          className="object-cover h-[15.8rem] w-full"
+        />
+
+        <div className=" absolute flex flex-col items-center gap-4">
+          <div className="text-4xl font-bold text-center">
+            Smarter, simpler <br /> scheduling
+          </div>
+          <Button>
+            {" "}
+            Get Started <ChevronRight />
+          </Button>
+        </div>
+      </Card>
     </div>
   );
 };

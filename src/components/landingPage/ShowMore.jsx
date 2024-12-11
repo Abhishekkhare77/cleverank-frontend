@@ -69,7 +69,7 @@ const ShowMore = () => {
         ))}
       </div>
       {visibleCount < testimonials.length && (
-        <div className=" absolute bg-gradient-to-t from-gray-50/70 via-gray-50/80 to-gray-100/50 h-80 w-full bottom-6  flex justify-center mt-8">
+        <div className=" absolute bg-gradient-to-t from-gray-50/70 via-gray-50/80 to-gray-100/50 h-72 w-full bottom-6  flex justify-center mt-8">
           <Button
             className="px-6 py-2 absolute bottom-16 "
             onClick={handleShowMore}
