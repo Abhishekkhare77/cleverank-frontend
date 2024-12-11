@@ -79,9 +79,9 @@ const ScheduleEasy = () => {
         title="With us, scheduling is easy"
         subtitle="Effortless scheduling for individuals, powerful solutions for fast-growing modern companies."
       />
-      <div className="flex w-full gap-8">
+      <div className="flex w-full gap-10">
         {cardData.map((card) => (
-          <Card key={card.id} className="w-full h-[26rem]">
+          <Card key={card.id} className="w-full h-[26.5rem]">
             <CardHeader className="flex gap-4">
               <CardDescription className="bg-slate-200 w-6 rounded-md text-center">
                 {card.id}
