@@ -25,14 +25,24 @@ const Page = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [audio] = useState(new Audio("https://storage.googleapis.com/clever_rank_answer_bucket/audios/6759437fda3ae6f021102382_None"));
+  const [audio, setAudio] = useState(null);
   const [duration, setDuration] = useState(0); // Total duration of the audio
   const [progress, setProgress] = useState(0); // Progress for the animation
   const progressBarRef = useRef(null);
+  const [isClient, setIsClient] = useState(false);
 
   const handleTimeUpdate = () => {
     setProgress((audio.currentTime / audio.duration) * 100);
   };
+
+  useEffect(() => {
+    setIsClient(true);
+    if (isClient) {
+      const audioObj = new Audio("https://storage.googleapis.com/clever_rank_answer_bucket/audios/6759437fda3ae6f021102382_None");
+      setAudio(audioObj);
+    }
+  }, []);
+
 
 
   useEffect(() => {
@@ -57,28 +67,36 @@ const Page = () => {
   }, []);
 
   useEffect(() => {
-    // When the audio starts playing, update the duration
-    audio.addEventListener("loadedmetadata", () => {
-      setDuration(audio.duration);
-    });
+    setIsClient(true);
+    const audioObj = new Audio("https://storage.googleapis.com/clever_rank_answer_bucket/audios/6759437fda3ae6f021102382_None");
+    setAudio(audioObj);
 
-    // Listen to time updates while the audio is playing
-    audio.addEventListener("timeupdate", handleTimeUpdate);
+    if (audio) {
+      audio.addEventListener("loadedmetadata", () => {
+        setDuration(audio.duration);
+      });
 
-    // Reset progress when audio ends
-    audio.addEventListener("ended", () => {
-      setIsPlaying(false);
-      setProgress(0);
-    });
+      // Listen to time updates while the audio is playing
+      audio.addEventListener("timeupdate", handleTimeUpdate);
 
-    // Cleanup event listeners on component unmount
-    return () => {
-      audio.removeEventListener("loadedmetadata", () => setDuration(audio.duration));
-      audio.removeEventListener("timeupdate", handleTimeUpdate);
-      audio.removeEventListener("ended", () => {
+      // Reset progress when audio ends
+      audio.addEventListener("ended", () => {
         setIsPlaying(false);
         setProgress(0);
       });
+    }
+    // When the audio starts playing, update the duration
+
+    // Cleanup event listeners on component unmount
+    return () => {
+      if (audio) {
+        audio.removeEventListener("loadedmetadata", () => setDuration(audio.duration));
+        audio.removeEventListener("timeupdate", handleTimeUpdate);
+        audio.removeEventListener("ended", () => {
+          setIsPlaying(false);
+          setProgress(0);
+        });
+      }
     };
   }, [audio]);
 
@@ -97,6 +115,9 @@ const Page = () => {
   const strokeDasharray = circleLength; // Full circle
   const strokeDashoffset = circleLength - (progress / 100) * circleLength; // Calculate how much of the circle to "cut off" based on progress
 
+  if (!isClient) {
+    return null; // Or a loading spinner
+  }
 
   return (
     <>
