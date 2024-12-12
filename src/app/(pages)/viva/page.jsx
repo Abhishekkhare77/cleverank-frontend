@@ -24,7 +24,12 @@ const Page = () => {
 
   const fetchQuestions = async () => {
     try {
-      const response = await fetch(`https://cleverank.adnan-qasim.me/research-paper/start-assessment/${paperId}`);
+      const response = await fetch(`https://cleverank.adnan-qasim.me/research-paper/start-assessment/${paperId}?difficulty=${difficulty}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       if (!response.ok) {
         throw new Error("Failed to fetch paper");
       }
@@ -35,9 +40,12 @@ const Page = () => {
       console.error(err);
     }
   }
+
   useEffect(() => {
+    fetchQuestions();
+  }, []);
 
-
+  useEffect(() => {
     if (!showVideoUI && timeLeft > 0) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timer);
@@ -100,7 +108,7 @@ const Page = () => {
           Question {currentQuestion + 1}
         </h2>
         <div className="flex justify-between">
-          <p className="text-gray-700 text-base mb-8">
+          <p className="text-gray-700 text-base mb-8 max-w-3xl">
             {questions[currentQuestion]}
           </p>
 
@@ -140,8 +148,6 @@ const Page = () => {
           </div>
         )}
       </div>
-
-      {/* Timer */}
     </div>
   );
 };
