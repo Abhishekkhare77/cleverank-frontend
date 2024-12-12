@@ -3,16 +3,8 @@ import CameraFeed from "@/components/CameraFeed";
 import SpeechToText from "@/components/SpeechToText";
 import { Button } from "@/components/ui/button";
 import { ThumbsDown, X } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
-
-const questions = [
-  "What is the meaning of fluid when we speak about Dynamic fluid in the context of laminar flow?",
-  "What is Bernoulli’s theorem?",
-  "Define viscosity and its effect on fluid dynamics.",
-  "Explain Reynolds number and its significance.",
-  "What is meant by turbulent flow?",
-];
 
 const Page = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -22,10 +14,30 @@ const Page = () => {
   const [completedSteps, setCompletedSteps] = useState([]);
   const [isListening, setIsListening] = useState(false);
   const [text, setText] = useState("");
+  const [questions, setQuestions] = useState([]);
+
+  const searchParams = useSearchParams();
+  const paperId = searchParams.get("paper_id");
+  const difficulty = searchParams.get("selected_difficulty");
 
   const router = useRouter();
 
+  const fetchQuestions = async () => {
+    try {
+      const response = await fetch(`https://cleverank.adnan-qasim.me/research-paper/start-assessment/${paperId}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch paper");
+      }
+      const data = await response.json();
+      console.log(data);
+      setQuestions(data.questions);
+    } catch (err) {
+      console.error(err);
+    }
+  }
   useEffect(() => {
+
+
     if (!showVideoUI && timeLeft > 0) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timer);
@@ -60,7 +72,7 @@ const Page = () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
       setShowVideoUI(false);
-      setTimeLeft(10);
+      setTimeLeft(30);
     } else {
       router.push("/score");
     }
@@ -93,8 +105,8 @@ const Page = () => {
           </p>
 
           <div className="flex items-center gap-6 my-2">
-            {showVideoUI && <div className="rounded-full p-3 border size-10 flex items-center justify-center">
-              <div className="text-xs font-bold">{answerTimer}s</div>
+            {showVideoUI && <div className="rounded-md p-3 border flex items-center justify-center">
+              <div className="text-xs font-bold">Time Left : {answerTimer}s</div>
             </div>}
             <div className="flex flex-col items-center cursor-pointer">
               <X className="size-5" />
@@ -108,7 +120,7 @@ const Page = () => {
         </div>
 
         {!showVideoUI ? (
-          <div className="flex flex-col items-center justify-center w-[60rem] h-[28rem]">
+          <div className="flex flex-col items-center justify-center w-full h-[28rem]">
             <div className="relative flex items-center justify-center w-40 h-40 rounded-full bg-gray-200 mb-4">
               <span className="text-2xl font-bold">{timeLeft}</span>
             </div>

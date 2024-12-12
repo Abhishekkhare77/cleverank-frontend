@@ -1,6 +1,8 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import React from "react";
 
 const Page = () => {
@@ -42,6 +44,10 @@ const Page = () => {
     },
   ];
 
+  const searchParams = useSearchParams();
+  const paperId = searchParams.get("paper_id");
+  const difficulty = searchParams.get("selected_difficulty");
+
   return (
     <div className="mx-32 mt-4 mb-10">
       <div className="font-semibold  text-2xl">Viva Voce</div>
@@ -63,8 +69,8 @@ const Page = () => {
       <div>
         <Checkbox /> <span className="ml-2"> I understand terms and conditions of viva voce.</span>
       </div>
-      <Link href="/viva">
-      <Button className="px-12 mt-6">Start</Button>
+      <Link href={`/viva/?paper_id=${paperId}&selected_difficulty=${difficulty}`}>
+        <Button className="px-12 mt-6">Start</Button>
       </Link>
     </div>
   );

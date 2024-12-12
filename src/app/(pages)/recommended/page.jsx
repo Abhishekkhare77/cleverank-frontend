@@ -18,6 +18,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { Skeleton } from "@/components/ui/skeleton";
 
 
 const Page = () => {
@@ -43,6 +44,7 @@ const Page = () => {
           throw new Error("Failed to fetch papers");
         }
         const data = await response.json();
+        console.log(data);
         setPapers(data);
       } catch (err) {
         setError(err.message);
@@ -87,7 +89,18 @@ const Page = () => {
     };
   }, []);
 
-  if (loading) return <div>Loading papers...</div>;
+  if (loading) return <div>
+    <div className="space-y-2">
+      <Skeleton className={"w-1/4 h-8"} />
+      <Skeleton className={"w-1/2 h-6"} />
+    </div>
+    <div>
+      <Skeleton className={"w-full h-44 my-5"} />
+      <Skeleton className={"w-full h-44 my-5"} />
+      <Skeleton className={"w-full h-44 my-5"} />
+      <Skeleton className={"w-full h-44 my-5"} />
+    </div>
+  </div>;
   if (error) return <div>Error: {error}</div>;
 
   const handlePlayPause = () => {

@@ -8,6 +8,7 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import dynamic from "next/dynamic";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const PdfRender = dynamic(() => import("@/components/pdfView/PdfRender"), {
   ssr: false,
@@ -58,7 +59,16 @@ const Page = () => {
     setIsModalOpen(false);
   };
 
-  if (!paper) return <div>Loading paper...</div>;
+  if (!paper) return (
+    <div className="space-y-4 my-5" >
+      <div className="space-y-2">
+        <Skeleton className="h-8 max-w-xl" />
+        <Skeleton className="h-8 max-w-xl" />
+        <Skeleton className="h-4 max-w-xl" />
+      </div>
+      <Skeleton className="h-64 max-w-xl" />
+      <Skeleton className="h-36 max-w-xl" />
+    </div>)
 
   return (
     <div className="py-2 flex flex-col xl:flex-row items-center">
@@ -149,7 +159,7 @@ const Page = () => {
               </div>
             </CardContent>
             <CardFooter className="flex justify-end mt-6">
-              <Link href="/assessment">
+              <Link href={`/assessment/?paper_id=${id}&selected_difficulty=${difficulty}`}>
                 <Button>Submit</Button>
               </Link>
             </CardFooter>
