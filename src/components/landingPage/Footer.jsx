@@ -28,11 +28,15 @@ const Footer = () => {
             <Link href="/how-it-works">
               <div>How It Works</div>
             </Link>
-            <div>Institution</div>
+            <Link href="/institution">
+              <div>Institution</div>
+            </Link>
             <Link href="/faq">
               <div>FAQ </div>
             </Link>
-            <div>Vission-Mission</div>
+            <Link href="/mission">
+              <div>Vission-Mission</div>
+            </Link>
             <Link href="/why">
               <div>Why</div>
             </Link>

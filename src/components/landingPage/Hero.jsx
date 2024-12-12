@@ -23,12 +23,12 @@ const Hero = () => {
       <Card className="py-5 flex justify-between mt-8">
         <CardHeader className="flex flex-col gap-6 w-1/2 ml-3">
           <CardTitle className="text-6xl">
-            The better way <br /> to schedule
+            Elevate Your <br /> Intellectual Persona
           </CardTitle>
           <CardDescription>
-            A fully customizable scheduling experience for individuals,
-            businesses taking calls and developers building scheduling platforms
-            where users meet users.
+            Transform the way the world sees your intellect. Keep track of the
+            research papers you&apos;ve read and share your intellectual
+            achievements with a community that values knowledge.
           </CardDescription>
           <CardDescription className="text-black text-lg flex gap-5 ">
             <div className=" py-6 text-sm flex flex-col items-center justify-center gap-2 border border-black rounded-lg  w-40 mt-3">
@@ -49,18 +49,12 @@ const Hero = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className=" w-1/2 flex justify-end ">
-          {/* <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPx7zWwNhPBcu1qzwMlhVfEo1WVvoMwwGctT6TMs09GKsi98feFdPLqc3kxtBGnGDP0Tk&usqp=CAU"
-            alt="img"
-            className="object-cover h-96  "
-          /> */}
-
           <HeroCardAnimation />
         </CardContent>
       </Card>
       <div className=" border-b border-t flex justify-between items-center py-5 mt-6 px-2">
         <p className="text-[#898989]">
-          Trusted by fast-growing <br /> companies around the world
+          Trusted by top <br /> colleges in the world
         </p>
         <div className="flex gap-16">
           {Image.map((url, index) => (
