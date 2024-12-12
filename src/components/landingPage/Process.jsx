@@ -100,7 +100,13 @@ const Process = () => {
           </Card>
         ))}
       </div>
-      <Card className="h-64 mt-20"></Card>
+      <Card className="h-64 mt-20">
+        <img
+          src="https://cal.com/_next/image?url=%2Fsquares-footer.png&w=1080&q=100"
+          alt="img"
+          className="object-cover h-[15.8rem] w-full"
+        />
+      </Card>
     </div>
   );
 };

@@ -6,6 +6,8 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import HeroCardAnimation from "./HeroCardAnimation";
+import { Banknote, Book, User } from "lucide-react";
 
 const Hero = () => {
   const Image = [
@@ -19,7 +21,7 @@ const Hero = () => {
   return (
     <div>
       <Card className="py-5 flex justify-between mt-8">
-        <CardHeader className="flex flex-col gap-5 w-1/2">
+        <CardHeader className="flex flex-col gap-6 w-1/2 ml-3">
           <CardTitle className="text-6xl">
             The better way <br /> to schedule
           </CardTitle>
@@ -28,17 +30,32 @@ const Hero = () => {
             businesses taking calls and developers building scheduling platforms
             where users meet users.
           </CardDescription>
-          <CardDescription className="text-black text-lg">
-            10,000 Paper <br />
-            3,500 Student <br /> R145,343 Bounties
+          <CardDescription className="text-black text-lg flex gap-5 ">
+            <div className=" py-6 text-sm flex flex-col items-center justify-center gap-2 border border-black rounded-lg  w-40 mt-3">
+              <Book className="size-8" />
+              <span className="text-3xl font-extrabold"> 10,000 </span>
+              <span className="-mt-2">Paper</span>
+            </div>
+            <div className=" py-6   text-sm flex flex-col items-center justify-center gap-2 border border-black rounded-lg  w-40 mt-3">
+              <User className="size-8" />
+              <span className="text-3xl font-extrabold">3,500 </span>
+              <span className="-mt-2">Student</span>
+            </div>
+            <div className=" py-6  text-sm flex flex-col items-center justify-center gap-2 border border-black rounded-lg  w-40 mt-3">
+              <Banknote className="size-8" />
+              <span className="text-3xl font-extrabold"> 145,343</span>
+              <span className="-mt-2">Bounties</span>
+            </div>
           </CardDescription>
         </CardHeader>
         <CardContent className=" w-1/2 flex justify-end ">
-          <img
+          {/* <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPx7zWwNhPBcu1qzwMlhVfEo1WVvoMwwGctT6TMs09GKsi98feFdPLqc3kxtBGnGDP0Tk&usqp=CAU"
             alt="img"
             className="object-cover h-96  "
-          />
+          /> */}
+
+          <HeroCardAnimation />
         </CardContent>
       </Card>
       <div className=" border-b border-t flex justify-between items-center py-5 mt-6 px-2">
