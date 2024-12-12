@@ -24,6 +24,24 @@ const Page = () => {
   // Get paper_id from URL params
   const { id } = useParams(); // Dynamically get the paper ID
 
+  const handleDownloadPaper = async () => {
+    try {
+      const response = await fetch(`https://cleverank.adnan-qasim.me/papers/download-paper/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch paper");
+      }
+      const data = await response.json();
+      window.open(data.file_url, "_blank");
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   useEffect(() => {
     if (!id) return; // Ensure paper_id exists before fetching data
 
@@ -123,7 +141,7 @@ const Page = () => {
                 <Button className="px-8 py-2 text-sm" onClick={handleComplete}>
                   Complete
                 </Button>
-                <Button>
+                <Button onClick={handleDownloadPaper}>
                   <Download />
                 </Button>
               </div>

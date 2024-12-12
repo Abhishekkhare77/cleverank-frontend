@@ -46,7 +46,7 @@ const data = {
                 },
                 {
                     title: "Assessment",
-                    url: "/assessment",
+                    url: "/all-assessments",
                 },
             ],
         },

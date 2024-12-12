@@ -39,7 +39,7 @@ const Page = () => {
     const fetchPapers = async () => {
       try {
         const response = await fetch(
-          `https://cleverank.adnan-qasim.me/papers/get-papers-recommendation/1?limit=50`
+          `https://cleverank.adnan-qasim.me/papers/get-papers-recommendation`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch papers");
@@ -161,7 +161,7 @@ const Page = () => {
                   </div>
                 </div>
 
-                <div className="line-clamp-3 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ab nisi laboriosam expedita dicta unde porro modi necessitatibus quis. Repellendus atque perspiciatis rerum ea nam odit, fuga minus iste laborum temporibus omnis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis animi ipsum blanditiis.</div>
+                <div className="line-clamp-3 text-gray-600">{paper?.creative_summary?.creative_summary ?? "Summary Not Available."}</div>
               </CardContent>
             </div>
             <div className="flex flex-col items-end justify-end">
@@ -207,21 +207,21 @@ const Page = () => {
                     </div>
                   </div>
                 </div>
-                <Dialog className="w-[30rem]">
-                  <DialogTrigger className="text-base font-semibold bg-[#59C009] text-gray-50 px-5 py-2 flex items-center justify-center gap-1 rounded-full"><Book className="size-5" /> Read</DialogTrigger>
-                  <DialogContent>
+                <Dialog>
+                  <DialogTrigger className="text-base font-semibold bg-[#59C009] text-gray-50 px-5 py-2 flex items-center justify-center gap-1 rounded-full"><Book className="size-5" />Read</DialogTrigger>
+                  <DialogContent className="max-w-4xl">
                     <DialogHeader>
-                      <DialogTitle>{paper.paper_title}</DialogTitle>
+                      <DialogTitle className="mb-3">{paper.paper_title}</DialogTitle>
                       <DialogDescription>
-                        <span>This action cannot be undone. This will permanently delete your account
-                          and remove your data from our servers. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad dolores explicabo recusandae! Doloribus fuga maiores cum consectetur eius, quo exercitationem voluptas obcaecati rerum optio quis debitis numquam aliquid deleniti! Asperiores, sapiente molestiae?
+                        <span>{paper?.creative_summary?.creative_summary ?? "Summary Not Available."}
                         </span>
 
                         <h2 className="text-lg font-semibold leading-none tracking-tight py-5 text-black">What you will learn: </h2>
                         <div className="space-y-2">
-                          <div className="flex items-center gap-2"><CircleDot size={18} /> <span>Test Lorem, ipsum dolor.</span></div>
-                          <div className="flex items-center gap-2"><CircleDot size={18} /> <span>Test Lorem, ipsum dolor.</span></div>
-                          <div className="flex items-center gap-2"><CircleDot size={18} /> <span>Test Lorem, ipsum dolor.</span></div>
+                          {paper?.creative_summary?.concepts_learned.map((concept, index) => (
+                            <div key={index} className="flex items-start gap-1"><CircleDot className="mt-1" size={14} /> <span>{concept}</span></div>
+                          ))
+                          }
                         </div>
                       </DialogDescription>
                       <DialogFooter>
