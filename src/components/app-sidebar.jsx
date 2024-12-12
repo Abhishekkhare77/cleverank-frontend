@@ -204,7 +204,7 @@ export function AppSidebar({
       <SidebarFooter>
         <div>
           {open ? (
-            <div className="flex rounded-md items-center justify-center gap-3 border px-3 py-2 hover:bg-gray-200">
+            <div className="flex rounded-md items-center justify-center gap-3 border px-3 py-2 hover:bg-sidebar-accent">
               <span className="text-sm">Logout</span>
               <LogOut size={18} />
             </div>

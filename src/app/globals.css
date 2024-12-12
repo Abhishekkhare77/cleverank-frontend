@@ -11,76 +11,119 @@ body {
     text-wrap: balance;
   }
 }
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    /* Base Colors */
+    --background: 0 0% 100%; /* White background */
+    --foreground: 0 0% 0%; /* Black text */
+
+    /* Card Styles */
+    --card: 0 0% 100%; /* White cards */
+    --card-foreground: 0 0% 0%; /* Black text on cards */
+
+    /* Popover Styles */
+    --popover: 0 0% 100%; /* White popovers */
+    --popover-foreground: 0 0% 0%; /* Black text on popovers */
+
+    /* Primary Colors */
+    --primary: 85 81% 37%; /* Light Green (#DBFAC3) */
+    --primary-foreground: 0 0% 100%; /* Black text on primary elements */
+
+    /* Secondary Colors */
+    --secondary: 120 40% 85%; /* Soft Green */
+    --secondary-foreground: 0 0% 0%; /* Black text on secondary elements */
+
+    /* Muted Colors */
+    --muted: 120 20% 95%; /* Very Light Green */
+    --muted-foreground: 0 0% 30%; /* Dark Grey text on muted elements */
+
+    /* Accent Colors */
+    --accent: 120 50% 80%; /* Accent Green */
+    --accent-foreground: 0 0% 0%; /* Black text on accent elements */
+
+    /* Destructive Colors */
+    --destructive: 0 84.2% 60.2%; /* Retained original red */
+    --destructive-foreground: 0 0% 100%; /* White text on destructive elements */
+
+    /* Border and Input Styles */
+    --border: 120 20% 90%; /* Light Green borders */
+    --input: 120 20% 90%; /* Light Green input backgrounds */
+    --ring: 120 10% 30%; /* Dark ring for focus states */
+
+    /* Chart Colors */
+    --chart-1: 120 70% 50%; /* Bright Green */
+    --chart-2: 173 58% 39%; /* Original Chart 2 Color */
+    --chart-3: 197 37% 24%; /* Original Chart 3 Color */
+    --chart-4: 43 74% 66%; /* Original Chart 4 Color */
+    --chart-5: 27 87% 67%; /* Original Chart 5 Color */
+
+    /* Radius and Sidebar */
     --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 100%; /* White sidebar */
+    --sidebar-foreground: 0 0% 0%; /* Black text on sidebar */
+    --sidebar-primary: 80 60% 83%; /* Light Green in sidebar */
+    --sidebar-primary-foreground: 0 0% 0%; /* Black text on sidebar primary */
+    --sidebar-accent: 120 40% 85%; /* Soft Green in sidebar */
+    --sidebar-accent-foreground: 0 0% 0%; /* Black text on sidebar accent */
+    --sidebar-border: 120 20% 90%; /* Light Green borders in sidebar */
+    --sidebar-ring: 217.2 91.2% 59.8%; /* Original sidebar ring */
   }
+
+  /* Dark Mode */
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Background and Foreground */
+    --background: 240 10% 15%; /* Dark Background */
+    --foreground: 0 0% 98%; /* Light Text */
+
+    /* Card Styles */
+    --card: 240 10% 20%; /* Dark Cards */
+    --card-foreground: 0 0% 98%; /* Light Text on Cards */
+
+    /* Popover Styles */
+    --popover: 240 10% 20%; /* Dark Popovers */
+    --popover-foreground: 0 0% 98%; /* Light Text on Popovers */
+
+    /* Primary Colors */
+    --primary: 80 60% 50%; /* Darker Green for Dark Mode */
+    --primary-foreground: 0 0% 98%; /* Light Text on Primary Elements */
+
+    /* Secondary Colors */
+    --secondary: 120 40% 60%; /* Darker Soft Green */
+    --secondary-foreground: 0 0% 98%; /* Light Text on Secondary Elements */
+
+    /* Muted Colors */
+    --muted: 120 20% 30%; /* Dark Muted Green */
+    --muted-foreground: 0 0% 65%; /* Light Grey Text on Muted Elements */
+
+    /* Accent Colors */
+    --accent: 120 50% 60%; /* Darker Accent Green */
+    --accent-foreground: 0 0% 98%; /* Light Text on Accent Elements */
+
+    /* Destructive Colors */
+    --destructive: 0 62.8% 30.6%; /* Retained original destructive color */
+    --destructive-foreground: 0 0% 98%; /* Light text on destructive elements */
+
+    /* Border and Input Styles */
+    --border: 120 20% 30%; /* Dark Green borders */
+    --input: 120 20% 30%; /* Dark Green input backgrounds */
+    --ring: 120 4.9% 83.9%; /* Lighter ring for focus in dark mode */
+
+    /* Chart Colors - Adjusted for Dark Mode */
+    --chart-1: 120 70% 40%; /* Darker Bright Green */
+    --chart-2: 160 60% 45%; /* Adjusted if needed */
+    --chart-3: 30 80% 55%; /* Original Chart 3 Color */
+    --chart-4: 280 65% 60%; /* Original Chart 4 Color */
+    --chart-5: 340 75% 55%; /* Original Chart 5 Color */
+
+    /* Sidebar in Dark Mode */
+    --sidebar-background: 240 10% 20%; /* Dark Sidebar Background */
+    --sidebar-foreground: 0 0% 98%; /* Light Text on Sidebar */
+    --sidebar-primary: 224.3 76.3% 48%; /* Retain original or adjust if needed */
+    --sidebar-primary-foreground: 0 0% 100%; /* Light text on sidebar primary */
+    --sidebar-accent: 120 40% 60%; /* Darker Sidebar Accent */
+    --sidebar-accent-foreground: 0 0% 98%; /* Light text on sidebar accent */
+    --sidebar-border: 120 20% 30%; /* Dark sidebar borders */
+    --sidebar-ring: 217.2 91.2% 59.8%; /* Retain original for sidebar ring */
   }
 }
 

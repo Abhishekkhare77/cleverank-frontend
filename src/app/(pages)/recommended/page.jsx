@@ -19,6 +19,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Skeleton } from "@/components/ui/skeleton";
+import { toast } from "sonner";
 
 
 const Page = () => {
@@ -38,7 +39,7 @@ const Page = () => {
     const fetchPapers = async () => {
       try {
         const response = await fetch(
-          "https://cleverank.adnan-qasim.me/papers/get-papers-recommendation/1?limit=50"
+          `https://cleverank.adnan-qasim.me/papers/get-papers-recommendation/1?limit=50`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch papers");
@@ -47,6 +48,7 @@ const Page = () => {
         console.log(data);
         setPapers(data);
       } catch (err) {
+        toast.error("Failed to fetch papers");
         setError(err.message);
       } finally {
         setLoading(false);
@@ -101,7 +103,6 @@ const Page = () => {
       <Skeleton className={"w-full h-44 my-5"} />
     </div>
   </div>;
-  if (error) return <div>Error: {error}</div>;
 
   const handlePlayPause = () => {
     if (isPlaying) {
@@ -118,8 +119,9 @@ const Page = () => {
   return (
     <>
       <div className="text-xl font-semibold">Recommended Papers</div>
-      <div className="text-gray-500 text-sm pb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia modi soluta nam.</div>
+      <div className="text-gray-500 text-sm pb-5">Here is a list of papers recommended for you.</div>
       <div className="flex flex-col gap-3">
+        {papers.length === 0 && <div className="text-center text-gray-700 my-5 tracking-tight font-semibold">No papers found.</div>}
         {papers.map((paper, index) => (
           <Card key={paper._id} className={`relative shadow-sm hover:shadow transition-shadow duration-200 w-full flex rounded-sm ${index % 2 === 0 ? "bg-[#F9F9F9]" : "bg-white"} items-center justify-between pr-3`}>
             <div className="flex items-center">
@@ -190,7 +192,7 @@ const Page = () => {
                         strokeDasharray={strokeDasharray}
                         strokeDashoffset={strokeDashoffset}
                         strokeLinecap="round"
-                        transform="rotate(-90 60 60)" // Rotate to make the animation start from top
+                        transform="rotate(-90 60 60)"
                         className="transition-all duration-300 ease-in-out"
                       />
                     </svg>
