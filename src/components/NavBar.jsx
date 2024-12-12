@@ -16,7 +16,9 @@ const NavBar = () => {
         />
       </Link>
       <div className="flex gap-6">
-        <div className="">About Us</div>
+        <Link href="/about-us">
+          <div className="">About Us</div>
+        </Link>
         <div className="">Mission</div>
         <Link href="/faq">
           <div className="">FAQ</div>

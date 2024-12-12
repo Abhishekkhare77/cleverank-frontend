@@ -61,7 +61,7 @@ const Learning = () => {
     },
   ];
   return (
-    <div className="mx-48 mt-14">
+    <div className="mx-48 ">
       {content.map((section, index) => (
         <div key={index}>
           <h1 className="text-2xl font-bold mt-6">{section.title}</h1>

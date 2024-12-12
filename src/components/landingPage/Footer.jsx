@@ -22,7 +22,9 @@ const Footer = () => {
         <div className="flex gap-14 justify-start w-full ml-8 text-[#898989]">
           <div>
             <div className="text-black text-lg font-semibold mb-1">Company</div>
-            <div>About Us</div>
+            <Link href="/about-us">
+              <div>About Us</div>
+            </Link>
             <div>Claverank Work</div>
             <div>Institution</div>
             <Link href="/faq">
