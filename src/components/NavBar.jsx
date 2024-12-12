@@ -15,12 +15,19 @@ const NavBar = () => {
         quality={100}
         className="object-cover "
       />
+      <div className="flex gap-6">
+        <div className="">About Us</div>
+        <div className="">Mission</div>
+        <div className="">FAQ</div>
+        <div className="">Why</div>
+        <div className="">How it works?</div>
+      </div>
       <div className="flex  gap-2">
         <Link href={"/login"} className={buttonVariants()}>
-          Login
+          Sign In
         </Link>
         <Link href={"/institute-login"} className={buttonVariants()}>
-          Institute login
+          Institution
         </Link>
       </div>
     </div>
