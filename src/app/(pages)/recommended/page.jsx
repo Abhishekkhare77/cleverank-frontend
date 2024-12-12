@@ -28,21 +28,9 @@ const Page = () => {
   const [audio, setAudio] = useState(null);
   const [duration, setDuration] = useState(0); // Total duration of the audio
   const [progress, setProgress] = useState(0); // Progress for the animation
-  const progressBarRef = useRef(null);
-  const [isClient, setIsClient] = useState(false);
-
   const handleTimeUpdate = () => {
     setProgress((audio.currentTime / audio.duration) * 100);
   };
-
-  useEffect(() => {
-    setIsClient(true);
-    if (isClient) {
-      const audioObj = new Audio("https://storage.googleapis.com/clever_rank_answer_bucket/audios/6759437fda3ae6f021102382_None");
-      setAudio(audioObj);
-    }
-  }, []);
-
 
 
   useEffect(() => {
@@ -67,7 +55,6 @@ const Page = () => {
   }, []);
 
   useEffect(() => {
-    setIsClient(true);
     const audioObj = new Audio("https://storage.googleapis.com/clever_rank_answer_bucket/audios/6759437fda3ae6f021102382_None");
     setAudio(audioObj);
 
@@ -98,7 +85,7 @@ const Page = () => {
         });
       }
     };
-  }, [audio]);
+  }, []);
 
   if (loading) return <div>Loading papers...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -114,10 +101,6 @@ const Page = () => {
   const circleLength = 2 * Math.PI * 50; // Radius = 50, so circumference = 2πr = 2π(50)
   const strokeDasharray = circleLength; // Full circle
   const strokeDashoffset = circleLength - (progress / 100) * circleLength; // Calculate how much of the circle to "cut off" based on progress
-
-  if (!isClient) {
-    return null; // Or a loading spinner
-  }
 
   return (
     <>
@@ -210,7 +193,7 @@ const Page = () => {
                   </div>
                 </div>
                 <Dialog className="w-[30rem]">
-                  <DialogTrigger><div className="text-base font-semibold bg-[#59C009] text-gray-50 px-5 py-2 flex items-center justify-center gap-1 rounded-full"><Book className="size-5" /> Read</div></DialogTrigger>
+                  <DialogTrigger className="text-base font-semibold bg-[#59C009] text-gray-50 px-5 py-2 flex items-center justify-center gap-1 rounded-full"><Book className="size-5" /> Read</DialogTrigger>
                   <DialogContent>
                     <DialogHeader>
                       <DialogTitle>{paper.paper_title}</DialogTitle>
