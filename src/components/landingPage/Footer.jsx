@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -24,7 +25,9 @@ const Footer = () => {
             <div>About Us</div>
             <div>Claverank Work</div>
             <div>Institution</div>
-            <div>FAQ </div>
+            <Link href="/faq">
+              <div>FAQ </div>
+            </Link>
             <div>Vission-Mission</div>
             <div>Why</div>
           </div>
