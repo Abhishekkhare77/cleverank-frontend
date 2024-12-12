@@ -30,8 +30,8 @@ const Page = () => {
         "4 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio impedit officiis quisquam et deleniti eveniet, voluptates explicabo quas vero incidunt laborum? Optio porro, commodi delectus a neque saepe libero quasi.",
     },
     {
-      value: "Flowers",
-      label: "Flowers",
+      value: "Followers",
+      label: "Followers",
       content:
         "5 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio impedit officiis quisquam et deleniti eveniet, voluptates explicabo quas vero incidunt laborum? Optio porro, commodi delectus a neque saepe libero quasi.",
     },
@@ -93,7 +93,6 @@ const Page = () => {
             </TabsContent>
           ))}
         </Tabs>
-
       </div>
     </div>
   );

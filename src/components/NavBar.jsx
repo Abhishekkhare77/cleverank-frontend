@@ -23,8 +23,12 @@ const NavBar = () => {
         <Link href="/faq">
           <div className="">FAQ</div>
         </Link>
-        <div className="">Why</div>
-        <div className="">How it works?</div>
+        <Link href="/why">
+          <div className="">Why</div>
+        </Link>
+        <Link href="/how-it-works">
+          <div className="">How it works?</div>
+        </Link>
       </div>
       <div className="flex  gap-2">
         <Link href={"/login"} className={buttonVariants()}>

@@ -25,13 +25,17 @@ const Footer = () => {
             <Link href="/about-us">
               <div>About Us</div>
             </Link>
-            <div>Claverank Work</div>
+            <Link href="/how-it-works">
+              <div>How It Works</div>
+            </Link>
             <div>Institution</div>
             <Link href="/faq">
               <div>FAQ </div>
             </Link>
             <div>Vission-Mission</div>
-            <div>Why</div>
+            <Link href="/why">
+              <div>Why</div>
+            </Link>
           </div>
           <div>
             <div className="text-black text-lg font-semibold mb-1"> Legal</div>
