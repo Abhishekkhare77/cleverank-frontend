@@ -74,7 +74,7 @@ const Page = () => {
         setIsListening(false);
         setAnswerTimer(180);
       } else {
-        router.push("/score");
+        router.push(`/score?paper_id=${paperId}`);
       }
     }
   }, [answerTimer, showVideoUI, currentQuestion, questions.length, router]);
@@ -154,6 +154,7 @@ const Page = () => {
               setShowVideoUI={setShowVideoUI}
               setTimeLeft={setTimeLeft}
               router={router}
+              paperId={paperId}
             />
             <div className="w-1/3 flex flex-col">
               <SpeechToText

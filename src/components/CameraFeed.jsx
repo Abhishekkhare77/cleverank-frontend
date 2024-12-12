@@ -15,6 +15,7 @@ export default function CameraFeed({
   setShowVideoUI,
   setTimeLeft,
   router,
+  paperId
 }) {
   const webcamRef = useRef(null);
   const mediaRecorderRef = useRef(null);
@@ -110,7 +111,7 @@ export default function CameraFeed({
         setRecordedChunks([]);
       } else {
         // Last question answered
-        router.push("/score");
+        router.push(`/score?paper_id=${paperId}`);
       }
     } catch (error) {
       console.error('Error uploading video:', error);
