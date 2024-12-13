@@ -232,7 +232,11 @@ const PrivacyPolicy = () => {
         </ul>
         <p className="text-[#686868] mt-4">
           If you wish to exercise any of these rights, please contact us at
-          <Link href="/" className="text-blue-700 ml-1">
+          <Link
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=support@cleverank.org"
+            className="text-blue-700 ml-1"
+            target="_blank"
+          >
             support@cleverank.org
           </Link>
           . We will respond to your request as required by law.
@@ -245,7 +249,11 @@ const PrivacyPolicy = () => {
         <p className="text-[#686868]">
           If you would like to request the removal of your personal data from
           our platform, please send a formal request to{" "}
-          <Link href="/" className="text-blue-700 ml-1">
+          <Link
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=support@cleverank.org"
+            className="text-blue-700 ml-1"
+            target="_blank"
+          >
             support@cleverank.org
           </Link>
           . In your request, please provide the following details:
@@ -326,6 +334,49 @@ const PrivacyPolicy = () => {
           If you have any questions or concerns regarding this Privacy Policy or
           how your data is handled, please contact us at:
         </p>
+      </div>
+      <div>
+        <h1 className=" text-2xl  font-semibold  mt-8 mb-2">Cleverank</h1>
+        <div>
+          {" "}
+          <span>Email: </span>{" "}
+          <Link
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=support@cleverank.org"
+            className="text-blue-700 "
+            target="_blank"
+          >
+            support@cleverank.org
+          </Link>
+        </div>
+        <div>
+          {" "}
+          <span>Data Protection: </span>{" "}
+          <Link
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=legal@cleverank.org"
+            className="text-blue-700 ml-1"
+            target="_blank"
+          >
+            legal@cleverank.org
+          </Link>
+        </div>
+        <div>
+          {" "}
+          <span>Data Removal: </span>{" "}
+          <Link
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=legal@cleverank.org"
+            className="text-blue-700 ml-1"
+            target="_blank"
+          >
+            legal@cleverank.org
+          </Link>
+        </div>
+        <div>
+          {" "}
+          <span>Website: </span>{" "}
+          <Link href="/" className="text-blue-700 ml-1">
+            www.cleverank.org
+          </Link>
+        </div>
       </div>
     </div>
   );

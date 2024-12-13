@@ -4,7 +4,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <div>
-      <div className="mt-24 flex justify-between mb-8">
+      <div className="mt-24 flex justify-between mb-8 ">
         <div className="w-full">
           <Image
             src="/assets/cleverank-logo-final-black.png"
@@ -43,9 +43,15 @@ const Footer = () => {
           </div>
           <div>
             <div className="text-black text-lg font-semibold mb-1"> Legal</div>
-            <div>Privacy Policy</div>
-            <div>Terms and Condition</div>
-            <div>Content Policy</div>
+            <Link href="/privacy-policy">
+              <div>Privacy Policy</div>
+            </Link>
+            <Link href="/terms-conditions">
+              <div>Terms and Condition</div>
+            </Link>
+            <Link href="/content-policy">
+              <div>Content Policy</div>
+            </Link>
           </div>
         </div>
       </div>
