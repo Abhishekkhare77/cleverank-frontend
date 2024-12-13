@@ -2,6 +2,7 @@
 import CameraFeed from "@/components/CameraFeed";
 import SpeechToText from "@/components/SpeechToText";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { ThumbsDown, X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -20,6 +21,8 @@ const Page = () => {
   const paperId = searchParams.get("paper_id");
   const difficulty = searchParams.get("selected_difficulty");
 
+  const [loadingQuestions, setLoadingQuestions] = useState(true);
+
   const router = useRouter();
 
   const fetchQuestions = async () => {
@@ -36,6 +39,7 @@ const Page = () => {
       if (!response.ok) {
         throw new Error("Failed to fetch questions");
       }
+      setLoadingQuestions(false);
       const data = await response.json();
       setQuestions(data.questions || []);
     } catch (err) {
@@ -60,28 +64,26 @@ const Page = () => {
   }, [timeLeft, showVideoUI]);
 
   // This effect handles the "answering time" once the video UI is visible.
+  // The actual stop and upload happens in the CameraFeed component when answerTimer hits 0.
   useEffect(() => {
     if (showVideoUI && answerTimer > 0) {
       const timer = setTimeout(() => setAnswerTimer((prev) => prev - 1), 1000);
       return () => clearTimeout(timer);
-    } else if (showVideoUI && answerTimer === 0) {
-      // If time runs out before user submits, move to next question or score
-      if (currentQuestion < questions.length - 1) {
-        setCurrentQuestion((prev) => prev + 1);
-        setShowVideoUI(false);
-        setTimeLeft(30);
-        setText("");
-        setIsListening(false);
-        setAnswerTimer(180);
-      } else {
-        router.push(`/score?paper_id=${paperId}`);
-      }
     }
-  }, [answerTimer, showVideoUI, currentQuestion, questions.length, router]);
+  }, [answerTimer, showVideoUI]);
 
-  const handleAnswer = () => {
-    setShowVideoUI(true);
-    setIsListening(true);
+  // Function to move to the next question after successful submission
+  const goToNextQuestion = () => {
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion((prev) => prev + 1);
+      setShowVideoUI(false);
+      setTimeLeft(30);
+      setText("");
+      setIsListening(false);
+      setAnswerTimer(180);
+    } else {
+      router.push(`/score?paper_id=${paperId}`);
+    }
   };
 
   return (
@@ -108,9 +110,15 @@ const Page = () => {
           Question {currentQuestion + 1}
         </h2>
         <div className="flex justify-between">
-          <p className="text-gray-700 text-base mb-8 max-w-3xl">
+          <div className="text-gray-700 text-base mb-8 max-w-3xl">
+            {loadingQuestions && (
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-[40rem]" />
+                <Skeleton className="h-4 w-[20rem]" />
+              </div>
+            )}{" "}
             {questions[currentQuestion]}
-          </p>
+          </div>
 
           <div className="flex items-center gap-6 my-2">
             {showVideoUI && (
@@ -136,9 +144,7 @@ const Page = () => {
             <div className="relative flex items-center justify-center w-40 h-40 rounded-full bg-gray-200 mb-4">
               <span className="text-2xl font-bold">{timeLeft}</span>
             </div>
-            <Button className="px-4 py-2 mt-4" onClick={handleAnswer}>
-              Answer
-            </Button>
+            {/* No need for Answer button now since we automatically start recording */}
           </div>
         ) : (
           <div className="flex gap-6">
@@ -155,6 +161,8 @@ const Page = () => {
               setTimeLeft={setTimeLeft}
               router={router}
               paperId={paperId}
+              answerTimer={answerTimer} // Pass answerTimer for auto submission
+              goToNextQuestion={goToNextQuestion}
             />
             <div className="w-1/3 flex flex-col">
               <SpeechToText

@@ -25,6 +25,10 @@ const Page = () => {
 
   const [paperExplanations, setPaperExplanations] = useState(null);
   const [academicLevel, setAcademicLevel] = useState("");
+  const [explanationLoading, setExplanationLoading] = useState(false);
+  const [startTime, setStartTime] = useState(null);
+  const [endTime, setEndTime] = useState(null);
+  const [daysLeft, setDaysLeft] = useState(null);
 
   const handleSearchWithLevel = (value) => {
     console.log(value);
@@ -47,6 +51,7 @@ const Page = () => {
         throw new Error("Failed to fetch paper");
       }
       const data = await response.json();
+      console.log(data);
       window.open(data.file_url, "_blank");
     } catch (err) {
       console.error(err);
@@ -58,20 +63,42 @@ const Page = () => {
 
     const fetchPaper = async () => {
       try {
-        const response = await fetch(`https://cleverank.adnan-qasim.me/papers/get-paper/${id}`);
+        const response = await fetch(`https://cleverank.adnan-qasim.me/papers/get-paper/${id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch paper");
         }
         const data = await response.json();
-        setPaper(data); // Set the paper data
+        console.log(data);
+        setPaper(data.paper); // Set the paper data
+        setIsStarted(data.get_user_paper.is_reading ?? false);
+        setIsComplete(data.get_user_paper.is_complete ?? false);
+        setStartTime(data.get_user_paper.start_reading_time ?? null);
+        setEndTime(data.get_user_paper.end_reading_time ?? null);
       } catch (err) {
         console.error(err);
       }
     };
     fetchPaper();
-  }, [id]); // Fetch paper data when paper_id changes
+  }, [id, isStarted, isComplete]);
+
+  useEffect(() => {
+    if (endTime) {
+      const endDate = new Date(endTime);
+      const currentDate = new Date();
+      const timeDiff = endDate.getTime() - currentDate.getTime();
+      const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Convert time diff to days
+      setDaysLeft(daysLeft);
+    }
+  }, [endTime]);
 
   const fetchPaperExplanations = async () => {
+    setExplanationLoading(true);
     try {
       const response = await fetch(`https://cleverank.adnan-qasim.me/gemini/explain-paper-full/`, {
         method: "POST",
@@ -89,18 +116,55 @@ const Page = () => {
       }
 
       const data = await response.json();
+      setExplanationLoading(false);
       console.log(data.explanation);
-      setPaperExplanations(data.explanation); // Set the paper explanations
+      setPaperExplanations(data.explanation);
     } catch (err) {
       console.error("Error fetching paper explanations:", err);
     }
   };
 
-  const handleStart = () => {
+  const handleStart = async () => {
+    try {
+      const response = await fetch(`https://cleverank.adnan-qasim.me/papers/start-reading-paper/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to start reading");
+      }
+
+      console.log("Started reading paper");
+    }
+    catch (err) {
+      console.error(err);
+    }
     setIsStarted(true);
   };
 
-  const handleComplete = () => {
+  const handleComplete = async () => {
+    try {
+      const response = await fetch(`https://cleverank.adnan-qasim.me/papers/finish-reading-paper/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to complete reading");
+      }
+
+      console.log("Completed reading paper");
+    }
+    catch (err) {
+      console.error(err);
+    }
     setIsComplete(true);
   };
 
@@ -120,11 +184,42 @@ const Page = () => {
   return (
     <>
       <Tabs defaultValue="pdf" className="w-full flex items-center justify-center flex-col">
-        <TabsList className="w-full mb-3">
-          <TabsTrigger value="pdf">PDF</TabsTrigger>
-          <TabsTrigger value="summary">Summary</TabsTrigger>
-          <TabsTrigger value="explanation" >Explanation</TabsTrigger>
-          <TabsTrigger value="quiz" >Quizes</TabsTrigger>
+        <TabsList className="w-full mb-3 flex items-center justify-between">
+          <div>
+            <TabsTrigger value="pdf">PDF</TabsTrigger>
+            <TabsTrigger value="summary">Summary</TabsTrigger>
+            <TabsTrigger value="explanation" >Explanation</TabsTrigger>
+            <TabsTrigger value="quiz" >Quizes</TabsTrigger>
+          </div>
+          <div className="flex items-center justify-end space-y-4">
+            {isComplete && !isStarted ? (
+              <div className="flex gap-4">
+                <Button className="px-8 py-2 text-sm w-full" onClick={handleStartAssessment}>
+                  Start Assessment
+                </Button>
+              </div>
+            ) : null}
+            {!isStarted && !isComplete ? (
+              <Button className="px-8 py-2 text-sm" onClick={handleStart}>
+                Start Reading
+              </Button>
+            ) : null}
+            {!isComplete && isStarted ? (
+              <div className="flex items-center justify-between w-full">
+                <h2 className="text-lg font-bold tracking-tight text-pretty text-gray-700 pr-10">
+                  {daysLeft > 0 ? `${daysLeft} days left` : "Time's up"}
+                </h2>
+                <div className="flex gap-2">
+                  <Button className="px-8 py-2 text-sm" onClick={handleComplete}>
+                    Complete
+                  </Button>
+                  <Button onClick={handleDownloadPaper}>
+                    <Download />
+                  </Button>
+                </div>
+              </div>
+            ) : null}
+          </div>
         </TabsList>
         <TabsContent value="pdf">
           <div className="w-full">
@@ -173,40 +268,13 @@ const Page = () => {
                 ))}
               </div>
             </div>
-
-            {/* Paper Actions */}
-            <div className="flex flex-col items-center justify-start space-y-4">
-              {!isStarted && !isComplete ? (
-                <Button className="px-8 py-2 text-sm w-1/2" onClick={handleStart}>
-                  Start Reading
-                </Button>
-              ) : isComplete ? (
-                <div className="flex gap-4 w-1/2">
-                  <Button className="px-8 py-2 text-sm w-full" onClick={handleStartAssessment}>
-                    Start Assessment
-                  </Button>
-                </div>
-              ) : (
-                <div className="flex items-center justify-between w-full">
-                  <h2 className="text-lg font-bold tracking-tight text-pretty  text-gray-700">7 days left</h2>
-                  <div className="flex gap-2">
-                    <Button className="px-8 py-2 text-sm" onClick={handleComplete}>
-                      Complete
-                    </Button>
-                    <Button onClick={handleDownloadPaper}>
-                      <Download />
-                    </Button>
-                  </div>
-                </div>
-              )}
-            </div>
           </div>
 
         </TabsContent>
         <TabsContent value="explanation" className="w-full px-5">
           <div className="flex items-center w-full justify-between">
             <h1 className="font-semibold tracking-tight text-pretty ">Explanations according to your acadamic level:</h1>
-            <Select onValueChange={handleSearchWithLevel}>
+            <Select defaultValue={academicLevel} onValueChange={handleSearchWithLevel}>
               <SelectTrigger className="w-96" >
                 <SelectValue placeholder="Select an academic level" />
               </SelectTrigger>
@@ -225,6 +293,13 @@ const Page = () => {
             </Select>
           </div>
           <div className="mt-4">
+            {explanationLoading && (
+              <div className="space-y-4">
+                <Skeleton className={"h-48 w-full"} />
+                <Skeleton className={"h-48 w-full"} />
+                <Skeleton className={"h-48 w-full"} />
+              </div>
+            )}
             {paperExplanations && paperExplanations.map((explanation, index) => (
               <div key={index} className="bg-gray-100 p-4 rounded-md shadow-sm mb-6">
                 <h3 className="text-lg font-semibold text-gray-700">{explanation.topic_title}</h3>

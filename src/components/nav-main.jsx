@@ -60,7 +60,7 @@ export function NavMain({
               <CollapsibleContent>
                 <SidebarMenuSub>
                   {item.items?.map((subItem) => (
-                    <SidebarMenuSubItem key={subItem.title}>
+                    <SidebarMenuSubItem key={subItem.title} style={{ animationDelay: `${index * 0.1}s` }} className="fade-in">
                       <SidebarMenuSubButton asChild isActive={pathname.includes(subItem.url)}>
                         <Link href={subItem.url}>
                           <span>{subItem.title}</span>

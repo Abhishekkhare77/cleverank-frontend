@@ -40,6 +40,7 @@ import {
 import Image from "next/image"
 import { Tooltip } from "./ui/tooltip"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 const data = {
   navMain: [
@@ -186,6 +187,7 @@ export function AppSidebar({
   ...props
 }) {
   const { open } = useSidebar()
+  const router = useRouter()
   return (
     (<Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -202,7 +204,10 @@ export function AppSidebar({
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <div>
+        <div className="cursor-pointer" onClick={() => {
+          router.push("/login")
+          localStorage.removeItem("token")
+        }}>
           {open ? (
             <div className="flex rounded-md items-center justify-center gap-3 border px-3 py-2 hover:bg-sidebar-accent">
               <span className="text-sm">Logout</span>
