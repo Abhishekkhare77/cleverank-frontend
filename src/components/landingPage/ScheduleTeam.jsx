@@ -23,7 +23,7 @@ const ScheduleTeam = () => {
               </p>
 
               <div className="mt-6 flex items-center justify-center gap-4">
-                <Button>Sign Up</Button>
+                <Button className="bg-black hover:bg-black/85">Sign Up</Button>
               </div>
             </div>
           </div>
@@ -62,7 +62,7 @@ const ScheduleTeam = () => {
           <div className="text-4xl font-bold text-center">
             Smarter, simpler <br /> scheduling
           </div>
-          <Button>
+          <Button className="bg-black hover:bg-black/85">
             {" "}
             Get Started <ChevronRight />
           </Button>

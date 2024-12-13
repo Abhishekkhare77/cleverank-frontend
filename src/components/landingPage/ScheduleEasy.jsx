@@ -83,7 +83,7 @@ const ScheduleEasy = () => {
         {cardData.map((card) => (
           <Card key={card.id} className="w-full h-[26.5rem]">
             <CardHeader className="flex gap-4">
-              <CardDescription className="bg-slate-200 w-6 rounded-md text-center">
+              <CardDescription className="bg-slate-200 w-8 rounded-md text-center py-1">
                 {card.id}
               </CardDescription>
               <CardTitle>{card.title}</CardTitle>
