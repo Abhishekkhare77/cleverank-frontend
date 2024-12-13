@@ -26,6 +26,9 @@ const Page = () => {
   const [paperExplanations, setPaperExplanations] = useState(null);
   const [academicLevel, setAcademicLevel] = useState("");
   const [explanationLoading, setExplanationLoading] = useState(false);
+  const [startTime, setStartTime] = useState(null);
+  const [endTime, setEndTime] = useState(null);
+  const [daysLeft, setDaysLeft] = useState(null);
 
   const handleSearchWithLevel = (value) => {
     console.log(value);
@@ -48,6 +51,7 @@ const Page = () => {
         throw new Error("Failed to fetch paper");
       }
       const data = await response.json();
+      console.log(data);
       window.open(data.file_url, "_blank");
     } catch (err) {
       console.error(err);
@@ -59,18 +63,39 @@ const Page = () => {
 
     const fetchPaper = async () => {
       try {
-        const response = await fetch(`https://cleverank.adnan-qasim.me/papers/get-paper/${id}`);
+        const response = await fetch(`https://cleverank.adnan-qasim.me/papers/get-paper/${id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch paper");
         }
         const data = await response.json();
-        setPaper(data); // Set the paper data
+        console.log(data);
+        setPaper(data.paper); // Set the paper data
+        setIsStarted(data.get_user_paper.is_reading ?? false);
+        setIsComplete(data.get_user_paper.is_complete ?? false);
+        setStartTime(data.get_user_paper.start_reading_time ?? null);
+        setEndTime(data.get_user_paper.end_reading_time ?? null);
       } catch (err) {
         console.error(err);
       }
     };
     fetchPaper();
-  }, [id]); // Fetch paper data when paper_id changes
+  }, [id, isStarted, isComplete]);
+
+  useEffect(() => {
+    if (endTime) {
+      const endDate = new Date(endTime);
+      const currentDate = new Date();
+      const timeDiff = endDate.getTime() - currentDate.getTime();
+      const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Convert time diff to days
+      setDaysLeft(daysLeft);
+    }
+  }, [endTime]);
 
   const fetchPaperExplanations = async () => {
     setExplanationLoading(true);
@@ -167,19 +192,23 @@ const Page = () => {
             <TabsTrigger value="quiz" >Quizes</TabsTrigger>
           </div>
           <div className="flex items-center justify-end space-y-4">
-            {!isStarted && !isComplete ? (
-              <Button className="px-8 py-2 text-sm" onClick={handleStart}>
-                Start Reading
-              </Button>
-            ) : isComplete ? (
+            {isComplete && !isStarted ? (
               <div className="flex gap-4">
                 <Button className="px-8 py-2 text-sm w-full" onClick={handleStartAssessment}>
                   Start Assessment
                 </Button>
               </div>
-            ) : (
+            ) : null}
+            {!isStarted && !isComplete ? (
+              <Button className="px-8 py-2 text-sm" onClick={handleStart}>
+                Start Reading
+              </Button>
+            ) : null}
+            {!isComplete && isStarted ? (
               <div className="flex items-center justify-between w-full">
-                <h2 className="text-lg font-bold tracking-tight text-pretty text-gray-700 pr-10">7 days left</h2>
+                <h2 className="text-lg font-bold tracking-tight text-pretty text-gray-700 pr-10">
+                  {daysLeft > 0 ? `${daysLeft} days left` : "Time's up"}
+                </h2>
                 <div className="flex gap-2">
                   <Button className="px-8 py-2 text-sm" onClick={handleComplete}>
                     Complete
@@ -189,7 +218,7 @@ const Page = () => {
                   </Button>
                 </div>
               </div>
-            )}
+            ) : null}
           </div>
         </TabsList>
         <TabsContent value="pdf">
