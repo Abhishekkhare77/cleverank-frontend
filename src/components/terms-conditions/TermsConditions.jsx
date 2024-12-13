@@ -12,10 +12,11 @@ const TermsConditions = () => {
           Effective Date: 15th December, 2024
         </h1>
         <p className="text-[#686868]">
-          These Terms and Conditions ("Terms") govern your use of the Cleverank
-          website, platform, and services ("Services"), including all content,
-          tools, and resources provided by Cleverank, Inc. ("Cleverank," "we,"
-          "our," or "us"). By accessing or using our Services, you agree to
+          These Terms and Conditions (&quot;Terms&quot;) govern your use of the
+          Cleverank website, platform, and services (&quot;Services&quot;),
+          including all content, tools, and resources provided by Cleverank,
+          Inc. (&quot;Cleverank,&quot; &quot;we,&quot; &quot;our,&quot; or
+          &quot;us&quot;). By accessing or using our Services, you agree to
           comply with and be bound by these Terms. If you do not agree with
           these Terms, you must refrain from using the Services.
         </p>
@@ -96,7 +97,7 @@ const TermsConditions = () => {
         >
           <li className="mt-2">
             Do not reproduce, distribute, or share content from the platform
-            unless it is explicitly allowed under the content's license.
+            unless it is explicitly allowed under the content&apos;s license.
           </li>
           <li className="mt-2">
             Comply with all applicable laws, including copyright laws, and

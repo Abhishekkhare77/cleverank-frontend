@@ -155,10 +155,10 @@ const ContentPolicy = () => {
         <p className="text-[#686868]">
           As a growing startup, we recognize the importance of building robust
           systems to better manage copyright compliance and enhance the user
-          experience. We are continuously working on improving our platform's
-          ability to monitor and manage content, and we plan to implement more
-          advanced features in the future to ensure that copyright violations
-          are minimized.
+          experience. We are continuously working on improving our
+          platform&apos;s ability to monitor and manage content, and we plan to
+          implement more advanced features in the future to ensure that
+          copyright violations are minimized.
         </p>
       </div>
 

@@ -94,9 +94,9 @@ const Institution = () => {
         <p className="text-[#686868]">
           Cleverank is the platform that empowers institutions, professors, and
           students to take their research and learning to the next level.
-          Whether you're looking to enhance the learning experience or provide
-          new opportunities for your students, Cleverank offers the tools and
-          support to help your institution thrive.
+          Whether you&apos;re looking to enhance the learning experience or
+          provide new opportunities for your students, Cleverank offers the
+          tools and support to help your institution thrive.
         </p>
         <div className="flex gap-2 mt-4">
           <Button>Request a Demo</Button>

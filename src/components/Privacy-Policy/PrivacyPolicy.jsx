@@ -14,11 +14,11 @@ const PrivacyPolicy = () => {
           that your personal information is handled securely and responsibly.
           This Privacy Policy explains how we collect, use, and protect your
           personal data when you use our platform, website, and services
-          ("Services"). It also outlines your rights regarding your personal
-          data and how you can manage your privacy preferences.
+          (&quot;Services&quot;). It also outlines your rights regarding your
+          personal data and how you can manage your privacy preferences.
         </p>
         <p className="text-[#686868] mt-6">
-          By accessing and using Cleverank's Services, you consent to the
+          By accessing and using Cleverank&apos;s Services, you consent to the
           practices described in this Privacy Policy. If you do not agree with
           the terms of this Privacy Policy, please do not use our platform.
         </p>
@@ -211,8 +211,8 @@ const PrivacyPolicy = () => {
               Right to Erasure (Right to be Forgotten):{" "}
             </span>{" "}
             You can request the deletion of your personal information, subject
-            to certain legal exceptions. Please refer to the "Data Removal
-            Request" section below for more information.
+            to certain legal exceptions. Please refer to the &ldquo;Data Removal
+            Request&rdquo; section below for more information.
           </li>
           <li className="mt-2">
             <span className="text-black"> Right to Restrict Processing: </span>{" "}
@@ -307,7 +307,7 @@ const PrivacyPolicy = () => {
       </div>
       <div className="mt-6">
         <h1 className=" text-2xl  font-semibold  mb-4">
-          9. Children's Privacy
+          9. Children&apos;s Privacy
         </h1>
         <p className="text-[#686868]">
           Cleverank is not intended for use by children under the age of 18. We
@@ -324,8 +324,9 @@ const PrivacyPolicy = () => {
         <p className="text-[#686868]">
           We reserve the right to update or modify this Privacy Policy at any
           time. Any changes to this Privacy Policy will be posted on this page
-          with the updated "Effective Date." Please review this Privacy Policy
-          periodically to stay informed about how we protect your information.
+          with the updated &ldquo;Effective Date.&rdquo; Please review this
+          Privacy Policy periodically to stay informed about how we protect your
+          information.
         </p>
       </div>
       <div className="mt-6">
