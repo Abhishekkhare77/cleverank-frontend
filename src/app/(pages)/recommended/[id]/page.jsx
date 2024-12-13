@@ -25,6 +25,7 @@ const Page = () => {
 
   const [paperExplanations, setPaperExplanations] = useState(null);
   const [academicLevel, setAcademicLevel] = useState("");
+  const [explanationLoading, setExplanationLoading] = useState(false);
 
   const handleSearchWithLevel = (value) => {
     console.log(value);
@@ -72,6 +73,7 @@ const Page = () => {
   }, [id]); // Fetch paper data when paper_id changes
 
   const fetchPaperExplanations = async () => {
+    setExplanationLoading(true);
     try {
       const response = await fetch(`https://cleverank.adnan-qasim.me/gemini/explain-paper-full/`, {
         method: "POST",
@@ -89,6 +91,7 @@ const Page = () => {
       }
 
       const data = await response.json();
+      setExplanationLoading(false);
       console.log(data.explanation);
       setPaperExplanations(data.explanation);
     } catch (err) {
@@ -225,6 +228,13 @@ const Page = () => {
             </Select>
           </div>
           <div className="mt-4">
+            {explanationLoading && (
+              <div className="space-y-4">
+                <Skeleton className={"h-48 w-full"} />
+                <Skeleton className={"h-48 w-full"} />
+                <Skeleton className={"h-48 w-full"} />
+              </div>
+            )}
             {paperExplanations && paperExplanations.map((explanation, index) => (
               <div key={index} className="bg-gray-100 p-4 rounded-md shadow-sm mb-6">
                 <h3 className="text-lg font-semibold text-gray-700">{explanation.topic_title}</h3>
