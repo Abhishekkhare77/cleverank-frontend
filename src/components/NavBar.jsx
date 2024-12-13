@@ -18,7 +18,7 @@ const NavBar = () => {
   return (
     <div
       className={`flex items-center justify-between py-3 px-6 sticky top-2 transition-all duration-300 z-50 ${
-        scrolled ? "bg-gray-100 rounded-2xl" : ""
+        scrolled ? "bg-gray-100 rounded-2xl shadow-md border border-gray-300" : ""
       }`}
     >
       <Link href="/">
