@@ -55,6 +55,19 @@ export default function Dashboard() {
     return <div className="text-center text-red-500">{error}</div>;
   }
 
+  // Mark services where INR price is shown directly
+  const statsWithTotal = stats.map((service) => ({
+    ...service,
+    total_inr:
+      ["Compute Engine", "Cloud Run Admin", "Artifact Registry","Cloud Speech-to-Text"].includes(
+        service.service_name
+      )
+        ? service.inr_price
+        : service.inr_price !== null
+        ? Number(service.total_api_calls) * Number(service.inr_price)
+        : "N/A",
+  }));
+
   // Data for specific cards
   const cardData = stats.filter(
     (service) =>
@@ -81,7 +94,9 @@ export default function Dashboard() {
             <CardTitle className="text-lg font-bold">Cloud Storage</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>{cloudStorage} GB</p>
+            <p className="text-4xl font-extrabold text-green-600">
+              {cloudStorage} GB
+            </p>
           </CardContent>
         </Card>
 
@@ -91,7 +106,9 @@ export default function Dashboard() {
             <CardTitle className="text-lg font-bold">Learner Calls</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>{learnerCalls}</p>
+            <p className="text-4xl font-extrabold text-blue-600">
+              {learnerCalls}
+            </p>
           </CardContent>
         </Card>
 
@@ -105,8 +122,14 @@ export default function Dashboard() {
             </CardHeader>
             <CardContent>
               <p>Total Calls: {service.total_api_calls}</p>
-              <p>Successful: {service.successful_api_calls}</p>
-              <p>Unsuccessful: {service.unsuccessful_api_calls}</p>
+              <p className="text-green-600">
+                Successful: {service.successful_api_calls}
+              </p>
+              <p className="text-red-600">
+                Unsuccessful: {service.unsuccessful_api_calls}
+              </p>
+              <p>Price: ${service.price || "N/A"}</p>
+              <p>INR Price: ₹{service.inr_price || "N/A"}</p>
             </CardContent>
           </Card>
         ))}
@@ -115,22 +138,30 @@ export default function Dashboard() {
       {/* Table for Remaining Services */}
       <Table>
         <TableHeader className="bg-[#DBFAC3] rounded-md">
-          <TableRow className>
+          <TableRow>
             <TableHead>Service Name</TableHead>
             <TableHead>Date</TableHead>
             <TableHead>Total Calls</TableHead>
-            <TableHead>Price</TableHead>
-            <TableHead>Total</TableHead>
+            <TableHead>Price (USD)</TableHead>
+            <TableHead>Price (INR)</TableHead>
+            <TableHead>Total (INR)</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {stats.map((service) => (
+          {statsWithTotal.map((service) => (
             <TableRow className="bg-slate-50" key={service.service_name}>
               <TableCell>{service.service_name}</TableCell>
               <TableCell>{lastFetched}</TableCell>
               <TableCell>{service.total_api_calls}</TableCell>
-              <TableCell>$10</TableCell>
-              <TableCell>$100</TableCell>
+              <TableCell>
+                {service.price !== null ? `$${service.price}` : "N/A"}
+              </TableCell>
+              <TableCell>
+                {service.inr_price !== null ? `₹${service.inr_price}` : "N/A"}
+              </TableCell>
+              <TableCell>
+                {service.total_inr !== "N/A" ? `₹${service.total_inr.toFixed(2)}` : "N/A"}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
