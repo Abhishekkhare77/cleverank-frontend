@@ -64,7 +64,7 @@ const Page = () => {
             </div>
           </div>
           <div className=" w-40">
-            <div className="text-center border pt-9  h-32 w-36 rounded-lg">
+            <div className=" border-2 flex flex-col items-center justify-center  h-32 w-36 rounded-lg">
               <div className="text-4xl font-semibold">67</div>
               <div>Page Reads</div>
             </div>
