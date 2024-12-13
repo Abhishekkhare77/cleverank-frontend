@@ -272,7 +272,7 @@ const Page = () => {
                 </CardContent>
               </div>
 
-              <div className="flex flex-col items-end justify-end">
+              <div className="flex flex-row items-end justify-end">
                 <div className="flex items-center justify-end">
                   <div className="flex items-center mr-2">
                     {/* Circular Progress */}
@@ -327,18 +327,21 @@ const Page = () => {
                     </div>
                   </div>
                 </div>
+
                 <Dialog className="flex flex-col">
-                  <div className="flex items-center gap-3 my-3 justify-end">
-                    <div className="text-[#59C009] p-1.5 bg-gray-100 rounded-full">
-                      <ThumbsUp className="size-5" />
+                  <div className="flex flex-col">
+                    <div className="flex items-center gap-3 my-3 justify-end">
+                      <div className="text-[#59C009] p-1.5 bg-gray-100 rounded-full">
+                        <ThumbsUp className="size-5" />
+                      </div>
+                      <div className="text-gray-500 p-1.5 bg-gray-100 rounded-full">
+                        <ThumbsDown className="size-5" />
+                      </div>
                     </div>
-                    <div className="text-gray-500 p-1.5 bg-gray-100 rounded-full">
-                      <ThumbsDown className="size-5" />
-                    </div>
+                    <DialogTrigger className="text-base font-semibold bg-[#59C009] text-gray-50 px-5 py-2 flex items-center justify-center gap-1 rounded-full">
+                      <Book className="size-5" />Read
+                    </DialogTrigger>
                   </div>
-                  <DialogTrigger className="text-base font-semibold bg-[#59C009] text-gray-50 px-5 py-2 flex items-center justify-center gap-1 rounded-full">
-                    <Book className="size-5" />Read
-                  </DialogTrigger>
                   <DialogContent className="max-w-4xl">
                     <DialogHeader>
                       <DialogTitle className="mb-3">{paper.paper_title}</DialogTitle>
