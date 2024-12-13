@@ -154,6 +154,14 @@ export default function Dashboard() {
       ? Number(service.total_api_calls) * Number(service.inr_price)
       : "N/A",
   }));
+  const pieOptions = {
+    plugins: {
+      legend: {
+        position: "right", // Places the labels above the chart
+        align: "center", // Aligns the labels in the center
+      },
+    },
+  };
 
   return (
     <div>
@@ -253,8 +261,8 @@ export default function Dashboard() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="w-80 mx-auto">
-              <Pie data={pieData} />
+            <div className="w-[400px] mx-auto">
+              <Pie data={pieData} options={pieOptions}/>
             </div>
           </CardContent>
         </Card>
