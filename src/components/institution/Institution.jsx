@@ -99,8 +99,8 @@ const Institution = () => {
           tools and support to help your institution thrive.
         </p>
         <div className="flex gap-2 mt-4">
-          <Button>Request a Demo</Button>
-          <Button>Register</Button>
+          <Button className="bg-black hover:bg-black/85">Request a Demo</Button>
+          <Button className="bg-black hover:bg-black/85">Register</Button>
         </div>
       </div>
     </div>

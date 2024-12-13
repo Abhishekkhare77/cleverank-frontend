@@ -21,24 +21,32 @@ const Footer = () => {
         </div>
         <div className="flex gap-14 justify-start w-full ml-8 text-[#898989]">
           <div>
-            <div className="text-black text-lg font-semibold mb-1">Company</div>
-            <Link href="/about-us">
-              <div>About Us</div>
-            </Link>
+            <div className="text-black text-lg font-semibold mb-1">Support</div>
+
             <Link href="/how-it-works">
               <div>How It Works</div>
             </Link>
-            <Link href="/institution">
-              <div>Institution</div>
-            </Link>
+
             <Link href="/faq">
               <div>FAQ </div>
             </Link>
-            <Link href="/mission">
-              <div>Vission-Mission</div>
-            </Link>
             <Link href="/why">
               <div>Why</div>
+            </Link>
+          </div>
+          <div>
+            <div className="text-black text-lg font-semibold mb-1">
+              {" "}
+              Company Info
+            </div>
+            <Link href="/about-us">
+              <div>About Us</div>
+            </Link>
+            <Link href="/mission">
+              <div>Vision-Mission</div>
+            </Link>
+            <Link href="/institution">
+              <div>Institution</div>
             </Link>
           </div>
           <div>

@@ -63,7 +63,7 @@ const HowClaverankWork = () => {
         <h1 className="text-2xl font-bold">
           Ready to Take Your Learning to the Next Level?
         </h1>
-        <Button>Join Cleverank</Button>
+        <Button className="bg-black hover:bg-black/85">Join Cleverank</Button>
       </div>
     </div>
   );
