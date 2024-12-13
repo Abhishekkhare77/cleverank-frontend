@@ -91,11 +91,7 @@ const Login = () => {
               required
             />
           </div>
-          <Button
-            type="submit"
-            disabled={loading}
-            className="w-full py-5 bg-blue-500 hover:bg-blue-600"
-          >
+          <Button type="submit" disabled={loading} className="w-full py-5 ">
             {loading ? "Logging in..." : "Login"}
           </Button>
         </form>
@@ -105,6 +101,9 @@ const Login = () => {
           <div className="w-full h-[1px] bg-gray-500"></div>
         </div>
         <GoogleLogin onSuccess={handleGoogleRegister} />
+        <Button variant="outline" className="w-full my-3">
+          ONOS
+        </Button>
       </div>
     </div>
   );

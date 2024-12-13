@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [email, setEmail] = useState("");
@@ -28,8 +29,6 @@ const Page = () => {
       .then((response) => {
         console.log("User registered:", response.data);
         setLoading(false);
-        // Redirect or do further actions if registration is successful
-        // Example: redirect to login page or dashboard
       })
       .catch((error) => {
         setLoading(false);
@@ -37,7 +36,8 @@ const Page = () => {
       });
   };
 
-  // Handle Google registration (after successful Google login)
+  const router = useRouter();
+
   const handleGoogleRegister = (googleData) => {
     setLoading(true);
     console.log(googleData);
@@ -54,6 +54,7 @@ const Page = () => {
       .then((response) => {
         console.log("Google registration successful:", response.data);
         setLoading(false);
+        router.push("/dashboard");
       })
       .catch((error) => {
         setLoading(false);
@@ -111,11 +112,7 @@ const Page = () => {
               required
             />
           </div>
-          <Button
-            type="submit"
-            className="w-full py-5 bg-blue-500 hover:bg-blue-600"
-            disabled={loading}
-          >
+          <Button type="submit" className="w-full py-5" disabled={loading}>
             {loading ? "Registering..." : "Register"}
           </Button>
         </form>

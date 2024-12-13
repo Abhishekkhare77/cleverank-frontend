@@ -47,7 +47,7 @@ const ScheduleTeam = () => {
         </div>
       </div>
       <TitleSubTitle
-        title="See why our users love Cal.com"
+        title="See why our users love Cleverank"
         subtitle="Read the impact we've had from those who matter most - our customers."
       />
       <ShowMore />

@@ -18,6 +18,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { Skeleton } from "@/components/ui/skeleton";
+import { toast } from "sonner";
 
 
 const Page = () => {
@@ -28,35 +30,25 @@ const Page = () => {
   const [audio, setAudio] = useState(null);
   const [duration, setDuration] = useState(0); // Total duration of the audio
   const [progress, setProgress] = useState(0); // Progress for the animation
-  const progressBarRef = useRef(null);
-  const [isClient, setIsClient] = useState(false);
-
   const handleTimeUpdate = () => {
     setProgress((audio.currentTime / audio.duration) * 100);
   };
-
-  useEffect(() => {
-    setIsClient(true);
-    if (isClient) {
-      const audioObj = new Audio("https://storage.googleapis.com/clever_rank_answer_bucket/audios/6759437fda3ae6f021102382_None");
-      setAudio(audioObj);
-    }
-  }, []);
-
 
 
   useEffect(() => {
     const fetchPapers = async () => {
       try {
         const response = await fetch(
-          "https://cleverank.adnan-qasim.me/papers/get-papers-recommendation/1?limit=50"
+          `https://cleverank.adnan-qasim.me/papers/get-papers-recommendation`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch papers");
         }
         const data = await response.json();
+        console.log(data);
         setPapers(data);
       } catch (err) {
+        toast.error("Failed to fetch papers");
         setError(err.message);
       } finally {
         setLoading(false);
@@ -67,7 +59,6 @@ const Page = () => {
   }, []);
 
   useEffect(() => {
-    setIsClient(true);
     const audioObj = new Audio("https://storage.googleapis.com/clever_rank_answer_bucket/audios/6759437fda3ae6f021102382_None");
     setAudio(audioObj);
 
@@ -98,10 +89,20 @@ const Page = () => {
         });
       }
     };
-  }, [audio]);
+  }, []);
 
-  if (loading) return <div>Loading papers...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading) return <div>
+    <div className="space-y-2">
+      <Skeleton className={"w-1/4 h-8"} />
+      <Skeleton className={"w-1/2 h-6"} />
+    </div>
+    <div>
+      <Skeleton className={"w-full h-44 my-5"} />
+      <Skeleton className={"w-full h-44 my-5"} />
+      <Skeleton className={"w-full h-44 my-5"} />
+      <Skeleton className={"w-full h-44 my-5"} />
+    </div>
+  </div>;
 
   const handlePlayPause = () => {
     if (isPlaying) {
@@ -115,15 +116,12 @@ const Page = () => {
   const strokeDasharray = circleLength; // Full circle
   const strokeDashoffset = circleLength - (progress / 100) * circleLength; // Calculate how much of the circle to "cut off" based on progress
 
-  if (!isClient) {
-    return null; // Or a loading spinner
-  }
-
   return (
     <>
       <div className="text-xl font-semibold">Recommended Papers</div>
-      <div className="text-gray-500 text-sm pb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia modi soluta nam.</div>
+      <div className="text-gray-500 text-sm pb-5">Here is a list of papers recommended for you.</div>
       <div className="flex flex-col gap-3">
+        {papers.length === 0 && <div className="text-center text-gray-700 my-5 tracking-tight font-semibold">No papers found.</div>}
         {papers.map((paper, index) => (
           <Card key={paper._id} className={`relative shadow-sm hover:shadow transition-shadow duration-200 w-full flex rounded-sm ${index % 2 === 0 ? "bg-[#F9F9F9]" : "bg-white"} items-center justify-between pr-3`}>
             <div className="flex items-center">
@@ -163,7 +161,7 @@ const Page = () => {
                   </div>
                 </div>
 
-                <div className="line-clamp-3 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ab nisi laboriosam expedita dicta unde porro modi necessitatibus quis. Repellendus atque perspiciatis rerum ea nam odit, fuga minus iste laborum temporibus omnis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis animi ipsum blanditiis.</div>
+                <div className="line-clamp-3 text-gray-600">{paper?.creative_summary?.creative_summary ?? "Summary Not Available."}</div>
               </CardContent>
             </div>
             <div className="flex flex-col items-end justify-end">
@@ -194,7 +192,7 @@ const Page = () => {
                         strokeDasharray={strokeDasharray}
                         strokeDashoffset={strokeDashoffset}
                         strokeLinecap="round"
-                        transform="rotate(-90 60 60)" // Rotate to make the animation start from top
+                        transform="rotate(-90 60 60)"
                         className="transition-all duration-300 ease-in-out"
                       />
                     </svg>
@@ -209,21 +207,21 @@ const Page = () => {
                     </div>
                   </div>
                 </div>
-                <Dialog className="w-[30rem]">
-                  <DialogTrigger><div className="text-base font-semibold bg-[#59C009] text-gray-50 px-5 py-2 flex items-center justify-center gap-1 rounded-full"><Book className="size-5" /> Read</div></DialogTrigger>
-                  <DialogContent>
+                <Dialog>
+                  <DialogTrigger className="text-base font-semibold bg-[#59C009] text-gray-50 px-5 py-2 flex items-center justify-center gap-1 rounded-full"><Book className="size-5" />Read</DialogTrigger>
+                  <DialogContent className="max-w-4xl">
                     <DialogHeader>
-                      <DialogTitle>{paper.paper_title}</DialogTitle>
+                      <DialogTitle className="mb-3">{paper.paper_title}</DialogTitle>
                       <DialogDescription>
-                        <span>This action cannot be undone. This will permanently delete your account
-                          and remove your data from our servers. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad dolores explicabo recusandae! Doloribus fuga maiores cum consectetur eius, quo exercitationem voluptas obcaecati rerum optio quis debitis numquam aliquid deleniti! Asperiores, sapiente molestiae?
+                        <span>{paper?.creative_summary?.creative_summary ?? "Summary Not Available."}
                         </span>
 
                         <h2 className="text-lg font-semibold leading-none tracking-tight py-5 text-black">What you will learn: </h2>
                         <div className="space-y-2">
-                          <div className="flex items-center gap-2"><CircleDot size={18} /> <span>Test Lorem, ipsum dolor.</span></div>
-                          <div className="flex items-center gap-2"><CircleDot size={18} /> <span>Test Lorem, ipsum dolor.</span></div>
-                          <div className="flex items-center gap-2"><CircleDot size={18} /> <span>Test Lorem, ipsum dolor.</span></div>
+                          {paper?.creative_summary?.concepts_learned.map((concept, index) => (
+                            <div key={index} className="flex items-start gap-1"><CircleDot className="mt-1" size={14} /> <span>{concept}</span></div>
+                          ))
+                          }
                         </div>
                       </DialogDescription>
                       <DialogFooter>

@@ -15,8 +15,8 @@ const PdfRender = ({ file_url }) => {
       <Worker workerUrl="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js">
         <div
           style={{
-            height: "630px",
-            width: "650px",
+            height: "600px",
+            width: "800px",
             marginLeft: "auto",
             marginRight: "auto",
           }}
