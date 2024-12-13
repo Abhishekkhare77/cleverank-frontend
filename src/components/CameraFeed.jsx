@@ -90,7 +90,7 @@ export default function CameraFeed({
         {
           headers: {
             'Content-Type': 'multipart/form-data',
-            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmhpc2hla2toYXJlNTgzQGdtYWlsLmNvbSIsImV4cCI6MTczNDA4MzI1MH0.l11dEHjH1T1_u3j-b0TRwz4CBgFiu3bYASQ6eETDCac`,
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
           },
         }
       );
