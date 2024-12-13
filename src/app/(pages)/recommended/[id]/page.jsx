@@ -99,11 +99,47 @@ const Page = () => {
     }
   };
 
-  const handleStart = () => {
+  const handleStart = async () => {
+    try {
+      const response = await fetch(`https://cleverank.adnan-qasim.me/papers/start-reading-paper/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to start reading");
+      }
+
+      console.log("Started reading paper");
+    }
+    catch (err) {
+      console.error(err);
+    }
     setIsStarted(true);
   };
 
-  const handleComplete = () => {
+  const handleComplete = async () => {
+    try {
+      const response = await fetch(`https://cleverank.adnan-qasim.me/papers/finish-reading-paper/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to complete reading");
+      }
+
+      console.log("Completed reading paper");
+    }
+    catch (err) {
+      console.error(err);
+    }
     setIsComplete(true);
   };
 

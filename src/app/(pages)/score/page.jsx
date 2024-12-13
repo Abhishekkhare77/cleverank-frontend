@@ -31,7 +31,7 @@ const Page = () => {
     <div className="flex flex-col items-center justify-center mx-36 gap-2 my-6">
       <div className="text-xl font-semibold">Your total points will be calculated soon and will be reflected in your profile.</div>
       <div className="text-lg font-semibold">Viva Voce</div>
-      <div className="text-xl font-semibold text-pretty tracking-tight">{paper?.paper_title}</div>
+      <div className="text-xl font-semibold text-pretty tracking-tight text-center">{paper?.paper_title}</div>
       <div className="border h-[30rem] w-full mt-2">
         Please fill out the survey form for your experience
       </div>
