@@ -64,7 +64,7 @@ const Learning = () => {
     <div className="mx-48 ">
       {content.map((section, index) => (
         <div key={index}>
-          <h1 className="text-2xl font-bold mt-6">{section.title}</h1>
+          <h1 className="text-2xl font-semibold mt-6">{section.title}</h1>
           {section.text &&
             section.text.map((paragraph, textIndex) => (
               <div key={textIndex} className="mt-4 text-[#686868]">
@@ -73,11 +73,11 @@ const Learning = () => {
             ))}
           {section.listItems && (
             <div className="text-[#686868] mx-16">
-              <ul style={{ listStyleType: "disc" }}>
+              <ul style={{ listStyleType: "disc", color: "black" }}>
                 {section.listItems.map((item, listIndex) => (
                   <li key={listIndex} className="my-3">
-                    <span className="text-black">{item.title}:</span>{" "}
-                    {item.text}
+                    <strong className="">{item.title}:</strong>
+                    <span className="ml-1.5 text-[#686868]">{item.text}</span>
                   </li>
                 ))}
               </ul>

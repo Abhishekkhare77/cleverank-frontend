@@ -6,15 +6,19 @@ import ScheduleTeam from "@/components/landingPage/ScheduleTeam";
 import NavBar from "@/components/NavBar";
 export default function Home() {
   return (
-    <div className="bg-gray-50 pb-6">
-      <div className="max-w-7xl mx-auto h-full px-8">
-        <NavBar />
-        <Hero />
-        <ScheduleEasy />
-        <Process />
-        <ScheduleTeam />
+    <>
+      <div className="bg-gray-50">
+        <div className="max-w-7xl mx-auto h-full px-8">
+          <NavBar />
+          <Hero />
+          <ScheduleEasy />
+          <Process />
+          <ScheduleTeam />
+        </div>
+      </div>
+      <div className="bg-black">
         <Footer />
       </div>
-    </div>
+    </>
   );
 }

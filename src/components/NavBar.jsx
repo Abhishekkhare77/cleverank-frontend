@@ -1,10 +1,26 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Button, buttonVariants } from "./ui/button";
+import { Button } from "./ui/button";
+import { useState, useEffect } from "react";
 
 const NavBar = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 4); // Detect scroll past top-2
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="flex items-center justify-between py-4">
+    <div
+      className={`flex items-center justify-between py-3 px-6 sticky top-2 transition-all duration-300 z-50 ${
+        scrolled ? "bg-gray-100 rounded-2xl" : ""
+      }`}
+    >
       <Link href="/">
         <Image
           src="/assets/cleverank-logo-final-black.png"
@@ -33,11 +49,16 @@ const NavBar = () => {
         </Link>
       </div>
       <div className="flex  gap-2">
+        <Link href={"/institute-login"}>
+          <Button
+            variant="outline"
+            className="border-black text-black bg-gray-50  hover:bg-transparent hover:text-black/75"
+          >
+            Institution
+          </Button>
+        </Link>
         <Link href={"/login"}>
           <Button className="bg-black hover:bg-black/85">Sign In</Button>
-        </Link>
-        <Link href={"/institute-login"}>
-          <Button className="bg-black hover:bg-black/85">Institution</Button>
         </Link>
       </div>
     </div>

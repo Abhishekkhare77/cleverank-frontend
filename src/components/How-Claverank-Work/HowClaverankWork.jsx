@@ -48,10 +48,10 @@ const HowClaverankWork = () => {
   ];
   return (
     <div className="mx-48 mt-12">
-      <h1 className="text-center text-3xl font-bold">How Cleverank Works?</h1>
+      <h1 className="text-center text-4xl font-bold ">How Cleverank Works?</h1>
       {content.map((section, index) => (
-        <div key={index} className="mt-8">
-          <h1 className="text-2xl font-bold mb-4">{section.title}</h1>
+        <div key={index} className="mt-10">
+          <h1 className="text-2xl font-semibold mb-4">{section.title}</h1>
           {section.text.map((paragraph, textIndex) => (
             <p key={textIndex} className="text-[#686868]">
               {paragraph}

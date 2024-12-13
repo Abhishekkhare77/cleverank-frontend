@@ -44,10 +44,10 @@ const Mission = () => {
     <div className="mx-48 mt-12">
       {content.map((section, index) => (
         <div key={index} className="mt-8">
-          <h1 className="text-2xl font-bold mb-4">{section.title}</h1>
+          <h1 className="text-2xl font-semibold mb-4">{section.title}</h1>
           {section.text && <p className="text-[#686868]">{section.text}</p>}
           {section.list && (
-            <ul style={{ listStyleType: "disc" }}>
+            <ul style={{ listStyleType: "disc", color: "black" }}>
               {section.list.map((item, idx) => (
                 <li key={idx} className="my-2">
                   <strong>{item.heading}</strong>

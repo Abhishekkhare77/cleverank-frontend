@@ -4,7 +4,9 @@ import React from "react";
 const ContentPolicy = () => {
   return (
     <div className="mx-48 mt-12">
-      <div className="text-4xl font-bold text-center my-20">Content Policy</div>
+      <div className="text-4xl font-bold text-center mb-10  ">
+        Content Policy
+      </div>
       <div>
         <p className="text-[#686868]">
           At Cleverank, we are committed to providing a platform that empowers
@@ -25,24 +27,29 @@ const ContentPolicy = () => {
           following categories:
         </p>
         <ul
-          style={{ listStyleType: "disc" }}
+          style={{ listStyleType: "disc", color: "black" }}
           className="ml-14 mt-4 text-[#686868]"
         >
           <li className="mt-2">
-            <span className="text-black">
+            <strong className="text-black">
               {" "}
               Creative Commons (CC) Licensed Content:{" "}
-            </span>{" "}
-            We prioritize sourcing research papers, journals, and articles that
-            are freely available under Creative Commons licenses. These licenses
-            allow for legal distribution, modification, and sharing, with
-            certain conditions specified by the original author or publisher.
+            </strong>{" "}
+            <span className="text-[#686868]">
+              We prioritize sourcing research papers, journals, and articles
+              that are freely available under Creative Commons licenses. These
+              licenses allow for legal distribution, modification, and sharing,
+              with certain conditions specified by the original author or
+              publisher.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black"> Public Domain Content: </span> In
-            addition to Creative Commons, we also make available content that is
-            in the public domain and free for use without any copyright
-            restrictions.
+            <strong className="text-black"> Public Domain Content: </strong>
+            <span className="text-[#686868]">
+              In addition to Creative Commons, we also make available content
+              that is in the public domain and free for use without any
+              copyright restrictions.
+            </span>
           </li>
         </ul>
         <p className="text-[#686868] mt-2">
@@ -71,7 +78,10 @@ const ContentPolicy = () => {
           </Link>
           with the following information:
         </p>
-        <ul style={{ listStyleType: "disc" }} className="ml-14 mt-4 ">
+        <ul
+          style={{ listStyleType: "disc", color: "black" }}
+          className="ml-14 mt-4 "
+        >
           <li className="mt-2">Title of the Research Paper or Content</li>
           <li className="mt-2">Author(s) Name</li>
           <li className="mt-2">Link to the Content (if available)</li>
@@ -115,20 +125,26 @@ const ContentPolicy = () => {
         </p>
         <p className="mt-4">Types of Cookies We Use:</p>
         <ul
-          style={{ listStyleType: "disc" }}
+          style={{ listStyleType: "disc", color: "black" }}
           className="ml-14 mt-4 text-[#686868]"
         >
           <li className="mt-2">
-            Reproduce, distribute, or sell any copyrighted content from
-            Cleverank without proper authorization.
+            <span className="text-[#686868]">
+              Reproduce, distribute, or sell any copyrighted content from
+              Cleverank without proper authorization.
+            </span>
           </li>
           <li className="mt-2">
-            Use Cleverank’s platform to host or share content that violates
-            copyright laws.
+            <span className="text-[#686868]">
+              Use Cleverank&apos;s platform to host or share content that
+              violates copyright laws.
+            </span>
           </li>
           <li className="mt-2">
-            Download content from Cleverank for redistribution or commercial use
-            unless the content is explicitly licensed for such purposes.
+            <span className="text-[#686868]">
+              Download content from Cleverank for redistribution or commercial
+              use unless the content is explicitly licensed for such purposes.
+            </span>
           </li>
         </ul>
       </div>

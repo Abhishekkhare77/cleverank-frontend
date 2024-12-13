@@ -6,12 +6,16 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="max-w-7xl mx-auto h-full px-8">
-      <NavBar />
-      <Transforming />
-      <Learning />
-      <Footer />
-    </div>
+    <>
+      <div className="max-w-7xl mx-auto h-full px-8">
+        <NavBar />
+        <Transforming />
+        <Learning />
+      </div>
+      <div className="bg-black">
+        <Footer />
+      </div>
+    </>
   );
 };
 

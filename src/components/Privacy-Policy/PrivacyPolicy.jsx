@@ -4,11 +4,9 @@ import React from "react";
 const PrivacyPolicy = () => {
   return (
     <div className="mx-48 mt-12">
-      <div className="text-4xl font-bold text-center my-20">Privacy Policy</div>
+      <div className="text-4xl font-bold text-center mb-10">Privacy Policy</div>
       <div>
-        <h1 className=" font-semibold  mb-4">
-          Effective Date: 15thDecmber, 2024
-        </h1>
+        <h1 className=" font-semibold  mb-4 text-lg">15thDecmber, 2024</h1>
         <p className="text-[#686868]">
           At Cleverank, we are committed to protecting your privacy and ensuring
           that your personal information is handled securely and responsibly.
@@ -32,34 +30,44 @@ const PrivacyPolicy = () => {
           platform, including:
         </p>
         <ul
-          style={{ listStyleType: "disc" }}
+          style={{ listStyleType: "disc", color: "black" }}
           className="ml-14 mt-4 text-[#686868]"
         >
           <li className="mt-2">
-            <span className="text-black">Personal Information: </span> When you
-            register for an account, we collect personal details such as your
-            name, email address, academic background, areas of interest, and
-            career goals. This helps us personalize your learning experience.
+            <strong className="text-black">Personal Information: </strong>
+            <span className="text-[#686868]">
+              When you register for an account, we collect personal details such
+              as your name, email address, academic background, areas of
+              interest, and career goals. This helps us personalize your
+              learning experience.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black">Usage Data: </span> We collect data
-            related to your use of the platform, such as pages visited,
-            interactions with content, time spent on the platform, and search
-            queries. This data helps us improve the user experience.
+            <strong className="text-black">Usage Data: </strong>
+            <span className="text-[#686868]">
+              We collect data related to your use of the platform, such as pages
+              visited, interactions with content, time spent on the platform,
+              and search queries. This data helps us improve the user
+              experience.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black">
+            <strong className="text-black">
               Cookies and Tracking Technologies:{" "}
-            </span>{" "}
-            We use cookies and similar tracking technologies to enhance your
-            experience and collect information about how you use the platform.
-            See our Cookie Policy below for more details.
+            </strong>{" "}
+            <span className="text-[#686868]">
+              We use cookies and similar tracking technologies to enhance your
+              experience and collect information about how you use the platform.
+              See our Cookie Policy below for more details.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black">User-Generated Content: </span> If you
-            upload research materials, create personal libraries, or interact
-            with other users on the platform, the content you generate is stored
-            and processed as part of your account.
+            <strong className="text-black">User-Generated Content: </strong>
+            <span className="text-[#686868]">
+              If you upload research materials, create personal libraries, or
+              interact with other users on the platform, the content you
+              generate is stored and processed as part of your account.
+            </span>
           </li>
         </ul>
       </div>
@@ -72,34 +80,43 @@ const PrivacyPolicy = () => {
           purposes, including:
         </p>
         <ul
-          style={{ listStyleType: "disc" }}
+          style={{ listStyleType: "disc", color: "black" }}
           className="ml-14 mt-4 text-[#686868]"
         >
           <li className="mt-2">
-            <span className="text-black">
+            <strong className="text-black">
               To Provide and Personalize Services:{" "}
-            </span>{" "}
-            To recommend relevant research papers, create personalized learning
-            paths, and enhance your educational experience based on your
-            academic background and career goals.
+            </strong>{" "}
+            <span className="text-[#686868]">
+              To recommend relevant research papers, create personalized
+              learning paths, and enhance your educational experience based on
+              your academic background and career goals.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black"> To Improve the Platform: </span> We
-            analyze usage data to understand how users interact with our
-            platform and make necessary improvements to features, functionality,
-            and content.
+            <strong className="text-black"> To Improve the Platform: </strong>{" "}
+            <span className="text-[#686868]">
+              We analyze usage data to understand how users interact with our
+              platform and make necessary improvements to features,
+              functionality, and content.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black"> To Communicate with You: </span> We
-            may send you notifications about updates, new features, or relevant
-            content. You can opt out of these communications at any time.
+            <strong className="text-black"> To Communicate with You: </strong>{" "}
+            <span className="text-[#686868]">
+              We may send you notifications about updates, new features, or
+              relevant content. You can opt out of these communications at any
+              time.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black">
+            <strong className="text-black">
               For Legal and Compliance Purposes:{" "}
-            </span>{" "}
-            We may use your data to comply with applicable laws, respond to
-            legal requests, or resolve disputes.
+            </strong>{" "}
+            <span className="text-[#686868]">
+              We may use your data to comply with applicable laws, respond to
+              legal requests, or resolve disputes.
+            </span>
           </li>
         </ul>
       </div>
@@ -113,27 +130,33 @@ const PrivacyPolicy = () => {
           situations:
         </p>
         <ul
-          style={{ listStyleType: "disc" }}
+          style={{ listStyleType: "disc", color: "black" }}
           className="ml-14 mt-4 text-[#686868]"
         >
           <li className="mt-2">
-            <span className="text-black">Service Providers: </span> We may share
-            your information with trusted third-party service providers who help
-            us deliver our services, such as payment processors, hosting
-            services, and email providers. These service providers are
-            contractually obligated to protect your data and use it only for the
-            purposes for which it was shared.
+            <strong className="text-black">Service Providers: </strong>
+            <span className="text-[#686868]">
+              We may share your information with trusted third-party service
+              providers who help us deliver our services, such as payment
+              processors, hosting services, and email providers. These service
+              providers are contractually obligated to protect your data and use
+              it only for the purposes for which it was shared.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black"> Legal Requirements: </span> We may
-            disclose your information if required by law or in response to a
-            legal request, such as a subpoena or court order.
+            <strong className="text-black"> Legal Requirements: </strong>
+            <span className="text-[#686868]">
+              We may disclose your information if required by law or in response
+              to a legal request, such as a subpoena or court order.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black"> Business Transfers: </span> In the
-            event of a merger, acquisition, or sale of all or part of our
-            assets, your information may be transferred as part of the
-            transaction.
+            <strong className="text-black"> Business Transfers: </strong>
+            <span className="text-[#686868]">
+              In the event of a merger, acquisition, or sale of all or part of
+              our assets, your information may be transferred as part of the
+              transaction.
+            </span>
           </li>
         </ul>
       </div>
@@ -151,29 +174,40 @@ const PrivacyPolicy = () => {
         </p>
         <p className="mt-4">Types of Cookies We Use:</p>
         <ul
-          style={{ listStyleType: "disc" }}
+          style={{ listStyleType: "disc", color: "black" }}
           className="ml-14 mt-4 text-[#686868]"
         >
           <li className="mt-2">
-            <span className="text-black"> Essential Cookies: </span> These
-            cookies are necessary for the operation of the platform, such as
-            logging in and navigating the website.
+            <strong className="text-black"> Essential Cookies: </strong>
+            <span className="text-[#686868]">
+              These cookies are necessary for the operation of the platform,
+              such as logging in and navigating the website.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black">Performance Cookies: </span> These
-            cookies collect anonymous information about how visitors use the
-            platform, such as which pages are visited most often and if users
-            encounter any error messages.
+            <strong className="text-black">Performance Cookies: </strong>
+            <span className="text-[#686868]">
+              These cookies collect anonymous information about how visitors use
+              the platform, such as which pages are visited most often and if
+              users encounter any error messages.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black">Functionality Cookies: </span> These
-            cookies allow us to remember your preferences and choices, such as
-            your language or region, to enhance your experience.
+            <strong className="text-black">Functionality Cookies: </strong>{" "}
+            <span className="text-[#686868]">
+              These cookies allow us to remember your preferences and choices,
+              such as your language or region, to enhance your experience.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black"> Targeting/Advertising Cookies: </span>{" "}
-            These cookies may be used to display relevant ads to you on and off
-            our platform based on your interests.
+            <strong className="text-black">
+              {" "}
+              Targeting/Advertising Cookies:{" "}
+            </strong>{" "}
+            <span className="text-[#686868]">
+              These cookies may be used to display relevant ads to you on and
+              off our platform based on your interests.
+            </span>
           </li>
         </ul>
         <p className="text-[#686868] mt-4">
@@ -193,41 +227,56 @@ const PrivacyPolicy = () => {
         </p>
         <p className="mt-4">Types of Cookies We Use:</p>
         <ul
-          style={{ listStyleType: "disc" }}
+          style={{ listStyleType: "disc", color: "black" }}
           className="ml-14 mt-4 text-[#686868]"
         >
           <li className="mt-2">
-            <span className="text-black"> Right to Access: </span> You have the
-            right to request a copy of the personal information we hold about
-            you.
+            <strong className="text-black"> Right to Access: </strong>
+            <span className="text-[#686868]">
+              You have the right to request a copy of the personal information
+              we hold about you.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black"> Right to Rectification: </span> If
-            your personal information is inaccurate or incomplete, you can
-            request that it be corrected.
+            <strong className="text-black"> Right to Rectification: </strong>
+            <span className="text-[#686868]">
+              If your personal information is inaccurate or incomplete, you can
+              request that it be corrected.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black">
+            <strong className="text-black">
               Right to Erasure (Right to be Forgotten):{" "}
-            </span>{" "}
-            You can request the deletion of your personal information, subject
-            to certain legal exceptions. Please refer to the &ldquo;Data Removal
-            Request&rdquo; section below for more information.
+            </strong>{" "}
+            <span className="text-[#686868]">
+              You can request the deletion of your personal information, subject
+              to certain legal exceptions. Please refer to the &ldquo;Data
+              Removal Request&rdquo; section below for more information.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black"> Right to Restrict Processing: </span>{" "}
-            You have the right to request that we limit the processing of your
-            personal data under certain circumstances.
+            <strong className="text-black">
+              {" "}
+              Right to Restrict Processing:{" "}
+            </strong>{" "}
+            <span className="text-[#686868]">
+              You have the right to request that we limit the processing of your
+              personal data under certain circumstances.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black"> Right to Data Portability: </span> You
-            may request a copy of your personal data in a structured, commonly
-            used, and machine-readable format.
+            <strong className="text-black"> Right to Data Portability: </strong>{" "}
+            <span className="text-[#686868]">
+              You may request a copy of your personal data in a structured,
+              commonly used, and machine-readable format.
+            </span>
           </li>
           <li className="mt-2">
-            <span className="text-black"> Right to Object: </span> You can
-            object to the processing of your data for marketing purposes or
-            other legitimate interests.
+            <strong className="text-black"> Right to Object: </strong>
+            <span className="text-[#686868]">
+              You can object to the processing of your data for marketing
+              purposes or other legitimate interests.
+            </span>
           </li>
         </ul>
         <p className="text-[#686868] mt-4">
@@ -260,21 +309,27 @@ const PrivacyPolicy = () => {
         </p>
         <p className="mt-4">Types of Cookies We Use:</p>
         <ul
-          style={{ listStyleType: "disc" }}
+          style={{ listStyleType: "disc", color: "black" }}
           className="ml-14 mt-4 text-[#686868]"
         >
-          <li className="mt-2">
+          <li className="mt-2 ">
             {" "}
-            Your account information (name, email address, etc.)
+            <span className="text-[#686868]">
+              Your account information (name, email address, etc.)
+            </span>
           </li>
-          <li className="mt-2">
+          <li className="mt-2 ">
             {" "}
-            A clear statement indicating that you wish to delete your account or
-            specific data.
+            <span className="text-[#686868]">
+              A clear statement indicating that you wish to delete your account
+              or specific data.
+            </span>
           </li>
-          <li className="mt-2">
+          <li className="mt-2 ">
             {" "}
-            Any additional details that may help us process your request.
+            <span className="text-[#686868]">
+              Any additional details that may help us process your request.
+            </span>
           </li>
         </ul>
         <p className="text-[#686868] mt-4">
@@ -336,11 +391,10 @@ const PrivacyPolicy = () => {
           how your data is handled, please contact us at:
         </p>
       </div>
-      <div>
-        <h1 className=" text-2xl  font-semibold  mt-8 mb-2">Cleverank</h1>
+      <div className="mt-4">
         <div>
           {" "}
-          <span>Email: </span>{" "}
+          <strong>Email: </strong>{" "}
           <Link
             href="https://mail.google.com/mail/?view=cm&fs=1&to=support@cleverank.org"
             className="text-blue-700 "
@@ -351,7 +405,7 @@ const PrivacyPolicy = () => {
         </div>
         <div>
           {" "}
-          <span>Data Protection: </span>{" "}
+          <strong>Data Protection: </strong>{" "}
           <Link
             href="https://mail.google.com/mail/?view=cm&fs=1&to=legal@cleverank.org"
             className="text-blue-700 ml-1"
@@ -362,7 +416,7 @@ const PrivacyPolicy = () => {
         </div>
         <div>
           {" "}
-          <span>Data Removal: </span>{" "}
+          <strong>Data Removal: </strong>{" "}
           <Link
             href="https://mail.google.com/mail/?view=cm&fs=1&to=legal@cleverank.org"
             className="text-blue-700 ml-1"
@@ -373,7 +427,7 @@ const PrivacyPolicy = () => {
         </div>
         <div>
           {" "}
-          <span>Website: </span>{" "}
+          <strong>Website: </strong>{" "}
           <Link href="/" className="text-blue-700 ml-1">
             www.cleverank.org
           </Link>

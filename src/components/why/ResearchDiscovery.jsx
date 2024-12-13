@@ -91,8 +91,8 @@ const ResearchDiscovery = () => {
 
   return (
     <div className="mx-48 mt-16">
-      <h1 className="text-2xl font-bold mb-4">
-        Progress is built on the Pillars <br /> of Research and Discovery
+      <h1 className="text-2xl font-semibold mb-4">
+        Progress is built on the Pillars of Research and Discovery
       </h1>
       <div className="text-[#686868]">
         Accessing the latest research remains a challenge due to costly
@@ -104,8 +104,11 @@ const ResearchDiscovery = () => {
       </div>
       {sections.map((section, index) => (
         <div key={index} className="mt-6">
-          <h1 className="text-2xl font-bold mb-4">{section.title}</h1>
-          <ul style={{ listStyleType: "disc" }}>
+          <h1 className="text-2xl font-semibold mb-4">{section.title}</h1>
+          <ul
+            style={{ listStyleType: "disc", color: "black" }}
+            className="ml-12"
+          >
             {section.items.map((item, idx) => (
               <li key={idx} className="my-2">
                 <strong>{item.heading}</strong>
@@ -116,7 +119,9 @@ const ResearchDiscovery = () => {
         </div>
       ))}
       <div className="mt-6">
-        <h1 className="text-2xl font-bold mb-4">The Clear Need for Change</h1>
+        <h1 className="text-2xl font-semibold mb-4">
+          The Clear Need for Change
+        </h1>
         <div className="text-[#686868]">
           To bridge the gap in access to research, support continuous learning,
           and create a level playing field for all learners, we need to

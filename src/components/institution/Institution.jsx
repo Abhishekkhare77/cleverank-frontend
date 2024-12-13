@@ -74,9 +74,12 @@ const Institution = () => {
 
       {contentData.map((section, index) => (
         <div className="mt-6" key={index}>
-          <h1 className="text-2xl font-bold mb-4">{section.heading}</h1>
+          <h1 className="text-2xl font-semibold mb-4">{section.heading}</h1>
           <p>{section.description}</p>
-          <ul style={{ listStyleType: "disc" }}>
+          <ul
+            style={{ listStyleType: "disc", color: "black" }}
+            className="ml-12"
+          >
             {section.points.map((point, idx) => (
               <li className="my-2" key={idx}>
                 <strong>{point.title}</strong>
@@ -88,7 +91,7 @@ const Institution = () => {
       ))}
 
       <div className="bg-gray-100 px-4 py-6 rounded-lg mt-8">
-        <h1 className="text-2xl font-bold mb-4">
+        <h1 className="text-2xl font-semibold mb-4">
           Empower the Next Generation of Researchers
         </h1>
         <p className="text-[#686868]">
