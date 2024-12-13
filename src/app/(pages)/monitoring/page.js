@@ -142,6 +142,18 @@ export default function Dashboard() {
       },
     ],
   };
+  const statsWithTotal = stats.map((service) => ({
+    ...service,
+    total_inr: [
+      "Compute Engine",
+      "Cloud Run Admin",
+      "Artifact Registry",
+    ].includes(service.service_name)
+      ? service.inr_price // Direct INR Price for these services
+      : service.inr_price !== null && service.total_api_calls
+      ? Number(service.total_api_calls) * Number(service.inr_price)
+      : "N/A",
+  }));
 
   return (
     <div>
@@ -263,7 +275,7 @@ export default function Dashboard() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {stats.map((service) => (
+          {statsWithTotal.map((service) => (
             <TableRow className="bg-slate-50" key={service.service_name}>
               <TableCell>{service.service_name}</TableCell>
               <TableCell>{lastFetched}</TableCell>
@@ -275,10 +287,8 @@ export default function Dashboard() {
                 {service.inr_price !== null ? `₹${service.inr_price}` : "N/A"}
               </TableCell>
               <TableCell>
-                {service.inr_price !== null && service.total_api_calls
-                  ? `₹${(service.total_api_calls * service.inr_price).toFixed(
-                      2
-                    )}`
+                {service.total_inr !== "N/A"
+                  ? `₹${Number(service.total_inr).toFixed(2)}`
                   : "N/A"}
               </TableCell>
             </TableRow>
