@@ -31,7 +31,7 @@ const Page = () => {
     <div className="flex gap-4 h-[calc(100vh-4.48rem)]">
       <div className="w-52 border-r-2 flex flex-col gap-4  ml-2 h-full ">
         <div>
-          <div className="w-32 h-32 rounded-full border">
+          <div className="w-36 h-36 rounded-full border">
             <Image
               src="/assets/Abhishek-kahre-concur.png"
               alt="img"
@@ -41,35 +41,39 @@ const Page = () => {
               className="  object-cover w-full h-full rounded-full"
             />
           </div>
-          <h1 className="text-2xl font-semibold mt-2"> Abhishek Khera</h1>
-          <h1 className="text-sm">
+          <h1 className="text-2xl font-semibold mt-4"> Abhishek Khera</h1>
+          <h1 className="text-sm mt-2">
             Bhilai Institute of Technology Raipur(CG), India
           </h1>
-          <div className=" mt-3">
-            <Button className="w-40">Follow</Button>
+          <div className=" mt-4">
+            <Button className="w-44">Follow</Button>
           </div>
-        </div>
-
-        <div className=" w-40">
-          <div className="text-center border pt-9  h-32 w-40 rounded-lg">
-            <div className="text-4xl font-semibold">67</div>
-            <div>Page Reads</div>
-          </div>
-
-          <div className="mt-3">Lorem ipsum dolor sit amet.</div>
         </div>
       </div>
       <div className=" w-[61.5rem] ml-4">
-        <div className="text-3xl font-bold">Cleverank</div>
-        <div className="w-[35rem] mt-2 text-sm">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-          accusamus numquam autem aut aliquam voluptatem culpa non. Porro,
-          eveniet asperiores iure excepturi dolore adipisci numquam! Esse nobis
-          corrupti id totam quasi iusto neque facilis commodi, fugit cum quas
-          error, aspernatur magnam veniam at non sit blanditiis rem dolorum ex
-          a.
+        <div className="w-full flex  justify-between pr-8">
+          <div>
+            <div className="text-3xl font-bold">Cleverank</div>
+            <div className="w-[35rem] mt-2 text-sm">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+              accusamus numquam autem aut aliquam voluptatem culpa non. Porro,
+              eveniet asperiores iure excepturi dolore adipisci numquam! Esse
+              nobis corrupti id totam quasi iusto neque facilis commodi, fugit
+              cum quas error, aspernatur magnam veniam at non sit blanditiis rem
+              dolorum ex a.
+            </div>
+          </div>
+          <div className=" w-40">
+            <div className="text-center border pt-9  h-32 w-36 rounded-lg">
+              <div className="text-4xl font-semibold">67</div>
+              <div>Page Reads</div>
+            </div>
+
+            <div className="mt-3 text-sm">Lorem ipsum dolor sit amet.</div>
+          </div>
         </div>
-        <div className="flex gap-14 mt-6">
+
+        <div className="flex gap-14 ">
           <Tabs defaultValue="About" className="w-[400px]">
             <TabsList>
               {tabsData.map((tab) => (
