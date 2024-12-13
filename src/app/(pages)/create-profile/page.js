@@ -1,21 +1,24 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [academicDetails, setAcademicDetails] = useState([]);
   const [streamDetails, setStreamDetails] = useState([]);
   const [interestDetails, setInterestDetails] = useState([]);
   const [focusDetails, setFocusDetails] = useState([]);
-
   const [selectedCourseId, setSelectedCourseId] = useState("");
   const [selectedStreamId, setSelectedStreamId] = useState("");
-  const [selectedInterestId, setSelectedInterestId] = useState("");
+  const [selectedInterestIds, setSelectedInterestIds] = useState([]);
+  const [selectedFocusIds, setSelectedFocusIds] = useState([]);
 
+  const router = useRouter();
   useEffect(() => {
     // Fetch academic details on load
     axios
-      .get("https://cleverank.adnan-qasim.me/category/academic_details")
+      .get("https://cleverank.adnan-qasim.me/category/get_academic_levels")
       .then((response) => {
         setAcademicDetails(response.data);
         console.log(response.data);
@@ -27,7 +30,7 @@ const Page = () => {
       // Fetch stream details when course is selected
       axios
         .get(
-          `https://cleverank.adnan-qasim.me/category/stream_details?course_id=${selectedCourseId}`
+          `https://cleverank.adnan-qasim.me/category/get_streams/${selectedCourseId}`
         )
         .then((response) => {
           setStreamDetails(response.data);
@@ -41,7 +44,7 @@ const Page = () => {
       // Fetch interest details when stream is selected
       axios
         .get(
-          `https://cleverank.adnan-qasim.me/category/interest_details?course_id=${selectedCourseId}&stream_id=${selectedStreamId}`
+          `https://cleverank.adnan-qasim.me/category/get_academic_interest/{id}?acad_level_id=${selectedCourseId}&acad_stream_idx=1`
         )
         .then((response) => {
           setInterestDetails(response.data);
@@ -51,18 +54,52 @@ const Page = () => {
   }, [selectedStreamId]);
 
   useEffect(() => {
-    if (selectedInterestId) {
-      // Fetch focus details when interest is selected
+    if (selectedInterestIds.length > 0) {
+      // Make a POST request with the selectedInterestIds array as the payload
       axios
-        .get(
-          `https://cleverank.adnan-qasim.me/category/focus_details?course_id=${selectedCourseId}&stream_id=${selectedStreamId}&interest_id=${selectedInterestId}`
+        .post(
+          "https://cleverank.adnan-qasim.me/category/get_academic_focus",
+          selectedInterestIds, // Sending the array directly as JSON
+          {
+            headers: {
+              accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
         )
         .then((response) => {
           setFocusDetails(response.data);
           console.log(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching focus details:", error);
         });
     }
-  }, [selectedInterestId]);
+  }, [selectedInterestIds]);
+
+  const handleSubmit = () => {
+    // Make a POST request with the selected data
+    console.log("Submitting profile:", selectedFocusIds);
+    console.log("token is:", localStorage.getItem("token"));
+    axios
+      .post(
+        "https://cleverank.adnan-qasim.me/auth/add_academic_focus",
+        selectedFocusIds,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log("Profile saved successfully:", response.data);
+        router.push("/dashboard");
+      })
+      .catch((error) => {
+        console.error("Error saving profile:", error);
+      });
+  };
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
@@ -73,15 +110,15 @@ const Page = () => {
         <div className="flex flex-wrap gap-4">
           {academicDetails.map((academic) => (
             <button
-              key={academic._id}
-              onClick={() => setSelectedCourseId(academic._id)}
+              key={academic.id}
+              onClick={() => setSelectedCourseId(academic.id)}
               className={`px-4 py-2 rounded-lg border ${
-                selectedCourseId === academic._id
-                  ? "bg-blue-500 text-white"
+                selectedCourseId === academic.id
+                  ? "bg-primary text-white"
                   : "bg-gray-200"
               }`}
             >
-              {academic.course_name}
+              {academic.education_level}
             </button>
           ))}
         </div>
@@ -90,17 +127,17 @@ const Page = () => {
       <div className="mb-6">
         <label className="block text-lg font-semibold mb-2">My Stream</label>
         <div className="flex flex-wrap gap-4">
-          {streamDetails.map((stream) => (
+          {streamDetails.map((stream, index) => (
             <button
-              key={stream._id}
-              onClick={() => setSelectedStreamId(stream._id)}
+              key={index}
+              onClick={() => setSelectedStreamId(index)}
               className={`px-4 py-2 rounded-lg border ${
-                selectedStreamId === stream._id
-                  ? "bg-blue-500 text-white"
+                selectedStreamId === index
+                  ? "bg-primary text-white"
                   : "bg-gray-200"
               }`}
             >
-              {stream.stream_name}
+              {stream}
             </button>
           ))}
         </div>
@@ -111,15 +148,25 @@ const Page = () => {
         <div className="flex flex-wrap gap-4">
           {interestDetails.map((interest) => (
             <button
-              key={interest._id}
-              onClick={() => setSelectedInterestId(interest._id)}
+              key={interest.id}
+              onClick={() =>
+                setSelectedInterestIds((prevSelected) => {
+                  if (prevSelected.includes(interest.id)) {
+                    // If already selected, remove it from the array
+                    return prevSelected.filter((id) => id !== interest.id);
+                  } else {
+                    // If not selected, add it to the array
+                    return [...prevSelected, interest.id];
+                  }
+                })
+              }
               className={`px-4 py-2 rounded-lg border ${
-                selectedInterestId === interest._id
-                  ? "bg-blue-500 text-white"
+                selectedInterestIds.includes(interest.id)
+                  ? "bg-primary text-white"
                   : "bg-gray-200"
               }`}
             >
-              {interest.interest}
+              {interest.interest_name}
             </button>
           ))}
         </div>
@@ -130,14 +177,30 @@ const Page = () => {
         <div className="flex flex-wrap gap-4">
           {focusDetails.map((focus) => (
             <button
-              key={focus._id}
-              className="px-4 py-2 rounded-lg border bg-gray-200"
+              key={focus.id}
+              onClick={() =>
+                setSelectedFocusIds((prevSelected) => {
+                  if (prevSelected.includes(focus.id)) {
+                    // If already selected, remove it from the array
+                    return prevSelected.filter((id) => id !== focus.id);
+                  } else {
+                    // If not selected, add it to the array
+                    return [...prevSelected, focus.id];
+                  }
+                })
+              }
+              className={`px-4 py-2 rounded-lg border ${
+                selectedFocusIds.includes(focus.id)
+                  ? "bg-primary text-white"
+                  : "bg-gray-200"
+              }`}
             >
-              {focus.focus}
+              {focus.focus_name}
             </button>
           ))}
         </div>
       </div>
+      <Button onClick={handleSubmit}>Save Profile</Button>
     </div>
   );
 };

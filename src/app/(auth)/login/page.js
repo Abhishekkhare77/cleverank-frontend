@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import Link from "next/link";
 
 const Login = () => {
   const router = useRouter();
@@ -61,7 +62,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center flex-col min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
         <h2 className="text-xl font-semibold text-center text-gray-800 mb-4">
           Login to Your Account
@@ -102,9 +103,17 @@ const Login = () => {
           <div className="w-full h-[1px] bg-gray-500"></div>
         </div>
         <GoogleLogin onSuccess={handleGoogleRegister} />
-        <Button variant="outline" className="w-full my-3">
+        <Button variant="outline" className="w-full my-3" disabled>
           ONOS
         </Button>
+      </div>
+      <div>
+        <p className="text-center text-gray-500 mt-4">
+          Don&apos;t have an account?{" "}
+          <Link href="/register" className="text-primary hover:underline">
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );

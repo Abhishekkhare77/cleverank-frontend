@@ -27,7 +27,7 @@ const Page = () => {
     };
 
     fetchPaper();
-  }, [paperId]); // Fetch paper data when paper_id changes
+  }, [paperId]);
 
 
   return (

@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Page = () => {
   const [email, setEmail] = useState("");
@@ -28,6 +29,8 @@ const Page = () => {
       })
       .then((response) => {
         console.log("User registered:", response.data);
+        localStorage.setItem("token", response.data.access_token);
+        router.push("/create-profile");
         setLoading(false);
       })
       .catch((error) => {
@@ -54,7 +57,7 @@ const Page = () => {
       .then((response) => {
         console.log("Google registration successful:", response.data);
         setLoading(false);
-        router.push("/dashboard");
+        router.push("/create-profile");
       })
       .catch((error) => {
         setLoading(false);
@@ -66,7 +69,7 @@ const Page = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center flex-col min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-xl font-semibold text-center text-gray-800 mb-4">
           Create an Account
@@ -122,6 +125,14 @@ const Page = () => {
           <div className="w-full h-[1px] bg-gray-500"></div>
         </div>
         <GoogleLogin onSuccess={handleGoogleRegister} />
+      </div>
+      <div>
+        <p className="text-center text-gray-500 mt-4">
+          Already have an account?{" "}
+          <Link href="/login" className="text-primary hover:underline">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );
