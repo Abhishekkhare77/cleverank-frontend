@@ -2,6 +2,7 @@
 import CameraFeed from "@/components/CameraFeed";
 import SpeechToText from "@/components/SpeechToText";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { ThumbsDown, X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -20,6 +21,8 @@ const Page = () => {
   const paperId = searchParams.get("paper_id");
   const difficulty = searchParams.get("selected_difficulty");
 
+  const [loadingQuestions, setLoadingQuestions] = useState(true);
+
   const router = useRouter();
 
   const fetchQuestions = async () => {
@@ -36,6 +39,7 @@ const Page = () => {
       if (!response.ok) {
         throw new Error("Failed to fetch questions");
       }
+      setLoadingQuestions(false);
       const data = await response.json();
       setQuestions(data.questions || []);
     } catch (err) {
@@ -88,6 +92,7 @@ const Page = () => {
     <div className="flex flex-col justify-center my-5 max-w-6xl mx-auto">
       {/* Steps */}
       <div className="flex items-center mb-6">
+
         {questions.map((_, index) => (
           <div key={index} className="flex items-center">
             <div
@@ -109,7 +114,10 @@ const Page = () => {
         </h2>
         <div className="flex justify-between">
           <p className="text-gray-700 text-base mb-8 max-w-3xl">
-            {questions[currentQuestion]}
+            {loadingQuestions && <div className="space-y-2">
+              <Skeleton className="h-4 w-[40rem]" />
+              <Skeleton className="h-4 w-[20rem]" />
+            </div>} {questions[currentQuestion]}
           </p>
 
           <div className="flex items-center gap-6 my-2">
