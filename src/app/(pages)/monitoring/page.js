@@ -227,6 +227,16 @@ export default function Dashboard() {
         <Card className="shadow-md">
           <CardHeader>
             <CardTitle className="text-lg font-bold">
+              Successful vs Unsuccessful Calls
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Bar data={barData} options={{ responsive: true }} />
+          </CardContent>
+        </Card>
+        <Card className="shadow-md">
+          <CardHeader>
+            <CardTitle className="text-lg font-bold">
               API Calls Distribution
             </CardTitle>
           </CardHeader>
@@ -238,16 +248,6 @@ export default function Dashboard() {
         </Card>
 
         {/* Bar Chart */}
-        <Card className="shadow-md">
-          <CardHeader>
-            <CardTitle className="text-lg font-bold">
-              Successful vs Unsuccessful Calls
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Bar data={barData} options={{ responsive: true }} />
-          </CardContent>
-        </Card>
       </div>
 
       {/* Table for Remaining Services */}
