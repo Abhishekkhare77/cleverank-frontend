@@ -58,7 +58,7 @@ const Page = () => {
     const fetchPapers = async () => {
       try {
         const response = await fetch(
-          `https://cleverank.adnan-qasim.me/papers/recommend-from-model?paper_to_recommend=50`, {
+          `https://cleverank.adnan-qasim.me/papers/recommend-from-model?paper_to_recommend=10`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
