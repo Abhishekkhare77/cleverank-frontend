@@ -119,12 +119,12 @@ const data = {
     },
     {
       title: "Profile",
-      url: "/profile/personal",
+      url: "/profile",
       icon: UserCog,
       items: [
         {
           title: "Personal",
-          url: "/profile/personal",
+          url: "/profile",
         },
         {
           title: "Academic",
