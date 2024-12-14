@@ -67,12 +67,14 @@ const ScheduleTeam = () => {
 
         <div className=" absolute flex flex-col items-center gap-4">
           <div className="text-4xl font-bold text-center">
-            Smarter, simpler <br /> scheduling
+            Explor, Learn <br /> Excel
           </div>
-          <Button className="bg-black hover:bg-black/85">
-            {" "}
-            Get Started <ChevronRight />
-          </Button>
+          <Link href="/register">
+            <Button className="bg-black hover:bg-black/85">
+              {" "}
+              Get Started <ChevronRight />
+            </Button>
+          </Link>
         </div>
       </Card>
     </div>

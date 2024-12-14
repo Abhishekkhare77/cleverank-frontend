@@ -7,56 +7,56 @@ const ScheduleEasy = () => {
       title: "Personalized Recommendations",
       description:
         "Discover research tailored to your interests and career goals. Our AI ensures you stay updated with the most relevant and impactful content.",
-      imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
+      imgSrc: "/LandingPageIcon/personalized_recommendation.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Interactive Learning",
       description:
         "Engage with research using tools like concept breakdowns, quizzes, and AI-powered chats that simplify complex topics for better understanding.",
-      imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
+      imgSrc: "/LandingPageIcon/Interactive_Learning.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Track Your Progress",
       description:
         "Monitor your learning journey with real-time assessments and progress reports to continuously improve your expertise.",
-      imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
+      imgSrc: "/LandingPageIcon/Progress.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Earn While You Learn",
       description:
         "Explore research papers with bounties and earn rewards as you complete assignments and build knowledge in your field.",
-      imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
+      imgSrc: "/LandingPageIcon/you_learn.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Build Your Profile",
       description:
         "Showcase your research achievements and stand out to employers, academic advisors, and institutions for scholarships and job opportunities.",
-      imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
+      imgSrc: "/LandingPageIcon/Profile.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Global Leaderboard",
       description:
         "Earn Karma points and badges to compete with a global community of learners and establish yourself as a top researcher.",
-      imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
+      imgSrc: "/LandingPageIcon/Leaderboard.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Explore Career Opportunities",
       description:
         "Unlock scholarships, PhD placements, and career advancements by validating your expertise through your Cleverank profile.",
-      imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
+      imgSrc: "/LandingPageIcon/Career.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Stay Ahead of Trends",
       description:
         "Access the latest research and emerging trends in your field to stay ahead and continuously grow in your career.",
-      imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
+      imgSrc: "/LandingPageIcon/trends.png",
       imgAlt: "Easy embeds",
     },
   ];
