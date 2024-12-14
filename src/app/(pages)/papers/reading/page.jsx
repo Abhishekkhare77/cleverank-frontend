@@ -1,12 +1,24 @@
 "use client";
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { CircleCheckBig } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 const Page = () => {
 
     const [papers, setPapers] = useState([]);
+    const router = useRouter();
     const [loading, setLoading] = useState(true);
+
+    const extractDateInFomat = (endTime) => {
+        const endDate = new Date(endTime);
+        const currentDate = new Date();
+        const timeDiff = endDate.getTime() - currentDate.getTime();
+        const daysLeftCalc = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Convert time diff to days
+        return daysLeftCalc > 0 ? `${daysLeftCalc} days left` : "Time's up"
+    }
 
     useEffect(() => {
         const fetchPapers = async () => {
@@ -50,6 +62,7 @@ const Page = () => {
             </div>
         );
 
+
     return (
         <>
             <div className="text-xl font-semibold">Reading</div>
@@ -64,7 +77,7 @@ const Page = () => {
                                     <img
                                         src={paper.paper_details.image_url || "/fallback-image.png"}
                                         alt={`Cover for ${paper.paper_details.paper_title}`}
-                                        className="w-full h-36 object-cover border"
+                                        className="w-full h-20 object-cover border"
                                         onError={(e) => {
                                             e.currentTarget.src = "/fallback-image.png";
                                         }}
@@ -94,9 +107,18 @@ const Page = () => {
                                     </div>
                                 </div>
 
-                                <div className="line-clamp-3 text-gray-600">{paper?.paper_details?.creative_summary?.creative_summary ?? "Summary Not Available."}</div>
+                                <div className="line-clamp-2 text-sm text-gray-600">{paper?.creative_summary?.creative_summary ?? "Summary Not Available."}</div>
                             </CardContent>
                         </div>
+                        <CardFooter>
+                            {paper?.is_complete && <Button onClick={() => router.push(`/recommended/${paper?.paper_details?._id}`)}><CircleCheckBig size={14} /> Completed</Button>}
+                            {paper?.is_reading && (
+                                <div className='relative'>
+                                    <Button onClick={() => router.push(`/recommended/${paper?.paper_details?._id}`)} variant="outline">Continue Reading</Button>
+                                    <div className='absolute left-10 -bottom-5 text-sm tracking-tight font-semibold text-primary'>{extractDateInFomat(paper.end_reading_time)}</div>
+                                </div>
+                            )}
+                        </CardFooter>
                     </Card>
                 ))}
             </div>
