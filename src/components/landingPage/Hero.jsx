@@ -12,11 +12,11 @@ import { Banknote, Book, User } from "lucide-react";
 
 const Hero = () => {
   const institutionImage = [
-    "/institutionPng/institutionImg4.jpg",
-    "/institutionPng/institutionImg5.jpg",
-    "/institutionPng/institutionImg1.jpg",
-    "/institutionPng/institutionImg2.jpg",
-    "/institutionPng/institutionImg3.jpg",
+    "/institutionPng/institutionImg4.png",
+    "/institutionPng/institutionImg5.png",
+    "/institutionPng/institutionImg1.png",
+    "/institutionPng/institutionImg2.png",
+    "/institutionPng/institutionImg3.png",
   ];
 
   return (
@@ -39,7 +39,7 @@ const Hero = () => {
             </div>
             <div className=" py-6   text-sm flex flex-col items-center justify-center gap-2 border border-black rounded-lg  w-40 mt-3">
               <User className="size-8" />
-              <span className="text-3xl font-extrabold">3,500 </span>
+              <span className="text-3xl font-extrabold">3,500+ </span>
               <span className="-mt-2">Student</span>
             </div>
             <div className=" py-6  text-sm flex flex-col items-center justify-center gap-2 border border-black rounded-lg  w-40 mt-3">
@@ -57,10 +57,9 @@ const Hero = () => {
         <p className="text-[#898989] w-1/2">
           Trusted by top <br /> colleges in the world
         </p>
-
         <div className="flex gap-16  ">
           {institutionImage.map((url, index) => (
-            <div key={index} className="h-14 w-20 flex items-center">
+            <div key={index} className="h-14 w-14 flex items-center">
               <Image
                 src={url}
                 alt={`Image`}

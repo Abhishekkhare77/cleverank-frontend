@@ -105,7 +105,7 @@ const ScheduleEasy = () => {
         ))}
       </div>
       <TitleSubTitle
-        title="With Cleverank, Research Becomes Seamless"
+        title="Cleverank simplifies the research process for you"
         subtitle="Effortlessly explore research papers, learn interactively, and showcase your expertise with advanced AI-powered tools."
       />
       <div className=" grid grid-cols-2  sm:grid-cols-4 md:w-max  lg:grid-cols-4 gap-4">
