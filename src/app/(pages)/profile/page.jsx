@@ -8,8 +8,11 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Instagram, Linkedin, Mail, Twitter } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const Page = () => {
+  const [profileData, setProfileData] = useState(null);
+  const [error, setError] = useState(null);
   const tabsData = [
     {
       value: "Achievements",
@@ -21,6 +24,41 @@ const Page = () => {
     { value: "Peers", label: "Peers", component: <Peers /> },
     { value: "Submission", label: "Submission", component: <Submission /> },
   ];
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        setError("Token not found in localStorage");
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          "https://cleverank.adnan-qasim.me/auth/my-profile",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`, // Pass token as Bearer token
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch profile");
+        }
+
+        const data = await response.json();
+        console.log(data);
+        setProfileData(data); // Set the profile data to the state
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchProfile();
+  }, []);
 
   return (
     <div className="flex gap-4 h-[calc(100vh-4.48rem)]">
