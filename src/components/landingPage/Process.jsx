@@ -1,3 +1,5 @@
+import { ChevronRight } from "lucide-react";
+import { Button } from "../ui/button";
 import {
   Card,
   CardContent,
@@ -65,11 +67,16 @@ const Process = () => {
             Master Research Effortlessly with Cleverank
           </CardTitle>
           <CardDescription>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
-            nam est dolores labore expedita suscipit, tenetur reiciendis
-            inventore totam a iusto possimus voluptate quam, facilis numquam
-            eius. Cupiditate incidunt debitis iure blanditiis, exercitationem
-            reprehenderit quaerat ea, earum distinctio dicta necessitatibus?
+            Streamline your research process with AI-powered tools that simplify
+            discovery, engagement, and understanding—all in one platform.
+            <p className="my-1">Discover More, Stress Less</p>
+            <p>
+              {" "}
+              Cleverank takes the hard work out of finding the right research.
+              With intelligent recommendations and personalized learning paths,
+              you can focus on mastering concepts rather than spending
+              hours searching.
+            </p>
           </CardDescription>
         </CardHeader>
         <CardContent className="w-1/2 flex justify-end  mt-6">
@@ -80,7 +87,7 @@ const Process = () => {
           />
         </CardContent>
       </Card>
-      <div className=" grid grid-cols-2  sm:grid-cols-3 md:w-max  lg:grid-cols-3 gap-4 mt-8 ">
+      {/* <div className=" grid grid-cols-2  sm:grid-cols-3 md:w-max  lg:grid-cols-3 gap-4 mt-8 ">
         {cardData.map((card, index) => (
           <Card key={index} className="w-[22.66rem] bg-gray-100">
             <CardHeader>
@@ -99,14 +106,32 @@ const Process = () => {
             </CardContent>
           </Card>
         ))}
-      </div>
-      <Card className="h-64 mt-20">
+      </div> */}
+
+      {/* <Card className="h-64 mt-20 relative flex items-center justify-center">
         <img
           src="https://cal.com/_next/image?url=%2Fsquares-footer.png&w=1080&q=100"
           alt="img"
           className="object-cover h-[15.8rem] w-full"
         />
-      </Card>
+
+        <div className=" absolute flex flex-col items-center gap-4">
+          <div className="text-4xl font-bold text-center">
+            Smarter, simpler <br /> scheduling
+          </div>
+          <Button className="bg-black hover:bg-black/85">
+            {" "}
+            Get Started <ChevronRight />
+          </Button>
+        </div>
+      </Card> */}
+      {/* <Card className="h-64 mt-20">
+        <img
+          src="https://cal.com/_next/image?url=%2Fsquares-footer.png&w=1080&q=100"
+          alt="img"
+          className="object-cover h-[15.8rem] w-full"
+        />
+      </Card> */}
     </div>
   );
 };

@@ -5,39 +5,49 @@ import { Button } from "../ui/button";
 const ShowMore = () => {
   const testimonials = [
     {
-      name: "Guillermo Rauch",
-      handle: "@rauchg",
-      text: "Coolest domain. Check. Coolest mission. Check. Coolest product. Check. cal.com",
+      name: "Ananya Sharma",
+      handle: "@ananya_researcher",
+      text: "Cleverank helped me secure a research internship at a leading university by showcasing my expertise. The AI-driven recommendations and progress tracking made it easy to build my research profile!",
     },
     {
-      name: "Nick",
-      handle: "@MrNick_Buzz",
-      text: "Switched from @Calendly to @calcom last week and already adding a potential $4,500 MRR and Zero spam to my calendar. I used to have time slots available 5 days a week on Calendly, but now it’s just two days. I feel more productive and have more time for other things.",
+      name: "Rahul Desai",
+      handle: "@rahul_phdjourney",
+      text: "I completed several papers with Cleverank’s bounty program and earned enough to fund my conference trip. Their personalized learning tools make understanding even the toughest topics enjoyable.",
     },
     {
-      name: "Nickolas Tazes",
-      handle: "@nickolas_tazes",
-      text: "I had a Calendly and a cal.com account. Now I only have @calcom. It’s a no-brainer!",
+      name: "Emily Nguyen",
+      handle: "@emily_lovesdata",
+      text: "After using Cleverank for just 6 months, I unlocked a scholarship for my PhD program. The platform's ability to highlight my research skills to academic advisors was a game-changer.",
     },
     {
-      name: "Wilson Wilson",
-      role: "Co-founder of Senja",
-      text: "I just learned about cal.com this morning and now they have a new customer. I’m head over heels about Peer’s project. It just works! Well done!",
+      name: "Kabir Malhotra",
+      handle: "@kabir_careerboost",
+      text: "The interactive quizzes and automated assessments not only helped me learn but also stand out during job interviews. I recently got hired as a data analyst thanks to Cleverank's skills validation tools.",
     },
     {
-      name: "victoriame",
-      handle: "@vmelnikova_en",
-      text: "A couple of days back, I tweeted about choosing between @calcom and @Calendly - @peer_rich responded and kindly offered to showcase the product. We had a quick call where he did a demo of functionality. I am hooked! Specifically, I am excited to use...",
+      name: "Sophia Lee",
+      handle: "@sophia_ai_enthusiast",
+      text: "Cleverank introduced me to niche research areas in AI, helping me gain recognition on global forums. The Karma points and leaderboard feature kept me motivated, and I’ve even earned collaboration offers from industry leaders.",
     },
     {
-      name: "Andrew S. Rosen",
-      handle: "@Andrew_S_Rosen",
-      text: "Regarding productivity software that I’ve been binging lately, I just tried out (@calcom), and it is an amazing (better) alternative to Calendly in my opinion. This is particularly true for the free tier. I think I’ll add this one to my email signature.",
+      name: "David Johnson",
+      handle: "@david_innovates",
+      text: "Being a part of Cleverank’s global community helped me showcase my research to potential employers. I’ve received multiple offers and started freelancing on AI projects!",
     },
     {
-      name: "Denis",
-      handle: "@denisrasulev",
-      text: "One of the best tools for scheduling and my favorite after so many other options tried.",
+      name: "Lina Martinez",
+      handle: "@lina_tech_pioneer",
+      text: "Thanks to Cleverank’s innovative learning modules and real-world project opportunities, I was able to transition from a career in marketing to AI research. The mentorship and resources were invaluable in building my new career path.",
+    },
+    {
+      name: "James Kwon",
+      handle: "@james_techie",
+      text: "Cleverank’s tailored career tracks helped me sharpen my technical skills, and I landed a position at a top tech company. The progress tracking feature kept me focused and on track throughout my learning journey.",
+    },
+    {
+      name: "Olivia Carter",
+      handle: "@olivia_datawiz",
+      text: "I used Cleverank to upskill in machine learning, and within a few months, I was able to land my dream role as a data scientist. The platform’s personalized learning path gave me exactly what I needed to succeed.",
     },
   ];
 
