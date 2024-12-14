@@ -60,9 +60,8 @@ const Hero = () => {
 
         <div className="flex gap-16  ">
           {institutionImage.map((url, index) => (
-            <div className="h-14 w-20 flex items-center">
+            <div key={index} className="h-14 w-20 flex items-center">
               <Image
-                key={index}
                 src={url}
                 alt={`Image`}
                 height={1000}
