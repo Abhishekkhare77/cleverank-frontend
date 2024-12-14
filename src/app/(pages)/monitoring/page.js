@@ -175,9 +175,9 @@ export default function Dashboard() {
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-5 gap-4 mb-6">
         {/* Cloud Storage Card */}
-        <Card className="shadow-md">
+        <Card className="shadow-md ">
           <CardHeader>
             <CardTitle className="text-lg font-bold">Cloud Storage</CardTitle>
           </CardHeader>
@@ -192,11 +192,23 @@ export default function Dashboard() {
         <Card className="shadow-md">
           <CardHeader>
             <CardTitle className="text-lg font-bold">Learner Calls</CardTitle>
+            <CardTitle className="text-xs ">
+              Number of calls made by user to understand research papers
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-4xl font-extrabold text-blue-600">
+            <p className="text-4xl font-extrabold text-blue-600 -mt-3">
               {learnerCalls}
             </p>
+          </CardContent>
+        </Card>
+        <Card className="shadow-md">
+          <CardHeader>
+            <CardTitle className="text-lg font-bold">Price Per Pager</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-2xl font-extrabold text-blue-600"> $ 0.00143 </p>
+            <p className="text-xl font-extrabold text-blue-600"> ₹ 0.12155</p>
           </CardContent>
         </Card>
 
@@ -262,7 +274,7 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="w-[400px] mx-auto">
-              <Pie data={pieData} options={pieOptions}/>
+              <Pie data={pieData} options={pieOptions} />
             </div>
           </CardContent>
         </Card>
