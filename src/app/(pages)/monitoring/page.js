@@ -165,7 +165,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
+      <h1 className="text-2xl font-bold mb-4">Gcloud Monitoring Dashboard</h1>
 
       {/* Last Fetched Time */}
       <div className="mb-4">
@@ -204,7 +204,7 @@ export default function Dashboard() {
         </Card>
         <Card className="shadow-md">
           <CardHeader>
-            <CardTitle className="text-lg font-bold">Price Per Pager</CardTitle>
+            <CardTitle className="text-lg font-bold">Price Per Research Paper</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-2xl font-extrabold text-blue-600"> $ 0.00143 </p>
