@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Download, X } from "lucide-react";
+import { CircleDot, Download, X } from "lucide-react";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
@@ -129,15 +129,11 @@ const Page = () => {
   const fetchPaperExplanations = async () => {
     setExplanationLoading(true);
     try {
-      const response = await fetch(`https://cleverank.adnan-qasim.me/gemini/explain-paper-full/`, {
-        method: "POST",
+      const response = await fetch(`https://cleverank.adnan-qasim.me/papers/get-detailed-explanation/${id}?academic_level=${academicLevel}`, {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          paper_id: id,
-          academic_level: academicLevel
-        }),
       });
 
       if (!response.ok) {
@@ -146,8 +142,9 @@ const Page = () => {
 
       const data = await response.json();
       setExplanationLoading(false);
-      console.log(data.explanation);
-      setPaperExplanations(data.explanation);
+      console.log(data);
+
+      setPaperExplanations(data);
     } catch (err) {
       console.error("Error fetching paper explanations:", err);
       setExplanationLoading(false);
@@ -238,10 +235,10 @@ const Page = () => {
       <Tabs defaultValue="pdf" className="w-full flex items-center justify-center flex-col">
         <TabsList className="flex items-center w-full justify-between bg-white">
           <div className="bg-secondary rounded-md p-1">
-            <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="pdf">PDF</TabsTrigger>
+            <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="pdf">View PDF</TabsTrigger>
             <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="summary">Summary</TabsTrigger>
             <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="explanation" >Explanation</TabsTrigger>
-            <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="quiz" >Quizzes</TabsTrigger>
+            <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="quiz" >Test Your Understanding</TabsTrigger>
           </div>
           <div className="flex items-center justify-end space-y-4">
             {isComplete && !isStarted ? (
@@ -347,6 +344,17 @@ const Page = () => {
               </SelectContent>
             </Select>
           </div>
+          <div className="text-center mb-3 my-10">
+            <div className="font-bold text-2xl text-gray-800">{paper.paper_title}</div>
+            <div className="text-sm text-gray-500">
+              {paper.author.map((author, index) => (
+                <span key={index}>
+                  {author.first_name} {author.last_name}
+                  {index < paper.author.length - 1 && ", "}
+                </span>
+              ))}
+            </div>
+          </div>
           {!paperExplanations && !explanationLoading && (
             <div className="flex items-center justify-center h-96">
               <Button onClick={() => handleSearchWithLevel("Undergraduate")}>
@@ -362,10 +370,16 @@ const Page = () => {
                 <Skeleton className={"h-48 w-full"} />
               </div>
             )}
-            {paperExplanations && paperExplanations.map((explanation, index) => (
-              <div key={index} className="bg-gray-100 p-4 rounded-md shadow-sm mb-6">
+            {paperExplanations && paperExplanations.paper_abstract && (
+              <div className="p-4 rounded-md shadow-sm mb-6">
+                <h3 className="text-xl font-semibold text-gray-800">Abstract</h3>
+                <p className="text-sm text-gray-600 mt-2">{paperExplanations.paper_abstract}</p>
+              </div>
+            )}
+            {paperExplanations && paperExplanations.detailed_explanation.map((explanation, index) => (
+              <div key={index} className="m-4 rounded-md shadow-sm mb-6">
                 <h3 className="text-lg font-semibold text-gray-700">{explanation.topic_title}</h3>
-                <p className="text-sm text-gray-600 mt-2">{explanation.topic_content}</p>
+                <p className="text-sm text-gray-600 mt-2 ml-4 flex">{explanation.topic_content}</p>
               </div>
             ))}
           </div>
