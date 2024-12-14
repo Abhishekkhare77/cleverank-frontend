@@ -416,13 +416,13 @@ const Page = () => {
               <CardContent>
                 <h2 className="mb-4 text-lg font-semibold">What is your understanding?</h2>
                 <div className="flex gap-8 justify-center">
-                  <Card onClick={() => setDifficulty("basic")} className={`text-sm cursor-pointer border-2 h-32 w-32 flex flex-col items-center justify-center ${difficulty === "basic" ? "bg-gray-200" : "bg-white"}`}>
+                  <Card onClick={() => setDifficulty("basic")} className={`text-sm cursor-pointer hover:bg-secondary hover:text-black transition-all duration-100 border-2 border-primary h-32 w-32 flex flex-col items-center justify-center ${difficulty === "basic" ? "bg-primary text-white" : "bg-white"}`}>
                     <CardTitle >Basic</CardTitle>
                   </Card>
-                  <Card onClick={() => setDifficulty("intermediate")} className={`text-sm cursor-pointer border-2 h-32 w-32 flex flex-col items-center justify-center ${difficulty === "intermediate" ? "bg-gray-200" : "bg-white"}`}>
+                  <Card onClick={() => setDifficulty("intermediate")} className={`text-sm cursor-pointer hover:bg-secondary hover:text-black transition-all duration-100 border-2 border-primary h-32 w-32 flex flex-col items-center justify-center ${difficulty === "intermediate" ? "bg-primary text-white" : "bg-white"}`}>
                     <CardTitle >Intermediate</CardTitle>
                   </Card>
-                  <Card onClick={() => setDifficulty("expert")} className={`cursor-pointer border-2 h-32 w-32 flex flex-col items-center justify-center text-sm ${difficulty === "expert" ? "bg-gray-200" : "bg-white"}`}>
+                  <Card onClick={() => setDifficulty("expert")} className={`cursor-pointer hover:bg-secondary hover:text-black transition-all duration-100 border-2 border-primary h-32 w-32 flex flex-col items-center justify-center text-sm ${difficulty === "expert" ? "bg-primary text-white" : "bg-white"}`}>
                     <CardTitle >Expert</CardTitle>
                   </Card>
                 </div>
