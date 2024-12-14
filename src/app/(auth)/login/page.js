@@ -50,6 +50,7 @@ const Login = () => {
       .request(options)
       .then((response) => {
         console.log("Google registration successful:", response.data);
+        localStorage.setItem("token", response.data.access_token);
         setLoading(false);
         router.push("/dashboard");
       })
