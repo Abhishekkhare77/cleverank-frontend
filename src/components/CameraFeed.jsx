@@ -11,8 +11,12 @@ export default function CameraFeed({
   setText,
   currentQuestion,
   goToNextQuestion,
-  answerTimer
+  answerTimer,
+  paperId,
+  currentQuestionText,
+  difficulty
 }) {
+  console.log(paperId, currentQuestionText);
   const webcamRef = useRef(null);
   const mediaRecorderRef = useRef(null);
 
@@ -79,10 +83,19 @@ export default function CameraFeed({
     }
     setIsUploading(true);
 
+    console.log(paperId, currentQuestionText, text);
+
     const videoBlob = new Blob(recordedChunks, { type: 'video/webm' });
     const formData = new FormData();
+    formData.append('paper_id', paperId);
+    formData.append('question_text', currentQuestionText);
     formData.append('assessment_video', videoBlob, 'video.webm');
     formData.append('answer_text', text);
+    formData.append('difficulty_level', difficulty);
+
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + ': ' + pair[1]);
+    }
 
     try {
       const response = await axios.post(
@@ -90,7 +103,6 @@ export default function CameraFeed({
         formData,
         {
           headers: {
-            'Content-Type': 'multipart/form-data',
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
           },
         }
@@ -122,6 +134,9 @@ export default function CameraFeed({
     setIsListening,
     setAnswerTimer,
     setText,
+    currentQuestionText,
+    paperId,
+    difficulty,
   ]);
 
   // If answerTimer hits 0, auto-submit if not already done
