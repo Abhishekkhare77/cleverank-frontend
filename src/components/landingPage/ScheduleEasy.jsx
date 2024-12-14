@@ -4,50 +4,58 @@ import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
 const ScheduleEasy = () => {
   const cardData2 = [
     {
-      title: "Easy embeds",
-      description: "Embed your booking page anywhere with just a few clicks.",
+      title: "Personalized Recommendations",
+      description:
+        "Discover research tailored to your interests and career goals. Our AI ensures you stay updated with the most relevant and impactful content.",
       imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
       imgAlt: "Easy embeds",
     },
     {
-      title: "Easy embeds",
-      description: "Embed your booking page anywhere with just a few clicks.",
+      title: "Interactive Learning",
+      description:
+        "Engage with research using tools like concept breakdowns, quizzes, and AI-powered chats that simplify complex topics for better understanding.",
       imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
       imgAlt: "Easy embeds",
     },
     {
-      title: "Easy embeds",
-      description: "Embed your booking page anywhere with just a few clicks.",
+      title: "Track Your Progress",
+      description:
+        "Monitor your learning journey with real-time assessments and progress reports to continuously improve your expertise.",
       imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
       imgAlt: "Easy embeds",
     },
     {
-      title: "Easy embeds",
-      description: "Embed your booking page anywhere with just a few clicks.",
+      title: "Earn While You Learn",
+      description:
+        "Explore research papers with bounties and earn rewards as you complete assignments and build knowledge in your field.",
       imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
       imgAlt: "Easy embeds",
     },
     {
-      title: "Easy embeds",
-      description: "Embed your booking page anywhere with just a few clicks.",
+      title: "Build Your Profile",
+      description:
+        "Showcase your research achievements and stand out to employers, academic advisors, and institutions for scholarships and job opportunities.",
       imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
       imgAlt: "Easy embeds",
     },
     {
-      title: "Easy embeds",
-      description: "Embed your booking page anywhere with just a few clicks.",
+      title: "Global Leaderboard",
+      description:
+        "Earn Karma points and badges to compete with a global community of learners and establish yourself as a top researcher.",
       imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
       imgAlt: "Easy embeds",
     },
     {
-      title: "Easy embeds",
-      description: "Embed your booking page anywhere with just a few clicks.",
+      title: "Explore Career Opportunities",
+      description:
+        "Unlock scholarships, PhD placements, and career advancements by validating your expertise through your Cleverank profile.",
       imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
       imgAlt: "Easy embeds",
     },
     {
-      title: "Easy embeds",
-      description: "Embed your booking page anywhere with just a few clicks.",
+      title: "Stay Ahead of Trends",
+      description:
+        "Access the latest research and emerging trends in your field to stay ahead and continuously grow in your career.",
       imgSrc: "https://www.datocms-assets.com/77432/1729720402-whisper-api.svg",
       imgAlt: "Easy embeds",
     },
@@ -56,28 +64,30 @@ const ScheduleEasy = () => {
   const cardData = [
     {
       id: "01",
-      title: "Connect your calendar",
+      title: "Personalized Research Recommendations",
       description:
-        "We'll handle all the cross-referencing, so you don't have to worry about double bookings.",
+        "Our AI curates research papers tailored to your academic interests and career goals, saving you time on endless searches.",
     },
     {
       id: "02",
-      title: "Set your availability",
+      title: "Engage and Learn Efficiently",
       description:
-        "Want to block off weekends? Set up any buffers? We make that easy.",
+        "Break down complex concepts, interact with papers, and reinforce your learning with quizzes and assessments.",
     },
     {
       id: "03",
-      title: "Choose how to meet",
+      title: "Earn and Unlock Opportunities",
       description:
-        "It could be a video chat, phone call, or a walk in the park!",
+        "Complete research tasks, earn Karma points, and unlock rewards like bounties, badges, and career advancement opportunities.",
     },
   ];
   return (
     <div className="py-20 flex flex-col gap-10 items-center">
       <TitleSubTitle
-        title="With us, scheduling is easy"
-        subtitle="Effortless scheduling for individuals, powerful solutions for fast-growing modern companies."
+        title="With Cleverank, Learning is Seamless
+"
+        subtitle="Effortless discovery of research, interactive learning, and career-boosting rewards—designed for students, researchers, and professionals alike.
+"
       />
       <div className="flex w-full gap-10">
         {cardData.map((card) => (
@@ -95,8 +105,8 @@ const ScheduleEasy = () => {
         ))}
       </div>
       <TitleSubTitle
-        title="With us, scheduling is easy"
-        subtitle="Effortless scheduling for individuals, powerful solutions for fast-growing modern companies."
+        title="With Cleverank, Research Becomes Seamless"
+        subtitle="Effortlessly explore research papers, learn interactively, and showcase your expertise with advanced AI-powered tools."
       />
       <div className=" grid grid-cols-2  sm:grid-cols-4 md:w-max  lg:grid-cols-4 gap-4">
         {cardData2.map((card, index) => (
@@ -131,7 +141,7 @@ const ScheduleEasy = () => {
                   </div>
                 </div>
                 <div className="flex flex-grow items-center">
-                  <h1 className="text-center text-base font-semibold leading-tight">
+                  <h1 className="text-center text-xs font-semibold leading-tight">
                     {card.title}
                   </h1>
                 </div>
@@ -149,10 +159,10 @@ const ScheduleEasy = () => {
                 <div className="absolute bottom-3 left-3 h-1.5 w-1.5 rounded-full bg-gray-200"></div>
                 <div className="absolute bottom-3 right-3 h-1.5 w-1.5 rounded-full bg-gray-200"></div>
 
-                <p className="mb-2 text-center text-sm font-semibold leading-tight md:text-base">
+                <p className="mb-2 text-center text-xs font-semibold leading-tight ">
                   {card.title}
                 </p>
-                <p className="text-center text-sm font-medium text-gray-700">
+                <p className="text-center text-xs font-medium text-gray-700">
                   {card.description}
                 </p>
               </div>

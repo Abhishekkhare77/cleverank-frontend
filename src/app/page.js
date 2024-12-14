@@ -4,6 +4,7 @@ import Process from "@/components/landingPage/Process";
 import ScheduleEasy from "@/components/landingPage/ScheduleEasy";
 import ScheduleTeam from "@/components/landingPage/ScheduleTeam";
 import NavBar from "@/components/NavBar";
+
 export default function Home() {
   return (
     <>
