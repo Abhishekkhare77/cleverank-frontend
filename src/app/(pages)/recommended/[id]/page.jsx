@@ -385,6 +385,17 @@ const Page = () => {
           </div>
         </TabsContent>
         <TabsContent value="quiz">
+          <div className="text-center mb-3 my-5">
+            <div className="font-bold text-2xl text-gray-800">{paper.paper_title}</div>
+            <div className="text-sm text-gray-500">
+              {paper.author.map((author, index) => (
+                <span key={index}>
+                  {author.first_name} {author.last_name}
+                  {index < paper.author.length - 1 && ", "}
+                </span>
+              ))}
+            </div>
+          </div>
           <div className="flex flex-col items-center justify-center w-full">
             {quizQuestions.length === 0 ? (
               <p className="text-gray-500">No quiz available for this paper.</p>
@@ -395,7 +406,7 @@ const Page = () => {
                     <p className="font-medium">{index + 1}. {q.question}</p>
                     <div className="mt-2">
                       {q.options.map((option, optIndex) => (
-                        <label key={optIndex} className="block">
+                        <label key={optIndex} className="block text-gray-800">
                           <input
                             type="radio"
                             name={`question_${index}`}
