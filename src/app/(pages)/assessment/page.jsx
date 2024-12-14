@@ -37,6 +37,8 @@ const Page = () => {
             "Limitations or challenges discussed in the paper",
             "User’s personal opinion or reflection on the content",
           ],
+          additionalText:
+            "Questions will focus on key elements of the research paper, including:",
         },
       ],
     },
@@ -100,17 +102,6 @@ const Page = () => {
         },
       ],
     },
-    {
-      title: "Acknowledgment",
-      sections: [
-        {
-          subtitle: "",
-          items: [
-            "By participating in this Viva Voce assessment, I confirm that I have read and understood the rules and guidelines stated above, and I agree to abide by them.",
-          ],
-        },
-      ],
-    },
   ];
 
   return (
@@ -134,6 +125,11 @@ const Page = () => {
               <p className="text-lg mt-2">
                 {subIndex + 1}. {subsection.subtitle}
               </p>
+              {subsection.additionalText && (
+                <p className="mt-2 text-gray-500">
+                  {subsection.additionalText}
+                </p>
+              )}
               <ul
                 style={{ listStyleType: "disc", color: "black" }}
                 className="mt-2 ml-10"
@@ -149,7 +145,18 @@ const Page = () => {
         </div>
       ))}
 
-      <div className="mb-6">
+      {/* Acknowledgment section as an ordered list */}
+      <div>
+        <h1 className="text-xl font-semibold mt-6">Acknowledgment</h1>
+
+        <p className="text-gray-500 mt-2">
+          By participating in this Viva Voce assessment, I confirm that I have
+          read and understood the rules and guidelines stated above, and I agree
+          to abide by them.
+        </p>
+      </div>
+
+      <div className="mt-6">
         <Checkbox />{" "}
         <span className="ml-2">
           I understand terms and conditions of viva voce.
@@ -159,7 +166,7 @@ const Page = () => {
       <Link
         href={`/viva/?paper_id=${paperId}&selected_difficulty=${difficulty}`}
       >
-        <Button className="px-12 mt-6">Start</Button>
+        <Button className="px-12 mt-2">Start</Button>
       </Link>
     </div>
   );
