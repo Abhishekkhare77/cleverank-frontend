@@ -18,7 +18,9 @@ const NavBar = () => {
   return (
     <div
       className={`flex items-center justify-between py-3 px-6 sticky top-2 transition-all duration-300 z-50 ${
-        scrolled ? "bg-gray-100 rounded-2xl shadow-md border border-gray-300" : ""
+        scrolled
+          ? "bg-gray-100 rounded-2xl shadow-md border border-gray-300"
+          : ""
       }`}
     >
       <Link href="/">
@@ -33,19 +35,19 @@ const NavBar = () => {
       </Link>
       <div className="flex gap-6">
         <Link href="/about-us">
-          <div className="">About Us</div>
+          <div className=" hover:underline">About Us</div>
         </Link>
         <Link href="/mission">
-          <div className="">Mission</div>
+          <div className="hover:underline">Mission</div>
         </Link>
         <Link href="/faq">
-          <div className="">FAQ</div>
+          <div className="hover:underline">FAQ</div>
         </Link>
         <Link href="/why">
-          <div className="">Why</div>
+          <div className="hover:underline">Why</div>
         </Link>
         <Link href="/how-it-works">
-          <div className="">How it works?</div>
+          <div className="hover:underline">How it works?</div>
         </Link>
       </div>
       <div className="flex  gap-2">

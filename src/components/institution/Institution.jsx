@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 const Institution = () => {
   const contentData = [
@@ -102,8 +103,14 @@ const Institution = () => {
           tools and support to help your institution thrive.
         </p>
         <div className="flex gap-2 mt-4">
-          <Button className="bg-black hover:bg-black/85">Request a Demo</Button>
-          <Button className="bg-black hover:bg-black/85">Register</Button>
+          <Link href="/register">
+            <Button className="bg-black hover:bg-black/85">
+              Request a Demo
+            </Button>
+          </Link>
+          <Link href="/register">
+            <Button className="bg-black hover:bg-black/85">Register</Button>
+          </Link>
         </div>
       </div>
     </div>
