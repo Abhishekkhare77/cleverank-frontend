@@ -237,7 +237,7 @@ const Page = () => {
     <>
       <Tabs defaultValue="pdf" className="w-full flex items-center justify-center flex-col">
         <TabsList className="flex items-center w-full justify-between bg-white">
-          <div className="bg-secondary rounded-md">
+          <div className="bg-secondary rounded-md p-1">
             <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="pdf">PDF</TabsTrigger>
             <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="summary">Summary</TabsTrigger>
             <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="explanation" >Explanation</TabsTrigger>
@@ -275,7 +275,7 @@ const Page = () => {
         </TabsList>
         <TabsContent value="pdf">
           <div className="w-full">
-            <div className="text-center mb-3">
+            <div className="text-center mb-3 my-5">
               <div className="font-bold text-2xl text-gray-800">{paper.paper_title}</div>
               <div className="text-sm text-gray-500">
                 {paper.author.map((author, index) => (
@@ -289,9 +289,9 @@ const Page = () => {
             <PdfRender file_url={paper.file_url} />
           </div>
         </TabsContent>
-        <TabsContent value="summary">
+        <TabsContent value="summary" className="mx-10">
           <div className="flex flex-col space-y-3 w-full">
-            <div>
+            <div className="text-center mb-3 my-5">
               <div className="font-bold text-2xl text-gray-800">{paper.paper_title}</div>
               <div className="text-sm text-gray-500">
                 {paper.author.map((author, index) => (
@@ -303,21 +303,24 @@ const Page = () => {
               </div>
             </div>
 
-            {/* Abstract Section */}
-            <div className="bg-gray-100 p-4 rounded-md shadow-sm mb-6 ">
-              <h3 className="text-lg font-semibold text-gray-700">Abstract</h3>
-              <p className="text-sm text-gray-600 mt-2 h-64 overflow-y-auto">{paper.paper_abstract}</p>
-            </div>
+            <div className="grid grid-cols-2 gap-4">
 
-            {/* Keywords Section */}
-            <div className="bg-gray-100 p-4 rounded-md shadow-sm mb-6">
-              <h3 className="text-lg font-semibold text-gray-700">Keywords</h3>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {paper.keywords && paper.keywords.map((keyword, index) => (
-                  <span key={index} className="bg-green-100 text-green-700 py-1 px-3 rounded-full text-xs">
-                    {keyword}
-                  </span>
-                ))}
+              {/* Abstract Section */}
+              <div className="bg-gray-100 p-4 rounded-md shadow-sm mb-6 ">
+                <h3 className="text-lg font-semibold text-gray-700">Abstract</h3>
+                <p className="text-sm text-gray-600 mt-2 h-64 overflow-y-auto">{paper.paper_abstract}</p>
+              </div>
+
+              {/* Keywords Section */}
+              <div className="bg-gray-100 p-4 rounded-md shadow-sm mb-6">
+                <h3 className="text-lg font-semibold text-gray-700">Keywords</h3>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {paper.keywords && paper.keywords.map((keyword, index) => (
+                    <span key={index} className="bg-green-100 text-green-700 py-1 px-3 rounded-full text-xs">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -344,6 +347,13 @@ const Page = () => {
               </SelectContent>
             </Select>
           </div>
+          {!paperExplanations && !explanationLoading && (
+            <div className="flex items-center justify-center h-96">
+              <Button onClick={() => handleSearchWithLevel("Undergraduate")}>
+                Generate Explanations
+              </Button>
+            </div>
+          )}
           <div className="mt-4">
             {explanationLoading && (
               <div className="space-y-4">
