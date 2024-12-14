@@ -11,52 +11,45 @@ import React from "react";
 const products = [
   {
     id: 1,
-    name: "LeetCode T-Shirt",
-    description: "Premium quality T-shirt with LeetCode logo.",
+    name: "Cleverrank T-Shirt",
+    description: "Premium quality T-shirt with Cleverrank logo.",
     price: "$25",
-    image: "/images/tshirt.jpg", // Example image path
+    image: "/store/tshirt.jpg", // Example image path
   },
   {
     id: 2,
-    name: "LeetCode Mug",
+    name: "Cleverrank Mug",
     description: "Ceramic mug for your coffee breaks.",
     price: "$15",
-    image: "/images/mug.jpg", // Example image path
+    image: "/store/cup.png", // Example image path
   },
   {
     id: 3,
-    name: "LeetCode Hoodie",
+    name: "Cleverrank Hoodie",
     description: "Stay warm with our cozy hoodie.",
     price: "$50",
-    image: "/images/hoodie.jpg", // Example image path
+    image: "/store/hoodie.png", // Example image path
   },
   {
     id: 4,
-    name: "LeetCode Cap",
+    name: "Cleverrank Cap",
     description: "Stylish cap to complement your outfit.",
     price: "$20",
-    image: "/images/cap.jpg", // Example image path
+    image: "/store/cap.png", // Example image path
   },
   {
     id: 5,
     name: "Mouse Pad",
-    description: "Smooth surface mouse pad with LeetCode branding.",
+    description: "Smooth surface mouse pad with Cleverrank branding.",
     price: "$10",
-    image: "/images/mousepad.jpg", // Example image path
+    image: "/store/mousepad.jpg", // Example image path
   },
   {
     id: 6,
     name: "Notebook",
     description: "Elegant notebook for jotting down ideas.",
     price: "$18",
-    image: "/images/notebook.jpg", // Example image path
-  },
-  {
-    id: 7,
-    name: "Exclusive Kit",
-    description: "Exclusive bundle with all merchandise items.",
-    price: "$120",
-    image: "/images/exclusive-kit.jpg", // Example image path
+    image: "/store/notebook.jpg", // Example image path
   },
 ];
 
@@ -71,7 +64,7 @@ const page = () => {
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-48 object-cover rounded-t-md"
+                className="w-full h-48 object-contain align-center rounded-t-md"
               />
             </CardHeader>
             <CardContent>
