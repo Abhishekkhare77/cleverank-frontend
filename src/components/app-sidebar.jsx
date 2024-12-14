@@ -35,6 +35,7 @@ import {
   SidebarHeader,
   SidebarMenuButton,
   SidebarRail,
+  SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar"
 import Image from "next/image"
@@ -192,9 +193,14 @@ export function AppSidebar({
     (<Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <Link href={"/dashboard"} className="flex items-center justify-center py-3">
-          {open ? <Image src={"/logo.png"} width={100} height={100} alt="logo" /> : (
-            <div className="bg-gray-100 rounded-md border px-2 py-1 flex items-center font-semibold">
-              <span>c</span> <span className="underline">r</span>
+          {open ? (
+            <div className="flex items-center justify-between px-2 w-full">
+              <Image src={"/logo.png"} width={100} height={100} alt="logo" />
+              <SidebarTrigger />
+            </div>) : (
+            <div className="flex flex-col items-center justify-center">
+              <SidebarTrigger className="-mt-2" />
+              <div className="bg-gray-100 rounded-md border px-2 py-1 flex items-center font-semibold"><span>c</span> <span className="underline">r</span></div>
             </div>
           )}
         </Link>
