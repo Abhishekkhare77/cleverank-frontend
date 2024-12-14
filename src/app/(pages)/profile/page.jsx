@@ -1,17 +1,13 @@
 "use client";
-import About from "@/components/Tabs/About";
 import Achievements from "@/components/Tabs/Achievements";
 import Followers from "@/components/Tabs/Followers";
 import Interests from "@/components/Tabs/Interests";
 import Peers from "@/components/Tabs/Peers";
-import Read from "@/components/Tabs/Read";
 import Submission from "@/components/Tabs/Submission";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Instagram, Linkedin, Mail, Twitter } from "lucide-react";
 import Image from "next/image";
-import html2pdf from "html2pdf.js";
-import { useRef } from "react";
 
 const Page = () => {
   const tabsData = [
@@ -26,22 +22,9 @@ const Page = () => {
     { value: "Submission", label: "Submission", component: <Submission /> },
   ];
 
-  const contentRef = useRef(null);
-
-  const downloadPDF = () => {
-    const element = contentRef.current;
-    const options = {
-      margin: 0.5,
-      filename: "profile.pdf",
-      html2canvas: { scale: 2 },  // Capture at higher resolution
-      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-    };
-    html2pdf().from(element).set(options).save();
-  };
-
 
   return (
-    <div ref={contentRef} className="flex gap-4 h-[calc(100vh-4.48rem)]">
+    <div className="flex gap-4 h-[calc(100vh-4.48rem)]">
       <div className="w-52 border-r-2 flex flex-col gap-4 ml-2 h-full ">
         <div>
           <div className="w-36 h-36 rounded-full border ml-4">
@@ -58,12 +41,12 @@ const Page = () => {
           <h1 className="text-sm mt-2">
             Bhilai Institute of Technology Raipur(CG), India
           </h1>
-          <div className="flex flex-col h-full justify-between mt-4">
+          <div className="flex flex-col h-full justify-between mt-4 pb-3">
             <div>
               <Button className="w-44">Follow</Button>
               <Button className="w-44 mt-2">Edit Profile</Button>
             </div>
-            <Button variant={"outline"} onClick={downloadPDF} className="w-44 -mt-2">Download PDF</Button>
+            <Button variant={"outline"} className="w-44 -mt-2">Download PDF</Button>
           </div>
         </div>
       </div>
