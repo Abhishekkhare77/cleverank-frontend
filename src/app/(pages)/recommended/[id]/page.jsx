@@ -236,12 +236,12 @@ const Page = () => {
   return (
     <>
       <Tabs defaultValue="pdf" className="w-full flex items-center justify-center flex-col">
-        <TabsList className="w-full mb-3 flex items-center justify-between">
-          <div>
-            <TabsTrigger value="pdf">PDF</TabsTrigger>
-            <TabsTrigger value="summary">Summary</TabsTrigger>
-            <TabsTrigger value="explanation" >Explanation</TabsTrigger>
-            <TabsTrigger value="quiz" >Quizzes</TabsTrigger>
+        <TabsList className="flex items-center w-full justify-between bg-white">
+          <div className="bg-secondary rounded-md">
+            <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="pdf">PDF</TabsTrigger>
+            <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="summary">Summary</TabsTrigger>
+            <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="explanation" >Explanation</TabsTrigger>
+            <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="quiz" >Quizzes</TabsTrigger>
           </div>
           <div className="flex items-center justify-end space-y-4">
             {isComplete && !isStarted ? (
