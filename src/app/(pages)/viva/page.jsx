@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 const Page = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showVideoUI, setShowVideoUI] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(30);
+  const [timeLeft, setTimeLeft] = useState(15);
   const [answerTimer, setAnswerTimer] = useState(180);
   const [completedSteps, setCompletedSteps] = useState([]);
   const [isListening, setIsListening] = useState(false);
@@ -33,6 +33,7 @@ const Page = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
           },
         }
       );
@@ -74,10 +75,10 @@ const Page = () => {
 
   // Function to move to the next question after successful submission
   const goToNextQuestion = () => {
-    if (currentQuestion < questions.length - 1) {
+    if (answerTimer !== 0 && currentQuestion < questions.length - 1) {
       setCurrentQuestion((prev) => prev + 1);
       setShowVideoUI(false);
-      setTimeLeft(30);
+      setTimeLeft(15);
       setText("");
       setIsListening(false);
       setAnswerTimer(180);
@@ -155,6 +156,7 @@ const Page = () => {
               setAnswerTimer={setAnswerTimer}
               setText={setText}
               currentQuestion={currentQuestion}
+              currentQuestionText={questions[currentQuestion]}
               questions={questions}
               setCurrentQuestion={setCurrentQuestion}
               setShowVideoUI={setShowVideoUI}
@@ -163,6 +165,7 @@ const Page = () => {
               paperId={paperId}
               answerTimer={answerTimer} // Pass answerTimer for auto submission
               goToNextQuestion={goToNextQuestion}
+              difficulty={difficulty}
             />
             <div className="w-1/3 flex flex-col">
               <SpeechToText
