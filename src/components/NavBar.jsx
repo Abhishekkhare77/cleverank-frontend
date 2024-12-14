@@ -35,19 +35,29 @@ const NavBar = () => {
       </Link>
       <div className="flex gap-6">
         <Link href="/about-us">
-          <div className=" hover:underline">About Us</div>
+          <div className=" hover:bg-gray-100/85 py-1 px-1.5 rounded-lg hover:text-black/75 ">
+            About Us
+          </div>
         </Link>
         <Link href="/mission">
-          <div className="hover:underline">Mission</div>
+          <div className=" hover:bg-gray-100/85 py-1 px-1.5 rounded-lg hover:text-black/75 ">
+            Mission
+          </div>
         </Link>
         <Link href="/faq">
-          <div className="hover:underline">FAQ</div>
+          <div className=" hover:bg-gray-100/85 py-1 px-1.5 rounded-lg hover:text-black/75 ">
+            FAQ
+          </div>
         </Link>
         <Link href="/why">
-          <div className="hover:underline">Why</div>
+          <div className=" hover:bg-gray-100/85 py-1 px-1.5 rounded-lg hover:text-black/75 ">
+            Why
+          </div>
         </Link>
         <Link href="/how-it-works">
-          <div className="hover:underline">How it works?</div>
+          <div className=" hover:bg-gray-100/85 py-1 px-1.5 rounded-lg hover:text-black/75">
+            How it works?
+          </div>
         </Link>
       </div>
       <div className="flex  gap-2">

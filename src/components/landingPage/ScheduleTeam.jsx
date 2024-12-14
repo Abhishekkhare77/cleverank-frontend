@@ -4,6 +4,7 @@ import TitleSubTitle from "../TitleSubTitle";
 import { Card } from "../ui/card";
 import ShowMore from "./ShowMore";
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 const ScheduleTeam = () => {
   return (
@@ -13,17 +14,21 @@ const ScheduleTeam = () => {
           <div className="flex md:items-center">
             <div className="flex flex-col pb-3.5 w-full items-center text-center md:items-start md:text-left">
               <h1 className="text-6xl pb-3 font-semibold ">
-                Scheduling for <br /> teams simplified
+                Collaboration for Research Simplified
               </h1>
 
-              <p className="max-w-md text-base text-[#898989] lg:max-w-2xl lg:text-lg">
-                Unlock effortless collaboration with our advanced group meeting
-                capabilities. Use our routing forms and round-robin features to
-                enhance your team&apos;s efficiency.
+              <p className=" text-[#898989] ">
+                Unlock seamless teamwork with Cleverank&apos;s advanced
+                collaboration features. Share, discuss, and work on research
+                papers together to achieve more.
               </p>
 
               <div className="mt-6 flex items-center justify-center gap-4">
-                <Button className="bg-black hover:bg-black/85">Sign Up</Button>
+                <Link href="/register">
+                  <Button className="bg-black hover:bg-black/85">
+                    Join Now{" "}
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -31,10 +36,12 @@ const ScheduleTeam = () => {
           <div className="flex flex-col gap-4">
             <div className="relative grid aspect-video w-full grid-cols-1 ">
               <div className="absolute bg-yellow-100 h-full w-full bg-opacity-55">
-                <div className="text-white p-4"> shimmer</div>
-                <div className="absolute text-white bottom-4 px-4 w-72 font-semibold text-lg">
+                <div className="text-white p-4"> Empower your Team:</div>
+                <div className="absolute text-white bottom-4 px-4 w-96 ">
                   {" "}
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Use our AI-powered insights, shared annotations, and group
+                  discussions to enhance your team's research capabilities and
+                  efficiency.
                 </div>
               </div>
               <img
@@ -47,8 +54,8 @@ const ScheduleTeam = () => {
         </div>
       </div>
       <TitleSubTitle
-        title="See why our users love Cleverank"
-        subtitle="Read the impact we've had from those who matter most - our customers."
+        title="See Why Our Users Love Cleverank"
+        subtitle="Read how Cleverank has transformed the way our users engage with research, grow their expertise, and unlock amazing opportunities."
       />
       <ShowMore />
       <Card className="h-64 mt-20 relative flex items-center justify-center">
