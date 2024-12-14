@@ -62,7 +62,7 @@ const Process = () => {
       <Card className="py-5 flex justify-between   bg-gray-100">
         <CardHeader className="flex flex-col gap-5 w-1/2 mt-6">
           <CardTitle className="text-6xl">
-            Process more <br /> invoices <br /> with less work
+            Master Research Effortlessly with Cleverank
           </CardTitle>
           <CardDescription>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
