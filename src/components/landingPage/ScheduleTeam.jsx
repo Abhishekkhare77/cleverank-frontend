@@ -40,8 +40,8 @@ const ScheduleTeam = () => {
                 <div className="absolute text-white bottom-4 px-4 w-96 ">
                   {" "}
                   Use our AI-powered insights, shared annotations, and group
-                  discussions to enhance your team's research capabilities and
-                  efficiency.
+                  discussions to enhance your team&apos;s research capabilities
+                  and efficiency.
                 </div>
               </div>
               <img
