@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { CircleCheckBig } from 'lucide-react';
+import { CircleCheckBig, RotateCcw } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
@@ -111,13 +111,18 @@ const Page = () => {
                             </CardContent>
                         </div>
                         <CardFooter>
-                            {paper?.is_complete && <Button onClick={() => router.push(`/recommended/${paper?.paper_details?._id}`)}><CircleCheckBig size={14} /> Completed</Button>}
-                            {paper?.is_reading && (
+                            {paper?.is_complete && <Button className="w-36" onClick={() => router.push(`/recommended/${paper?.paper_details?._id}`)}><CircleCheckBig size={14} /> Completed</Button>}
+                            {paper?.is_reading && extractDateInFomat(paper.end_reading_time) !== "Time's up" && (
                                 <div className='relative'>
-                                    <Button onClick={() => router.push(`/recommended/${paper?.paper_details?._id}`)} variant="outline">Continue Reading</Button>
+                                    <Button onClick={() => router.push(`/recommended/${paper?.paper_details?._id}`)} variant="outline" className="w-36">Continue Reading</Button>
                                     <div className='absolute left-10 -bottom-5 text-sm tracking-tight font-semibold text-primary'>{extractDateInFomat(paper.end_reading_time)}</div>
                                 </div>
                             )}
+                            {
+                                paper?.is_reading && !paper?.is_complete && extractDateInFomat(paper.end_reading_time) === "Time's up" && (
+                                    <Button className="w-36" onClick={() => router.push(`/recommended/${paper?.paper_details?._id}`)} variant="destructive"><RotateCcw /> Time&apos;s Up</Button>
+                                )
+                            }
                         </CardFooter>
                     </Card>
                 ))}
