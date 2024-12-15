@@ -389,7 +389,8 @@ const Page = () => {
                           href={`/recommended/${paper._id}`}
                           className="text-base font-semibold bg-[#59C009] text-gray-50 px-5 py-2 flex items-center justify-center gap-1 rounded-full mt-3"
                         >
-                          Start Reading
+                          <Book className="size-5" />
+                          View Paper
                         </Link>
                       </DialogFooter>
                     </DialogHeader>
