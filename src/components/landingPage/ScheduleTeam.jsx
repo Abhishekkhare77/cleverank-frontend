@@ -5,13 +5,14 @@ import { Card } from "../ui/card";
 import ShowMore from "./ShowMore";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const ScheduleTeam = () => {
   return (
     <div>
       <div className="px-1 py-6 md:py-20">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-10">
-          <div className="flex md:items-center">
+        <div className="flex gap-10">
+          <div className="flex items-center">
             <div className="flex flex-col pb-3.5 w-full items-center text-center md:items-start md:text-left">
               <h1 className="text-6xl pb-3 font-semibold ">
                 Collaboration for Research Simplified
@@ -32,12 +33,14 @@ const ScheduleTeam = () => {
               </div>
             </div>
           </div>
-
           <div className=" ">
-            <img
+            <Image
               src="/students-image.png"
               alt="img"
-              className=" object-cover rounded-xl opacity-50 "
+              height={1000}
+              width={1000}
+              quality={100}
+              className=" rounded-xl opacity-50   "
             />
           </div>
         </div>
