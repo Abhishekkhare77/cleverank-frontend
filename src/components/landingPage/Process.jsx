@@ -83,7 +83,7 @@ const Process = () => {
           <img
             src="/cleverank-dasboard.png"
             alt="img"
-            className=" object-contain"
+            className="object-contain"
           />
         </div>
       </div>
