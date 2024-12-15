@@ -100,9 +100,17 @@ const Mission = () => {
           {section.list && (
             <div className="grid grid-cols-2 gap-4 mt-2">
               {section.list.map((item, idx) => (
-                <div key={idx} className=" px-4 py-5 rounded-lg shadow-md">
-                  <strong>{item.heading}</strong>
-                  <p className="text-[#686868] text-sm mt-2">{item.text}</p>
+                <div key={idx} className="  px-4 py-5 rounded-lg shadow-md">
+                  <div className="relative">
+                    <span className="text-6xl font-bold rounded-full bg-gray-50 px-6 text-gray-200">
+                      {" "}
+                      {idx + 1}
+                    </span>
+                    <strong className=" absolute bottom-2 left-16">
+                      {item.heading}
+                    </strong>
+                  </div>
+                  <p className="text-[#686868] text-sm mt-5">{item.text}</p>
                 </div>
               ))}
             </div>
