@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
 
 const RecoQuiz = ({ paper, id }) => {
     const [quizQuestions, setQuizQuestions] = useState([]);
     const [userAnswers, setUserAnswers] = useState({});
-    const [showResults, setShowResults] = useState(false);
+    const [results, setResults] = useState({});
     const [score, setScore] = useState(0);
 
     const handleGetQuiz = async () => {
@@ -19,7 +19,6 @@ const RecoQuiz = ({ paper, id }) => {
                 throw new Error("Failed to fetch quiz");
             }
             const data = await response.json();
-            console.log(data);
             setQuizQuestions(data);
         } catch (err) {
             console.error(err);
@@ -30,26 +29,18 @@ const RecoQuiz = ({ paper, id }) => {
         handleGetQuiz();
     }, []);
 
-    // Handler for quiz option changes
     const handleOptionChange = (questionIndex, selectedOption) => {
         setUserAnswers(prev => ({ ...prev, [questionIndex]: selectedOption }));
+        setResults(prev => ({
+            ...prev,
+            [questionIndex]: selectedOption === quizQuestions[questionIndex].answer
+        }));
+        if (selectedOption === quizQuestions[questionIndex].answer) {
+            setScore(prev => prev + 1);
+        } else {
+            setScore(prev => prev > 0 ? prev - 1 : 0);
+        }
     }
-
-    // Handler for quiz submission
-    const handleSubmitQuiz = (e) => {
-        e.preventDefault();
-        let calculatedScore = 0;
-        quizQuestions.forEach((q, index) => {
-            if (userAnswers[index] === q.answer) {
-                calculatedScore += 1;
-            }
-        });
-        setScore(calculatedScore);
-        setShowResults(true);
-    }
-
-    // Determine if all questions have been answered
-    const allAnswered = quizQuestions.length > 0 && quizQuestions.every((_, index) => userAnswers[index]);
 
     return (
         <>
@@ -68,9 +59,9 @@ const RecoQuiz = ({ paper, id }) => {
                 {quizQuestions.length === 0 ? (
                     <p className="text-gray-500">No quiz available for this paper.</p>
                 ) : (
-                    <form className="w-full" onSubmit={handleSubmitQuiz}>
+                    <form className="w-full">
                         {quizQuestions.map((q, index) => (
-                            <div key={index} className="bg-gray-100 p-4 rounded-md shadow-sm mb-6">
+                            <div key={index} className="bg-white p-4 rounded-md border mb-3">
                                 <p className="font-medium">{index + 1}. {q.question}</p>
                                 <div className="mt-2">
                                     {q.options.map((option, optIndex) => (
@@ -79,30 +70,23 @@ const RecoQuiz = ({ paper, id }) => {
                                                 type="radio"
                                                 name={`question_${index}`}
                                                 value={option}
-                                                onChange={(e) => handleOptionChange(index, e.target.value)}
-                                                className="mr-2 size-3"
-                                                required
+                                                onChange={() => handleOptionChange(index, option)}
+                                                className="mr-2"
                                             />
                                             {option}
                                         </label>
                                     ))}
                                 </div>
-                                {showResults && (
-                                    <p className={userAnswers[index] === q.answer ? "text-green-600 mt-2" : "text-red-600 mt-2"}>
-                                        {userAnswers[index] === q.answer ? "✅ Correct" : `❌ Incorrect. Correct answer: ${q.answer}`}
+                                {userAnswers[index] && (
+                                    <p className={results[index] ? "text-green-600 mt-2" : "text-red-600 mt-2"}>
+                                        {results[index] ? "✅ Correct" : `❌ Incorrect. Correct answer: ${q.answer}`}
                                     </p>
                                 )}
                             </div>
                         ))}
-                        {!showResults ? (
-                            <Button type="submit" disabled={!allAnswered} className="mt-1">
-                                Submit Quiz
-                            </Button>
-                        ) : (
-                            <div className="mt-4 text-xl font-bold text-center">
-                                You scored {score} out of {quizQuestions.length}
-                            </div>
-                        )}
+                        <div className="mt-4 text-xl font-bold text-center">
+                            Your score: {score} / {quizQuestions.length}
+                        </div>
                     </form>
                 )}
             </div>
@@ -110,4 +94,4 @@ const RecoQuiz = ({ paper, id }) => {
     )
 }
 
-export default RecoQuiz
+export default RecoQuiz;
