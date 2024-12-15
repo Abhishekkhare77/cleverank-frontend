@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import axios from "axios";
-import GoogleLogin from "@/components/GoogleLogin"; // Assuming GoogleLogin component exists
+import GoogleLogin from "@/components/GoogleLogin";
 import { toast } from "sonner";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -14,58 +14,51 @@ const Page = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
-  // Handle normal registration
-  const handleRegister = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    axios
-      .post("https://cleverank.adnan-qasim.me/auth/register", {
-        email,
-        name,
-        password,
-      })
-      .then((response) => {
-        console.log("User registered:", response.data);
-        localStorage.setItem("token", response.data.access_token);
-        router.push("/create-profile");
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        setError("Registration failed. Please try again.", error);
-      });
-  };
 
   const router = useRouter();
 
-  const handleGoogleRegister = (googleData) => {
+  // Handle normal registration
+  const handleRegister = async (e) => {
+    e.preventDefault();
     setLoading(true);
-    console.log(googleData);
-
-    const options = {
-      method: "POST",
-      url: "https://cleverank.adnan-qasim.me/auth/google",
-      data: { email: googleData.email, name: googleData.name },
-    };
-    console.log(options);
-
-    axios
-      .request(options)
-      .then((response) => {
-        console.log("Google registration successful:", response.data);
-        setLoading(false);
-        router.push("/create-profile");
-      })
-      .catch((error) => {
-        setLoading(false);
-        toast.error("Google registration failed. Please try again.", {
-          position: "top-center",
-        });
-        console.error("Google registration error:", error);
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/auth/register", {
+        email,
+        name,
+        password,
       });
+      console.log("User registered:", response.data);
+      localStorage.setItem("token", response.data.access_token);
+      router.push("/create-profile");
+    } catch (error) {
+      console.error("Registration error:", error.response || error.message);
+      toast.error("Registration failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Handle Google login
+  const handleGoogleRegister = async (googleData) => {
+    setLoading(true);
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/auth/google", {
+        email: googleData.email,
+        name: googleData.name,
+      });
+      console.log("Google registration successful:", response.data);
+      localStorage.setItem("token", response.data.access_token);
+      router.push("/create-profile");
+    } catch (error) {
+      console.error(
+        "Google registration error:",
+        error.response || error.message
+      );
+      toast.error("Google registration failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -74,7 +67,6 @@ const Page = () => {
         <h2 className="text-xl font-semibold text-center text-gray-800 mb-4">
           Create an Account
         </h2>
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <form onSubmit={handleRegister}>
           <div className="mb-4">
             <Label htmlFor="name">Name</Label>
