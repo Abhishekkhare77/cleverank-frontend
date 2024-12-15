@@ -13,17 +13,27 @@ import { useEffect, useState } from "react";
 const Page = () => {
   const [profileData, setProfileData] = useState(null);
   const [error, setError] = useState(null);
-  const tabsData = [
-    {
-      value: "Achievements",
-      label: "Achievements",
-      component: <Achievements />,
-    },
-    { value: "Interests", label: "Interests", component: <Interests /> },
-    { value: "Followers", label: "Followers", component: <Followers /> },
-    { value: "Peers", label: "Peers", component: <Peers /> },
-    { value: "Submission", label: "Submission", component: <Submission /> },
-  ];
+
+  const tabsData = profileData
+    ? [
+        {
+          value: "Achievements",
+          label: "Achievements",
+          component: (
+            <Achievements
+              badges={profileData.badges || []}
+              tracks={profileData.tracks || []}
+              titles={profileData.titles || []}
+            />
+          ),
+        },
+        { value: "Interests", label: "Interests", component: <Interests /> },
+        { value: "Followers", label: "Followers", component: <Followers /> },
+        { value: "Peers", label: "Peers", component: <Peers /> },
+        { value: "Submission", label: "Submission", component: <Submission /> },
+      ]
+    : [];
+
   useEffect(() => {
     const fetchProfile = async () => {
       const token = localStorage.getItem("token");
@@ -50,7 +60,6 @@ const Page = () => {
         }
 
         const data = await response.json();
-        console.log(data);
         setProfileData(data); // Set the profile data to the state
       } catch (error) {
         setError(error.message);
@@ -60,72 +69,82 @@ const Page = () => {
     fetchProfile();
   }, []);
 
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!profileData) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className="flex gap-4 h-[calc(100vh-4.48rem)]">
-      <div className="w-52 border-r-2 flex flex-col gap-4 ml-2 h-full ">
-        <div>
+    <div className="flex gap-4 h-[calc(100vh-2vh)]">
+      {/* Left Section */}
+      <div className="w-64 border-r-2 flex flex-col gap-4 h-full mx-2">
+        <div className="flex flex-col items-center mt-8">
           <div className="w-36 h-36 rounded-full border ml-4">
             <Image
-              src="/assets/gaurav-mehta.png"
-              alt="img"
+              src={profileData.profileImage || "/assets/gaurav-mehta.png"}
+              alt="Profile"
               width={1000}
               height={1000}
               quality={100}
-              className="  object-cover w-full h-full rounded-full"
+              className="object-cover w-full h-full rounded-full"
             />
           </div>
-          <h1 className="text-2xl font-semibold mt-4"> Gaurav Mehta</h1>
-          <h1 className="text-sm mt-2">
-            National Institute of Technology Raipur(CG), India
+          <h1 className="text-2xl font-semibold text-center mt-4">
+            {profileData.name || "User Name"}
           </h1>
-          <div className="flex flex-col h-full justify-between mt-4 pb-3">
-            <div>
+          <h1 className="text-sm mt-2 text-center">
+            {profileData.interests[0]?.interest_stream || "No Stream Provided"}
+          </h1>
+          <div className="flex flex-col items-center mt-4">
               <Button className="w-44">Follow</Button>
               <Button className="w-44 mt-2">Edit Profile</Button>
+            <div className="flex flex-col gap-3 my-8">
+              <div className="flex items-center gap-2 text-sm">
+                <Instagram /> {profileData.social_details?.instagram || "Intellect124"}
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Linkedin /> {profileData.social_details?.linkedin || "Intellect124"}
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Twitter /> {profileData.social_details?.twitter || "Intellect124"}
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Mail /> {profileData.email.split("@")[0]}
+              </div>
             </div>
-            <Button variant={"outline"} className="w-44 -mt-2">
+            <Button variant={"outline"} className="w-44 mt-2 border-2">
               Download PDF
             </Button>
           </div>
         </div>
       </div>
-      <div className=" w-[61.5rem] ml-4">
-        <div className="w-full flex  justify-between pr-8">
+
+      {/* Right Section */}
+      <div className=" w-[61.5rem] ml-4 mt-8">
+        <div className="w-full flex justify-between pr-8">
           <div>
-            <div className="text-3xl font-bold">AI Ethics Guardian</div>
-            <div className="w-[35rem] mt-2 text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-              accusamus numquam autem aut aliquam voluptatem culpa non. Porro,
-              eveniet asperiores iure excepturi dolore adipisci numquam! Esse
-              nobis corrupti id totam quasi iusto neque facilis commodi, fugit
-              cum quas error, aspernatur magnam veniam at non sit blanditiis rem
-              dolorum ex a.
+            <div className="text-3xl font-bold">
+              {profileData.titles[0]?.title_name || "No Title"}
             </div>
-            <div className="grid grid-cols-2 gap-2 py-4">
-              <div className="flex items-center gap-2">
-                <Instagram /> Gaurav Mehta
-              </div>
-              <div className="flex items-center gap-2">
-                <Linkedin /> Gaurav Mehta
-              </div>
-              <div className="flex items-center gap-2">
-                <Twitter /> Gaurav Mehta
-              </div>
-              <div className="flex items-center gap-2">
-                {" "}
-                <Mail />
-                Gaurav Mehta
-              </div>
+            <div className="w-[35rem] mt-2 text-sm">
+              {profileData.about ||
+                "No description provided. Please add a personal description."}
             </div>
           </div>
           <div>
-            <div className=" border-2 flex flex-col items-center justify-center size-48 rounded-lg">
-              <div className="text-4xl font-semibold">67</div>
+            <div className="border-2 flex flex-col items-center justify-center size-48 rounded-lg">
+              <div className="text-4xl font-semibold">
+                {profileData.paper_read_count || 0}
+              </div>
               <div>Papers Read</div>
             </div>
           </div>
         </div>
 
+        {/* Tabs Section */}
         <div className="flex gap-14 w-full">
           <Tabs defaultValue="Achievements" className="w-full">
             <TabsList className="w-full flex items-center justify-start my-3">
@@ -136,7 +155,7 @@ const Page = () => {
               ))}
             </TabsList>
             {tabsData.map((tab) => (
-              <TabsContent key={tab.value} value={tab.value} className="mt-4">
+              <TabsContent key={tab.value} value={tab.value} className="mt-4 mx-8">
                 {tab.component}
               </TabsContent>
             ))}
