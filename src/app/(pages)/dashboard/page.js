@@ -5,45 +5,42 @@ const page = () => {
   return (
     <div className="py-4 px-2">
       <div>
-        <h1 className="text-3xl font-semibold">Good Morning, Gaurav</h1>
+        <h1 className="text-3xl font-semibold">Good Morning, Null</h1>
         <p className="my-1 text-gray-500">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores
           error debitis ratione quaerat ex eum.
         </p>
-        <div className="flex gap-4 mt-8">
-          <div className="h-52 w-72 shadow-md">
-            <div className="py-2 px-4 flex justify-between">
-              {" "}
-              <h1 className="text-[#327202] font-semibold text-lg ">
-                Total Paper
-              </h1>
-              <div className="mt-1">
-                <img src="/booksIcon.png" alt="icon" />
-              </div>
+        <div className="flex gap-8 mt-8">
+          <div className="h-[120px] w-52 shadow-md">
+            <div className="py-2 px-4 flex">
+              <h1 className="text-[#327202] font-semibold text-lg ">Papers</h1>
             </div>
-            <div className="w-full flex items-center justify-center h-32 text-5xl font-bold bg-gradient-to-r from-[#59C009] to-[#295A04] text-transparent bg-clip-text">
-              100
+            <div className="w-full flex items-center justify-start px-4 text-5xl font-bold bg-gradient-to-r from-[#59C009] to-[#295A04] text-transparent bg-clip-text">
+              12
             </div>
           </div>
-          <div className="h-52 w-72 shadow-md">
-            <div className="py-2 px-4 flex justify-between">
-              {" "}
-              <h1 className="text-[#327202] font-semibold text-lg ">Tracks</h1>
+          <div className="h-[120px] w-52 shadow-md">
+            <div className="py-2 px-4 flex">
+              <h1 className="text-[#327202] font-semibold text-lg ">Completed</h1>
             </div>
-            <div className="w-full flex items-center justify-center h-32 text-5xl font-bold bg-gradient-to-r from-[#59C009] to-[#295A04] text-transparent bg-clip-text">
-              03
+            <div className="w-full flex items-center justify-start px-4 text-5xl font-bold bg-gradient-to-r from-[#59C009] to-[#295A04] text-transparent bg-clip-text">
+              3
             </div>
           </div>
-          <div className="h-52 w-72 shadow-md">
-            <dv className="py-2 px-4 flex justify-between">
-              {" "}
-              <h1 className="text-[#327202] font-semibold text-lg ">Unkonn</h1>
-            </dv>
+          <div className="h-[120px] w-52 shadow-md">
+            <div className="py-2 px-4 flex">
+              <h1 className="text-[#327202] font-semibold text-lg ">Assessment</h1>
+            </div>
+            <div className="w-full flex items-center justify-start px-4 text-5xl font-bold bg-gradient-to-r from-[#59C009] to-[#295A04] text-transparent bg-clip-text">
+              2
+            </div>
           </div>
-          <div className="h-52 w-72 shadow-md">
-            <div className="py-2 px-4 flex justify-between">
-              {" "}
-              <h1 className="text-[#327202] font-semibold text-lg ">Unkonn</h1>
+          <div className="h-[120px] w-52 shadow-md">
+            <div className="py-2 px-4 flex">
+              <h1 className="text-[#327202] font-semibold text-lg ">Bounties</h1>
+            </div>
+            <div className="w-full flex items-center justify-start px-4 text-5xl font-bold bg-gradient-to-r from-[#59C009] to-[#295A04] text-transparent bg-clip-text">
+              79
             </div>
           </div>
         </div>

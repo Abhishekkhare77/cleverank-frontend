@@ -58,7 +58,7 @@ const Page = () => {
 
   return (
     <div>
-      <div className="text-xl font-semibold">Search</div>
+      <div className="text-3xl font-semibold">Search</div>
       <div className="text-gray-500 text-sm pb-3">
         Write the name or anything related to the paper to search.
       </div>

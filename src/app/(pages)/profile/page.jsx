@@ -88,7 +88,7 @@ const Page = () => {
   return (
     <div className="flex gap-4 h-[calc(100vh-2vh)]">
       {/* Left Section */}
-      <div className="w-64 border-r-2 flex flex-col gap-4 h-full mx-2">
+      <div className="w-64 border-r-2 flex flex-col gap-4 h-[140vh] mx-2">
         <div className="flex flex-col items-center mt-8">
           <div className="w-36 h-36 rounded-full border ml-4">
             <Image

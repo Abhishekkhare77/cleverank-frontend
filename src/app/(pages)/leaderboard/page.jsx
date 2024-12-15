@@ -109,7 +109,7 @@ const Page = () => {
 
   return (
     <div>
-      <div className="text-xl font-semibold">Leaderboard</div>
+      <div className="text-3xl font-semibold">Leaderboard</div>
       <div className="text-gray-500 text-sm pb-5">
         Here is the list of all the top users.
       </div>

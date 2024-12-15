@@ -208,7 +208,7 @@ const Page = () => {
 
   return (
     <>
-      <div className="text-xl font-semibold">Recommended Papers</div>
+      <div className="text-3xl font-semibold">Recommended Papers</div>
       <div className="text-gray-500 text-sm pb-5">
         Here is a list of papers recommended for you.
       </div>

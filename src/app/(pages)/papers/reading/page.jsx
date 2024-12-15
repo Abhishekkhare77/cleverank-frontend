@@ -65,7 +65,7 @@ const Page = () => {
 
     return (
         <>
-            <div className="text-xl font-semibold">Reading</div>
+            <div className="text-3xl font-semibold">Reading</div>
             <div className="text-gray-500 text-sm pb-3">Here are the list of papers you have started reading or completed.</div>
             <div className="flex flex-col gap-3">
                 {papers.map((paper, index) => (

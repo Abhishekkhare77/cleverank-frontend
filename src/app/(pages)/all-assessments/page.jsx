@@ -36,7 +36,7 @@ const Page = () => {
     return (
         <>
             <div className='py-4'>
-                <div className="text-xl font-semibold">Your Assessments</div>
+                <div className="text-3xl font-semibold">Your Assessments</div>
                 <div className="text-gray-500 text-sm pb-5">
                     Here is a list of all the assessments you have taken.
                 </div>

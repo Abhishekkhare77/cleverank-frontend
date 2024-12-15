@@ -11,8 +11,8 @@ const Achievements = ({ badges, tracks, titles }) => {
               <Image
                 src={title.title_image_link || "/default-title.png"}
                 alt={title.title_name}
-                width={120}
-                height={120}
+                width={180}
+                height={180}
                 className="rounded-lg"
               />
               {/* <span className="text-sm">{title.title_name}</span> */}
@@ -29,8 +29,8 @@ const Achievements = ({ badges, tracks, titles }) => {
               <Image
                 src={track.track_image_link || "/default-track.png"}
                 alt={track.track_title}
-                width={120}
-                height={120}
+                width={180}
+                height={180}
                 className="rounded-lg"
               />
               {/* <span className="text-sm">{track.track_title}</span> */}
@@ -47,8 +47,8 @@ const Achievements = ({ badges, tracks, titles }) => {
               <Image
                 src={badge.badge_image_link || "/default-badge.png"}
                 alt={badge.badge_title}
-                width={120}
-                height={120}
+                width={180}
+                height={180}
                 className="rounded-lg"
               />
               {/* <span className="text-sm">{badge.badge_title}</span> */}
