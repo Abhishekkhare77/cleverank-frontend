@@ -1,13 +1,9 @@
+import Image from "next/image";
 import React from "react";
+import { Button } from "../ui/button";
 
 const Transforming = () => {
   const content = [
-    {
-      title: "Transforming how you Learn, Grow, and Succeed.",
-      text: [
-        "At Cleverank, we’ve revolutionizing how you engage with research papers and journals. Powered by advanced AI, our platform curates personalized recommendations, enhances your learning experience, and unlocks career opportunities—all while making research interactive, rewarding, and fun.",
-      ],
-    },
     {
       title: "What is Cleverank?",
       text: [
@@ -43,7 +39,37 @@ const Transforming = () => {
     },
   ];
   return (
-    <div className="mx-48 mt-14">
+    <div className="mx-48 mt-28">
+      <div className="flex">
+        <div className="text-6xl font-semibold w-1/2">
+          Transforming how you Learn, Grow, and Succeed.
+        </div>
+        <div className=" h-64 w-1/2">
+          <Image
+            src="/AboutImg/research-gemini.png"
+            alt="img"
+            height={1000}
+            width={1000}
+            quality={100}
+            className="h-full w-full"
+          />
+        </div>
+      </div>
+
+      <div className=" flex  w-full justify-between items-center mt-16">
+        <div className="w-[34rem]">
+          At Cleverank, we’ve revolutionizing how you engage with research
+          papers and journals. Powered by advanced AI, our platform curates
+          personalized recommendations, enhances your learning experience, and
+          unlocks career opportunities—all while making research interactive,
+          rewarding, and fun.
+        </div>
+        <Button className=" bg-black hover:bg-black/85  py-8 px-12">
+          {" "}
+          Contact us
+        </Button>
+      </div>
+
       {content.map((section, index) => (
         <div key={index} className="mt-6">
           <h1 className="text-2xl font-semibold">{section.title}</h1>
