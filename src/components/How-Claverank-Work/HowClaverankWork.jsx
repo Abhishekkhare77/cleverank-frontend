@@ -52,9 +52,18 @@ const HowClaverankWork = () => {
       <h1 className="text-center text-4xl font-bold ">How Cleverank Works?</h1>
       {content.map((section, index) => (
         <div key={index} className="mt-10">
-          <h1 className="text-2xl font-semibold mb-4">{section.title}</h1>
+          <div className="relative">
+            <span className="text-6xl font-bold rounded-full bg-gray-50 px-6 text-gray-200">
+              {" "}
+              {index + 1}
+            </span>
+            <h1 className=" absolute bottom-2 left-16 text-2xl font-semibold ">
+              {section.title}
+            </h1>
+          </div>
+
           {section.text.map((paragraph, textIndex) => (
-            <p key={textIndex} className="text-[#686868]">
+            <p key={textIndex} className="text-[#686868] mt-5">
               {paragraph}
             </p>
           ))}
