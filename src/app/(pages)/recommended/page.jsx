@@ -353,7 +353,7 @@ const Page = () => {
                     </div>
                     <DialogTrigger className="text-base font-semibold bg-[#59C009] text-gray-50 px-5 py-2 flex items-center justify-center gap-1 rounded-full">
                       <Book className="size-5" />
-                      Read
+                      View
                     </DialogTrigger>
                   </div>
                   <DialogContent className="max-w-4xl">
