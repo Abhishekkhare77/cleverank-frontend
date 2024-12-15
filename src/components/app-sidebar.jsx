@@ -194,7 +194,12 @@ export function AppSidebar({ ...props }) {
           {open ? (
             <div className="flex items-center justify-between px-2 w-full">
               <Link href={"/dashboard"}>
-                <Image src={"/logo.png"} width={100} height={100} alt="logo" />
+                <Image
+                  src={"/cleverank-logo-final.png"}
+                  width={100}
+                  height={100}
+                  alt="logo"
+                />
               </Link>
               <SidebarTrigger />
             </div>
