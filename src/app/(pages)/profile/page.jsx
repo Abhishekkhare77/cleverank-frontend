@@ -99,17 +99,20 @@ const Page = () => {
             {profileData.interests[0]?.interest_stream || "No Stream Provided"}
           </h1>
           <div className="flex flex-col items-center mt-4">
-              <Button className="w-44">Follow</Button>
-              <Button className="w-44 mt-2">Edit Profile</Button>
+            <Button className="w-44">Follow</Button>
+            <Button className="w-44 mt-2">Edit Profile</Button>
             <div className="flex flex-col gap-3 my-8">
               <div className="flex items-center gap-2 text-sm">
-                <Instagram /> {profileData.social_details?.instagram || "Intellect124"}
+                <Instagram />{" "}
+                {profileData.social_details?.instagram || "Intellect124"}
               </div>
               <div className="flex items-center gap-2 text-sm">
-                <Linkedin /> {profileData.social_details?.linkedin || "Intellect124"}
+                <Linkedin />{" "}
+                {profileData.social_details?.linkedin || "Intellect124"}
               </div>
               <div className="flex items-center gap-2 text-sm">
-                <Twitter /> {profileData.social_details?.twitter || "Intellect124"}
+                <Twitter />{" "}
+                {profileData.social_details?.twitter || "Intellect124"}
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <Mail /> {profileData.email.split("@")[0]}
@@ -135,7 +138,7 @@ const Page = () => {
             </div>
           </div>
           <div>
-            <div className="border-2 flex flex-col items-center justify-center size-48 rounded-lg">
+            <div className="border-2 border-gray-300 shadow-xl flex flex-col items-center justify-center size-48 rounded-lg">
               <div className="text-4xl font-semibold">
                 {profileData.paper_read_count || 0}
               </div>
@@ -146,16 +149,24 @@ const Page = () => {
 
         {/* Tabs Section */}
         <div className="flex gap-14 w-full">
-          <Tabs defaultValue="Achievements" className="w-full">
-            <TabsList className="w-full flex items-center justify-start my-3">
+          <Tabs defaultValue="Achievements">
+            <TabsList className="w-full bg-secondary py-6 flex items-center justify-start my-3">
               {tabsData.map((tab) => (
-                <TabsTrigger key={tab.value} value={tab.value} className="px-6">
+                <TabsTrigger
+                  key={tab.value}
+                  value={tab.value}
+                  className="px-6 py-2.5"
+                >
                   {tab.label}
                 </TabsTrigger>
               ))}
             </TabsList>
             {tabsData.map((tab) => (
-              <TabsContent key={tab.value} value={tab.value} className="mt-4 mx-8">
+              <TabsContent
+                key={tab.value}
+                value={tab.value}
+                className="mt-4 mx-8"
+              >
                 {tab.component}
               </TabsContent>
             ))}
