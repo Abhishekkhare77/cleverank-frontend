@@ -2,12 +2,14 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import axios from 'axios'
-import { CircleCheckBig, RotateCcw } from 'lucide-react';
+import { ArrowRight, CircleCheckBig, Clock, RotateCcw } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 const Page = () => {
 
     const [assessments, setAssessments] = useState([])
+    const router = useRouter();
 
     const fetchAssessments = () => {
         const options = {
@@ -60,30 +62,32 @@ const Page = () => {
                                 <strong className="font-semibold text-gray-800 line-clamp-2">
                                     {paper.paper_doc.paper_title}
                                 </strong>
-                                <div className="flex items-center gap-4 text-sm pt-1 pb-3">
-                                    <div><strong> Year : {" "}</strong>{paper.paper_doc.year || "N/A"}</div>
-                                    <div>
-                                        <strong>Authors :</strong>{" "}
-                                        {paper.paper_doc.author.length > 3
-                                            ? `${paper.paper_doc.author
-                                                .slice(0, 3)
-                                                .map(
-                                                    (author) => `${author.first_name} ${author.last_name}`
-                                                )
-                                                .join(", ")}...`
-                                            : paper.paper_doc.author
-                                                .map(
-                                                    (author) => `${author.first_name} ${author.last_name}`
-                                                )
-                                                .join(", ")}
-                                    </div>
+                                <div className="line-clamp-2 my-2 text-sm text-gray-600">{paper?.paper_doc?.paper_abstract ?? "Summary Not Available."}</div>
+                                <div className='text-xs'>
+                                    Completion date :{new Date(paper.user_assessment.date).toLocaleDateString('en-GB', {
+                                        day: '2-digit',
+                                        month: 'long',
+                                        year: 'numeric'
+                                    })}
                                 </div>
-
-                                <div className="line-clamp-1 text-sm text-gray-600">{paper?.paper_doc?.paper_abstract ?? "Summary Not Available."}</div>
                             </CardContent>
                         </div>
                         <CardFooter>
-                            <div></div>
+                            {/* pass, review, retest */}
+                            <div className='capitalize'>{paper?.user_assessment?.assessment_status === 'review' ?
+                                <Button className="w-36" variant={"secondary"}><Clock /> In Review</Button> :
+                                paper?.user_assessment?.assessment_status === 'pass' ?
+                                    <div className='flex items-center justify-center flex-col mt-10'>
+                                        <div className='w-36 flex items-center gap-2'><Button className="w-3/4"> <CircleCheckBig /> Pass </Button><Button variant="outline" className="w-1/4">{paper?.user_assessment?.points_earned}</Button> </div>
+                                        <Button className="w-32" variant="link">Go to Feedback <ArrowRight /></Button>
+                                    </div>
+                                    :
+                                    <div className='flex items-center justify-center flex-col mt-10'>
+                                        <div className='w-36 flex items-center gap-2'><Button variant="destructive" className="w-3/4"><RotateCcw />Retest</Button><Button variant="outline" className="w-1/4">{paper?.user_assessment?.points_earned}</Button> </div>
+                                        <Button className="w-32" variant="link">Go to Feedback <ArrowRight /></Button>
+                                    </div>
+                            }
+                            </div>
                         </CardFooter>
                     </Card>
                 ))}
