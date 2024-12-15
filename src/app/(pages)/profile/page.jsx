@@ -75,7 +75,9 @@ const Page = () => {
   }
 
   if (!profileData) {
-    return <div>Loading...</div>;
+    return <div className=" h-screen w-full flex items-center justify-center">
+      <div className="cycler-loader"></div>
+    </div>;
   }
 
   return (
