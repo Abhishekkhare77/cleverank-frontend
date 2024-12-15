@@ -1,3 +1,4 @@
+import Image from "next/image";
 import TitleSubTitle from "../TitleSubTitle";
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
 
@@ -7,56 +8,56 @@ const ScheduleEasy = () => {
       title: "Personalized Recommendations",
       description:
         "Discover research tailored to your interests and career goals. Our AI ensures you stay updated with the most relevant and impactful content.",
-      imgSrc: "/LandingPageIcon/personalized_recommendation.png",
+      imgSrc: "/LandingPageIcon/icon-1.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Interactive Learning",
       description:
         "Engage with research using tools like concept breakdowns, quizzes, and AI-powered chats that simplify complex topics for better understanding.",
-      imgSrc: "/LandingPageIcon/Interactive_Learning.png",
+      imgSrc: "/LandingPageIcon/icon-2.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Track Your Progress",
       description:
         "Monitor your learning journey with real-time assessments and progress reports to continuously improve your expertise.",
-      imgSrc: "/LandingPageIcon/Progress.png",
+      imgSrc: "/LandingPageIcon/icon-3.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Earn While You Learn",
       description:
         "Explore research papers with bounties and earn rewards as you complete assignments and build knowledge in your field.",
-      imgSrc: "/LandingPageIcon/you_learn.png",
+      imgSrc: "/LandingPageIcon/icon-4.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Build Your Profile",
       description:
         "Showcase your research achievements and stand out to employers, academic advisors, and institutions for scholarships and job opportunities.",
-      imgSrc: "/LandingPageIcon/Profile.png",
+      imgSrc: "/LandingPageIcon/icon-5.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Global Leaderboard",
       description:
         "Earn Karma points and badges to compete with a global community of learners and establish yourself as a top researcher.",
-      imgSrc: "/LandingPageIcon/Leaderboard.png",
+      imgSrc: "/LandingPageIcon/icon-6.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Explore Career Opportunities",
       description:
         "Unlock scholarships, PhD placements, and career advancements by validating your expertise through your Cleverank profile.",
-      imgSrc: "/LandingPageIcon/Career.png",
+      imgSrc: "/LandingPageIcon/icon-7.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Stay Ahead of Trends",
       description:
         "Access the latest research and emerging trends in your field to stay ahead and continuously grow in your career.",
-      imgSrc: "/LandingPageIcon/trends.png",
+      imgSrc: "/LandingPageIcon/icon-8.png",
       imgAlt: "Easy embeds",
     },
   ];
@@ -66,19 +67,23 @@ const ScheduleEasy = () => {
       id: "01",
       title: "Personalized Research Recommendations",
       description:
-        "Our AI curates research papers tailored to your academic interests and career goals, saving you time on endless searches.",
+        "Our Gemini AI curates research papers tailored to your academic interests and career goals, saving you time on endless searches.",
+      img: "/Learnicon/personalized-learning.png",
     },
     {
       id: "02",
       title: "Engage and Learn Efficiently",
       description:
         "Break down complex concepts, interact with papers, and reinforce your learning with quizzes and assessments.",
+      img: "/Learnicon/learn-efficiently.png",
     },
     {
       id: "03",
       title: "Earn and Unlock Opportunities",
       description:
         "Complete research tasks, earn Karma points, and unlock rewards like bounties, badges, and career advancement opportunities.",
+
+      img: "/Learnicon/learning-badges.png",
     },
   ];
   return (
@@ -89,24 +94,29 @@ const ScheduleEasy = () => {
         subtitle="Effortless discovery of research, interactive learning, and career-boosting rewards—designed for students, researchers, and professionals alike.
 "
       />
+
       <div className="flex w-full gap-10">
         {cardData.map((card) => (
           <Card key={card.id} className="w-full h-[26.5rem]">
             <CardHeader className="flex gap-4">
+              <CardDescription className="flex items-center justify-center">
+                <Image src={card.img} alt="img" height={200} width={200} />
+              </CardDescription>
               <CardDescription className="bg-slate-200 w-8 rounded-md text-center py-1">
                 {card.id}
               </CardDescription>
               <CardTitle>{card.title}</CardTitle>
-              <CardDescription className="text-lg ">
+              <CardDescription className=" ">
                 {card.description}
               </CardDescription>
             </CardHeader>
           </Card>
         ))}
       </div>
+
       <TitleSubTitle
-        title="Cleverank simplifies the research process for you"
-        subtitle="Effortlessly explore research papers, learn interactively, and showcase your expertise with advanced AI-powered tools."
+        title="Cleverank simplifies acqusition of knowledge for you"
+        subtitle="Effortlessly explore research papers, learn interactively, and showcase your expertise with advanced Gemini AI-powered tools."
       />
       <div className=" grid grid-cols-2  sm:grid-cols-4 md:w-max  lg:grid-cols-4 gap-4">
         {cardData2.map((card, index) => (
@@ -118,7 +128,6 @@ const ScheduleEasy = () => {
               className="shadow-fade group relative grid h-full w-full overflow-clip rounded-2xl bg-white 
                 [&>*]:[grid-area:1/1] "
             >
-              {/* Front Side */}
               <div
                 className="flex h-full w-full flex-col items-center p-4 transition-opacity duration-300 
                   group-hover:opacity-0 group-focus-visible:opacity-0"
@@ -132,8 +141,8 @@ const ScheduleEasy = () => {
                     <img
                       alt={card.imgAlt}
                       loading="lazy"
-                      width="24"
-                      height="24"
+                      width="40"
+                      height="40"
                       decoding="async"
                       data-nimg="1"
                       src={card.imgSrc}
