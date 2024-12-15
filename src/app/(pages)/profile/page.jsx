@@ -16,22 +16,22 @@ const Page = () => {
 
   const tabsData = profileData
     ? [
-        {
-          value: "Achievements",
-          label: "Achievements",
-          component: (
-            <Achievements
-              badges={profileData.badges || []}
-              tracks={profileData.tracks || []}
-              titles={profileData.titles || []}
-            />
-          ),
-        },
-        { value: "Interests", label: "Interests", component: <Interests /> },
-        { value: "Followers", label: "Followers", component: <Followers /> },
-        { value: "Peers", label: "Peers", component: <Peers /> },
-        { value: "Submission", label: "Submission", component: <Submission /> },
-      ]
+      {
+        value: "Achievements",
+        label: "Achievements",
+        component: (
+          <Achievements
+            badges={profileData.badges || []}
+            tracks={profileData.tracks || []}
+            titles={profileData.titles || []}
+          />
+        ),
+      },
+      { value: "Interests", label: "Interests", component: <Interests /> },
+      { value: "Followers", label: "Followers", component: <Followers /> },
+      { value: "Peers", label: "Peers", component: <Peers /> },
+      { value: "Submission", label: "Submission", component: <Submission /> },
+    ]
     : [];
 
   useEffect(() => {
@@ -60,6 +60,7 @@ const Page = () => {
         }
 
         const data = await response.json();
+        console.log(data);
         setProfileData(data); // Set the profile data to the state
       } catch (error) {
         setError(error.message);
@@ -96,7 +97,7 @@ const Page = () => {
             {profileData.name || "User Name"}
           </h1>
           <h1 className="text-sm mt-2 text-center">
-            {profileData.interests[0]?.interest_stream || "No Stream Provided"}
+            {profileData?.interests[0]?.interest_stream || "No Stream Provided"}
           </h1>
           <div className="flex flex-col items-center mt-4">
             <Button className="w-44">Follow</Button>
@@ -126,8 +127,8 @@ const Page = () => {
       </div>
 
       {/* Right Section */}
-      <div className=" w-[61.5rem] ml-4 mt-8">
-        <div className="w-full flex justify-between pr-8">
+      <div className=" w-full ml-4 mt-8">
+        <div className="w-full flex justify-between">
           <div>
             <div className="text-3xl font-bold">
               {profileData.titles[0]?.title_name || "No Title"}
