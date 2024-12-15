@@ -231,9 +231,8 @@ const Page = () => {
           return (
             <Card
               key={paper._id}
-              className={`relative shadow-sm hover:shadow transition-shadow duration-200 w-full flex rounded-sm ${
-                index % 2 === 0 ? "bg-[#F9F9F9]" : "bg-white"
-              } items-center justify-between pr-3`}
+              className={`relative shadow-sm hover:shadow transition-shadow duration-200 w-full flex rounded-sm ${index % 2 === 0 ? "bg-[#F9F9F9]" : "bg-white"
+                } items-center justify-between pr-3`}
             >
               <div className="flex items-center">
                 <CardHeader className="relative flex-shrink-0">
@@ -261,18 +260,18 @@ const Page = () => {
                       <strong>Authors :</strong>{" "}
                       {paper.author.length > 3
                         ? `${paper.author
-                            .slice(0, 3)
-                            .map(
-                              (author) =>
-                                `${author.first_name} ${author.last_name}`
-                            )
-                            .join(", ")}...`
+                          .slice(0, 3)
+                          .map(
+                            (author) =>
+                              `${author.first_name} ${author.last_name}`
+                          )
+                          .join(", ")}...`
                         : paper.author
-                            .map(
-                              (author) =>
-                                `${author.first_name} ${author.last_name}`
-                            )
-                            .join(", ")}
+                          .map(
+                            (author) =>
+                              `${author.first_name} ${author.last_name}`
+                          )
+                          .join(", ")}
                     </div>
                   </div>
 
@@ -328,8 +327,8 @@ const Page = () => {
                             }
                           >
                             {currentPlayingId === paper._id &&
-                            audio &&
-                            !audio.paused ? (
+                              audio &&
+                              !audio.paused ? (
                               <Pause className="size-6 pt-1 cursor-pointer" />
                             ) : (
                               <Play className="size-6 pt-1 cursor-pointer" />
@@ -403,7 +402,9 @@ const Page = () => {
       </div>
       <div className="text-center mt-5">
         {isLoadingMore ? (
-          <div className="spinner my-5" />
+          <div className="flex items-center justify-center">
+            <div className="spinner my-5" />
+          </div>
         ) : (
           <button
             className="bg-[#59C009] text-white px-4 py-2 rounded-md hover:bg-[#4da007] focus:outline-none"
