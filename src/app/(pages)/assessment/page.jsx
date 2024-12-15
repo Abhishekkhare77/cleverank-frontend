@@ -1,14 +1,22 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import React from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 const Page = () => {
   const searchParams = useSearchParams();
   const paperId = searchParams.get("paper_id");
   const difficulty = searchParams.get("selected_difficulty");
+  const router = useRouter();
+
+  const [isChecked, setIsChecked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [permissionError, setPermissionError] = useState("");
+
+  const [paper, setPaper] = useState(null);
 
   const contentData = [
     {
@@ -104,25 +112,85 @@ const Page = () => {
     },
   ];
 
+  useEffect(() => {
+    if (!paperId) return; // Ensure paper_id exists before fetching data
+
+    const fetchPaper = async () => {
+      try {
+        const response = await fetch(`https://cleverank.adnan-qasim.me/papers/get-paper/${paperId}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        if (!response.ok) {
+          throw new Error("Failed to fetch paper");
+        }
+        const data = await response.json();
+        console.log(data);
+        setPaper(data.paper); // Set the paper data
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchPaper();
+
+  }, [paperId]);
+
+  const handleStart = async () => {
+    setIsLoading(true);
+    setPermissionError("");
+
+    try {
+      // Request camera and microphone permissions
+      await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+
+      // Permissions granted, navigate to the viva page
+      router.push(
+        `/viva/?paper_id=${encodeURIComponent(paperId)}&selected_difficulty=${encodeURIComponent(
+          difficulty
+        )}`
+      );
+    } catch (error) {
+      console.error("Permission Error:", error);
+      setPermissionError(
+        "Unable to access camera and microphone. Please check your browser settings and try again."
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <div className="mx-32 mt-4 mb-10">
-      <div className="font-semibold text-2xl">
+    <div className="mx-8 md:mx-32 mt-4 mb-10">
+      <div className="font-semibold text-2xl text-center">
         Viva Voce Assessment Guidelines
       </div>
-      <div className="flex w-full justify-between my-4">
-        <div className="text-gray-500">
-          Paper title will come here in the headings cleaverank <br /> another
-          line of paper title
+      <div className="flex flex-col md:flex-row md:justify-between my-4">
+        <div className="text-black text-center md:text-left">
+          {/* Replace with actual paper title */}
+          <span className="block max-w-xl text-xl font-bold tracking-tight">{paper?.paper_title ??
+            (
+              <div>
+                <Skeleton className={"w-96 h-4"} />
+                <Skeleton className={"w-96 h-4"} />
+              </div>
+            )
+          }</span>
         </div>
-        <div className="font-semibold text-xl">60 Points</div>
+        <div className="font-semibold text-xl text-center md:text-right">
+          60 Points
+        </div>
       </div>
 
       {contentData.map((section, sectionIndex) => (
         <div key={sectionIndex}>
-          <h1 className="text-xl font-semibold mt-6">{section.title}</h1>
+          <h2 className="text-xl font-semibold mt-6">{section.title}</h2>
           {section.sections.map((subsection, subIndex) => (
-            <div key={subIndex}>
-              <p className="text-lg mt-2">
+            <div key={subIndex} className="mt-4">
+              <p className="text-lg font-medium">
                 {subIndex + 1}. {subsection.subtitle}
               </p>
               {subsection.additionalText && (
@@ -130,13 +198,10 @@ const Page = () => {
                   {subsection.additionalText}
                 </p>
               )}
-              <ul
-                style={{ listStyleType: "disc", color: "black" }}
-                className="mt-2 ml-10"
-              >
+              <ul className="mt-2 ml-6 list-disc text-gray-700">
                 {subsection.items.map((item, itemIndex) => (
-                  <li key={itemIndex}>
-                    <span className="text-gray-500">{item}</span>
+                  <li key={itemIndex} className="mt-1">
+                    {item}
                   </li>
                 ))}
               </ul>
@@ -145,10 +210,9 @@ const Page = () => {
         </div>
       ))}
 
-      {/* Acknowledgment section as an ordered list */}
-      <div>
-        <h1 className="text-xl font-semibold mt-6">Acknowledgment</h1>
-
+      {/* Acknowledgment section */}
+      <div className="mt-6">
+        <h2 className="text-xl font-semibold">Acknowledgment</h2>
         <p className="text-gray-500 mt-2">
           By participating in this Viva Voce assessment, I confirm that I have
           read and understood the rules and guidelines stated above, and I agree
@@ -156,18 +220,29 @@ const Page = () => {
         </p>
       </div>
 
-      <div className="mt-6">
-        <Checkbox />{" "}
-        <span className="ml-2">
-          I understand terms and conditions of viva voce.
-        </span>
+      {/* Checkbox and Start Button */}
+      <div className="mt-6 flex items-center">
+        <Checkbox
+          checked={isChecked}
+          onCheckedChange={(checked) => setIsChecked(checked)}
+          id="acknowledgment-checkbox"
+        />
+        <label htmlFor="acknowledgment-checkbox" className="ml-2 text-gray-700">
+          I understand the terms and conditions of Viva Voce.
+        </label>
       </div>
 
-      <Link
-        href={`/viva/?paper_id=${paperId}&selected_difficulty=${difficulty}`}
+      {permissionError && (
+        <p className="mt-2 text-red-600">{permissionError}</p>
+      )}
+
+      <Button
+        className="px-12 mt-4"
+        onClick={handleStart}
+        disabled={!isChecked || isLoading}
       >
-        <Button className="px-12 mt-2">Start</Button>
-      </Link>
+        {isLoading ? "Starting..." : "Start"}
+      </Button>
     </div>
   );
 };

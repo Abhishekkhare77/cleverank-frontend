@@ -73,6 +73,27 @@ const Page = () => {
     }
   }, [answerTimer, showVideoUI]);
 
+  const handleEndAssessment = async () => {
+    try {
+      const response = await fetch(
+        `https://cleverank.adnan-qasim.me/research-paper/end-assessment/${paperId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to end assessment");
+      }
+      router.push(`/score?paper_id=${paperId}`);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   // Function to move to the next question after successful submission
   const goToNextQuestion = () => {
     if (answerTimer !== 0 && currentQuestion < questions.length - 1) {
@@ -83,7 +104,7 @@ const Page = () => {
       setIsListening(false);
       setAnswerTimer(180);
     } else {
-      router.push(`/score?paper_id=${paperId}`);
+      handleEndAssessment();
     }
   };
 
@@ -163,11 +184,11 @@ const Page = () => {
               setTimeLeft={setTimeLeft}
               router={router}
               paperId={paperId}
-              answerTimer={answerTimer} // Pass answerTimer for auto submission
+              answerTimer={answerTimer}
               goToNextQuestion={goToNextQuestion}
               difficulty={difficulty}
             />
-            <div className="w-1/3 flex flex-col">
+            <div className="hidden">
               <SpeechToText
                 isListening={isListening}
                 text={text}
