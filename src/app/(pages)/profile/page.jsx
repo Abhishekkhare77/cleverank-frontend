@@ -1,7 +1,10 @@
 "use client";
 import Achievements from "@/components/Tabs/Achievements";
+import Activity from "@/components/Tabs/Activity";
 import Followers from "@/components/Tabs/Followers";
+import Intellect from "@/components/Tabs/Intellect";
 import Interests from "@/components/Tabs/Interests";
+import Papers from "@/components/Tabs/Papers";
 import Peers from "@/components/Tabs/Peers";
 import Submission from "@/components/Tabs/Submission";
 import { Button } from "@/components/ui/button";
@@ -27,10 +30,10 @@ const Page = () => {
           />
         ),
       },
-      { value: "Intellect", label: "Intellect", component: <Submission /> },
+      { value: "Intellect", label: "Intellect", component: <Intellect /> },
       { value: "Interests", label: "Interests", component: <Interests interests={profileData.interest_names} /> },
-      { value: "Papers", label: "Papers", component: <Submission /> },
-      { value: "Activity", label: "Activity", component: <Submission /> },
+      { value: "Papers", label: "Papers", component: <Papers /> },
+      { value: "Activity", label: "Activity", component: <Activity /> },
       { value: "Peers", label: "Peers", component: <Peers /> },
       { value: "Submission", label: "Submission", component: <Submission /> },
     ]
@@ -89,7 +92,7 @@ const Page = () => {
         <div className="flex flex-col items-center mt-8">
           <div className="w-36 h-36 rounded-full border ml-4">
             <Image
-              src={profileData.public_image_url || "/assets/gaurav-mehta.png"}
+              src={profileData.public_image_url || "/user-profile.jpg"}
               alt="Profile"
               width={1000}
               height={1000}
@@ -120,7 +123,7 @@ const Page = () => {
               </div>}
             </div>
             <Button variant={"outline"} className="w-44 mt-2 border-2">
-              Download PDF
+              Download Profile
             </Button>
           </div>
         </div>
@@ -131,11 +134,11 @@ const Page = () => {
         <div className="w-full flex justify-between">
           <div>
             <div className="text-3xl font-bold">
-              {profileData.titles[0]?.title_name || "No Title"}
+              {profileData.name || "No Title"}
             </div>
             <div className="w-[35rem] mt-2 text-sm">
               {profileData.about ||
-                "No description provided. Please add a personal description."}
+                "No about us provided. Please add a personal description."}
             </div>
           </div>
           <div>

@@ -94,7 +94,7 @@ const Page = () => {
       )
       .then((response) => {
         console.log("Profile saved successfully:", response.data);
-        router.push("/dashboard");
+        router.push("/recommended");
       })
       .catch((error) => {
         console.error("Error saving profile:", error);
