@@ -61,7 +61,7 @@ const Process = () => {
   ];
   return (
     <div>
-      <Card className="py-5 flex justify-between   bg-gray-100">
+      <div className=" flex justify-between   bg-gray-100 rounded-lg shadow-md">
         <CardHeader className="flex flex-col gap-5 w-1/2 mt-6">
           <CardTitle className="text-6xl">
             Master Research Effortlessly with Cleverank
@@ -79,14 +79,14 @@ const Process = () => {
             </p>
           </CardDescription>
         </CardHeader>
-        <CardContent className="w-1/2 flex justify-end  mt-6">
+        <div className="w-1/2 flex justify-end mt-6">
           <img
-            src="https://i.ibb.co/P1DwZpN/Screenshot-2024-12-10-152128.png"
+            src="/cleverank-dasboard.png"
             alt="img"
-            className="object-cover h-96  "
+            className=" object-contain"
           />
-        </CardContent>
-      </Card>
+        </div>
+      </div>
       {/* <div className=" grid grid-cols-2  sm:grid-cols-3 md:w-max  lg:grid-cols-3 gap-4 mt-8 ">
         {cardData.map((card, index) => (
           <Card key={index} className="w-[22.66rem] bg-gray-100">

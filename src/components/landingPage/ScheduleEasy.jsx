@@ -7,56 +7,56 @@ const ScheduleEasy = () => {
       title: "Personalized Recommendations",
       description:
         "Discover research tailored to your interests and career goals. Our AI ensures you stay updated with the most relevant and impactful content.",
-      imgSrc: "/LandingPageIcon/personalized_recommendation.png",
+      imgSrc: "/LandingPageIcon/icon-1.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Interactive Learning",
       description:
         "Engage with research using tools like concept breakdowns, quizzes, and AI-powered chats that simplify complex topics for better understanding.",
-      imgSrc: "/LandingPageIcon/Interactive_Learning.png",
+      imgSrc: "/LandingPageIcon/icon-2.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Track Your Progress",
       description:
         "Monitor your learning journey with real-time assessments and progress reports to continuously improve your expertise.",
-      imgSrc: "/LandingPageIcon/Progress.png",
+      imgSrc: "/LandingPageIcon/icon-3.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Earn While You Learn",
       description:
         "Explore research papers with bounties and earn rewards as you complete assignments and build knowledge in your field.",
-      imgSrc: "/LandingPageIcon/you_learn.png",
+      imgSrc: "/LandingPageIcon/icon-4.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Build Your Profile",
       description:
         "Showcase your research achievements and stand out to employers, academic advisors, and institutions for scholarships and job opportunities.",
-      imgSrc: "/LandingPageIcon/Profile.png",
+      imgSrc: "/LandingPageIcon/icon-5.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Global Leaderboard",
       description:
         "Earn Karma points and badges to compete with a global community of learners and establish yourself as a top researcher.",
-      imgSrc: "/LandingPageIcon/Leaderboard.png",
+      imgSrc: "/LandingPageIcon/icon-6.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Explore Career Opportunities",
       description:
         "Unlock scholarships, PhD placements, and career advancements by validating your expertise through your Cleverank profile.",
-      imgSrc: "/LandingPageIcon/Career.png",
+      imgSrc: "/LandingPageIcon/icon-7.png",
       imgAlt: "Easy embeds",
     },
     {
       title: "Stay Ahead of Trends",
       description:
         "Access the latest research and emerging trends in your field to stay ahead and continuously grow in your career.",
-      imgSrc: "/LandingPageIcon/trends.png",
+      imgSrc: "/LandingPageIcon/icon-8.png",
       imgAlt: "Easy embeds",
     },
   ];
@@ -132,8 +132,8 @@ const ScheduleEasy = () => {
                     <img
                       alt={card.imgAlt}
                       loading="lazy"
-                      width="24"
-                      height="24"
+                      width="40"
+                      height="40"
                       decoding="async"
                       data-nimg="1"
                       src={card.imgSrc}
