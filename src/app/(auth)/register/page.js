@@ -23,7 +23,7 @@ const Page = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post("http://127.0.0.1:8000/auth/register", {
+      const response = await axios.post("https://cleverank.adnan-qasim.me/auth/register", {
         email,
         name,
         password,
@@ -43,7 +43,7 @@ const Page = () => {
   const handleGoogleRegister = async (googleData) => {
     setLoading(true);
     try {
-      const response = await axios.post("http://127.0.0.1:8000/auth/google", {
+      const response = await axios.post("https://cleverank.adnan-qasim.me/auth/google", {
         email: googleData.email,
         name: googleData.name,
       });
