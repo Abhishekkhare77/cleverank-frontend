@@ -165,9 +165,9 @@ const StudentFAQ = [
 ];
 
 const StudentQuestions = () => (
-  <Card className="mx-44 px-8 my-14">
+  <Card className=" w-full  px-6">
     <div className="w-full text-2xl font-semibold text-center my-8">
-      Frequently Asked Questions (FAQ) for Students
+      Students
     </div>
     <Accordion type="single" collapsible>
       {StudentFAQ.map((item, index) => (

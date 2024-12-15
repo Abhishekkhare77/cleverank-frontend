@@ -1,17 +1,14 @@
+import Image from "next/image";
 import React from "react";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 const Transforming = () => {
   const content = [
     {
-      title: "Transforming how you Learn, Grow, and Succeed.",
-      text: [
-        "At Cleverank, we’ve revolutionizing how you engage with research papers and journals. Powered by advanced AI, our platform curates personalized recommendations, enhances your learning experience, and unlocks career opportunities—all while making research interactive, rewarding, and fun.",
-      ],
-    },
-    {
       title: "What is Cleverank?",
       text: [
-        "Cleverank is an AI-driven platform that curates research papers and journals based on your personal interests, career goals, and expertise. Whether you're a student exploring a new field, a researcher expanding your knowledge, or a professional looking to stay ahead of industry trends, Cleverank helps you discover, learn, and apply the latest research in a way that is engaging, interactive, and rewarding.",
+        "Cleverank is an Gemini AI-driven platform that curates research papers and journals based on your personal interests, career goals, and expertise. Whether you're a student exploring a new field, a researcher expanding your knowledge, or a professional looking to stay ahead of industry trends, Cleverank helps you discover, learn, and apply the latest research in a way that is engaging, interactive, and rewarding.",
         "Our platform does more than just suggest papers—it understands your learning journey. Through advanced AI algorithms, we identify research that aligns with your unique goals and provide tools to help you grasp complex concepts, interact with the content, and track your progress.",
       ],
     },
@@ -29,7 +26,7 @@ const Transforming = () => {
       listItems: [
         {
           title: "Concept Breakdown",
-          text: "Our AI provides easy-to-understand explanations of complex concepts, so you can grasp difficult topics at your own pace.",
+          text: "Gemini AI provides easy-to-understand explanations of complex concepts, so you can grasp difficult topics at your own pace.",
         },
         {
           title: "Chat with the Paper",
@@ -43,7 +40,39 @@ const Transforming = () => {
     },
   ];
   return (
-    <div className="mx-48 mt-14">
+    <div className="mx-48 mt-28">
+      <div className="flex">
+        <div className="text-6xl font-semibold w-1/2">
+          Transforming how you Learn, Grow, and Succeed.
+        </div>
+        <div className=" h-64 w-1/2">
+          <Image
+            src="/AboutImg/research-gemini.png"
+            alt="img"
+            height={1000}
+            width={1000}
+            quality={100}
+            className="h-full w-full"
+          />
+        </div>
+      </div>
+
+      <div className=" flex  w-full justify-between items-center mt-16">
+        <div className="w-[34rem]">
+          At Cleverank, we’ve revolutionizing how you engage with research
+          papers and journals. Powered by advanced Gemini AI, our platform
+          curates personalized recommendations, enhances your learning
+          experience, and unlocks career opportunities—all while making research
+          interactive, rewarding, and fun.
+        </div>
+        <Link href="/register">
+          <Button className=" bg-black hover:bg-black/85  py-8 px-12">
+            {" "}
+            Start Learning
+          </Button>
+        </Link>
+      </div>
+
       {content.map((section, index) => (
         <div key={index} className="mt-6">
           <h1 className="text-2xl font-semibold">{section.title}</h1>

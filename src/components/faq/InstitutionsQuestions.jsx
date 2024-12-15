@@ -136,9 +136,9 @@ const InstitutionsQuestions = () => {
     },
   ];
   return (
-    <Card className="mx-44 px-8 ">
+    <Card className=" w-full px-6 ">
       <div className="w-full text-2xl font-semibold text-center my-8">
-        Frequently Asked Questions (FAQ) for Institutions
+        Institutions
       </div>
       <Accordion type="single" collapsible>
         {faqStudent.map((item, index) => (

@@ -1,4 +1,7 @@
+import Image from "next/image";
 import React from "react";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 const Learning = () => {
   const content = [
@@ -40,7 +43,7 @@ const Learning = () => {
         },
         {
           title: "Interactive Learning Tools",
-          text: "AI-powered explanations, quizzes, and live chat with research papers help you learn effectively.",
+          text: "Gemini AI-powered explanations, quizzes, and chat with research papers help you learn effectively.",
         },
         {
           title: "Rewards and Recognition",
@@ -85,6 +88,33 @@ const Learning = () => {
           )}
         </div>
       ))}
+
+      <div className=" relative  w-full h-80 mt-10 ">
+        <Image
+          src="/AboutImg/about_backgroung.jpg"
+          alt="img"
+          height={1000}
+          width={1000}
+          quality={100}
+          className=" absolute  w-full h-full rounded-lg opacity-50"
+        />
+        <div className="absolute top-20 left-8">
+          <div className="text-4xl font-semibold">
+            Join the Cleverank <br /> Community Today!
+          </div>
+          <div className="flex justify-between items-center pr-8">
+            <div className="mt-4 text-[#686868] pr-36">
+              Cleverank is more than just a platform—it&apos;s your partner in
+              research and career growth. Whether you&apos;re learning, earning,
+              or advancing your career, we provide the tools, resources, and
+              opportunities you need to succeed.
+            </div>
+            <Link href="/register">
+              <Button className="bg-black hover:bg-black/85"> Join Now </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import CollrgeImg from "@/components/landingPage/CollrgeImg";
 import Footer from "@/components/landingPage/Footer";
 import Hero from "@/components/landingPage/Hero";
 import Process from "@/components/landingPage/Process";
@@ -17,8 +18,9 @@ export default function Home() {
             <Process />
             <ScheduleTeam />
           </div>
+          <CollrgeImg />
         </div>
-        <div className="bg-black">
+        <div className="bg-black -mt-24">
           <Footer />
         </div>
       </div>
