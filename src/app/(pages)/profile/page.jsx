@@ -27,8 +27,10 @@ const Page = () => {
           />
         ),
       },
+      { value: "Intellect", label: "Intellect", component: <Submission /> },
       { value: "Interests", label: "Interests", component: <Interests interests={profileData.interest_names} /> },
-      { value: "Followers", label: "Followers", component: <Followers /> },
+      { value: "Papers", label: "Papers", component: <Submission /> },
+      { value: "Activity", label: "Activity", component: <Submission /> },
       { value: "Peers", label: "Peers", component: <Peers /> },
       { value: "Submission", label: "Submission", component: <Submission /> },
     ]
