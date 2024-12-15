@@ -1,11 +1,8 @@
-import React from "react";
-import { Button } from "../ui/button";
-import TitleSubTitle from "../TitleSubTitle";
-import { Card } from "../ui/card";
-import ShowMore from "./ShowMore";
-import { ChevronRight } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import TitleSubTitle from "../TitleSubTitle";
+import { Button } from "../ui/button";
+import ShowMore from "./ShowMore";
 
 const ScheduleTeam = () => {
   return (
