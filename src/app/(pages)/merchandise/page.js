@@ -91,13 +91,7 @@ const page = () => {
               </div>
             </CardContent>
             <CardContent className=" flex justify-between ">
-              <div className=" font-bold text-center flex items-center gap-4">
-                <div className="flex gap-1 items-center">
-                  <span className="">
-                    <Newspaper className="size-4" />
-                  </span>
-                  <span>{product.paper}</span>
-                </div>
+              <div className=" font-bold text-center flex items-center">
                 <div className="flex gap-1 items-center">
                   <span className="">
                     <Madel />
