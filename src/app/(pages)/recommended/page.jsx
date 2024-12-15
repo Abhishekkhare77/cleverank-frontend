@@ -1,13 +1,15 @@
 "use client";
 import React, { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Book, CircleDot, Pause, Play, ThumbsDown, ThumbsUp } from "lucide-react";
+  Book,
+  CircleDot,
+  Pause,
+  Play,
+  ThumbsDown,
+  ThumbsUp,
+} from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -30,13 +32,15 @@ const Page = () => {
   const [progressPapers, setProgressPapers] = useState({}); // Tracks progress for each paper
   const [durationPapers, setDurationPapers] = useState({}); // Tracks duration for each paper
   const [currentTimePapers, setCurrentTimePapers] = useState({}); // Tracks current time for each paper
+  const [page, setPage] = useState(1); // Pagination state
+  const [isLoadingMore, setIsLoadingMore] = useState(false); // Loading state for "Load More"
 
   // Helper function to format time
   const formatTime = (seconds) => {
     if (isNaN(seconds)) return "0:00";
     const minutes = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
-    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
   };
 
   const handleTimeUpdate = useCallback(() => {
@@ -53,35 +57,45 @@ const Page = () => {
     }
   }, [audio, currentPlayingId]);
 
-  // Fetch recommended papers on component mount
-  useEffect(() => {
-    const fetchPapers = async () => {
-      try {
-        const response = await fetch(
-          `https://cleverank.adnan-qasim.me/papers/recommend-from-model?paper_to_recommend=10`, {
+  // Fetch recommended papers
+  const fetchPapers = async (pageNumber) => {
+    const papersToFetch = pageNumber * 10; // Calculate papers to fetch based on page number
+    try {
+      setIsLoadingMore(true); // Indicate "Load More" is in progress
+      const response = await fetch(
+        `https://cleverank.adnan-qasim.me/papers/recommend-from-model?paper_to_recommend=${papersToFetch}`,
+        {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch papers");
-        }
-        const data = await response.json();
-        console.log(data);
-        setPapers(data);
-      } catch (err) {
-        toast.error("Failed to fetch papers");
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+      );
 
-    fetchPapers();
-  }, []);
+      if (!response.ok) {
+        throw new Error("Failed to fetch papers");
+      }
+
+      const data = await response.json();
+      if (pageNumber === 1) {
+        setPapers(data); // Set papers on initial load
+      } else {
+        setPapers((prev) => [...prev, ...data]); // Append new papers for subsequent pages
+      }
+    } catch (err) {
+      toast.error("Failed to fetch papers");
+      setError(err.message);
+    } finally {
+      setLoading(false);
+      setIsLoadingMore(false);
+    }
+  };
+
+  // Initial fetch and fetch on page change
+  useEffect(() => {
+    fetchPapers(page);
+  }, [page]);
 
   const handleConvertTextToSpeech = async (paper_id) => {
     // Toggle play/pause if the same paper is clicked
@@ -115,8 +129,6 @@ const Page = () => {
       }
 
       const data = await response.json();
-      console.log(data);
-
       if (data.audio_url) {
         // Pause existing audio if any
         if (audio) {
@@ -130,8 +142,6 @@ const Page = () => {
         setCurrentTimePapers((prev) => ({ ...prev, [paper_id]: 0 })); // Reset current time
 
         newAudio.play();
-
-        // Reset progress when audio ends handled in useEffect
       } else {
         throw new Error("Audio URL not found in response");
       }
@@ -139,8 +149,7 @@ const Page = () => {
       toast.error("Failed to convert text to speech");
       setError(err.message);
     } finally {
-      // Reset loading state for this paper
-      setLoadingPapers((prev) => ({ ...prev, [paper_id]: false }));
+      setLoadingPapers((prev) => ({ ...prev, [paper_id]: false })); // Reset loading state for this paper
     }
   };
 
@@ -181,7 +190,7 @@ const Page = () => {
     };
   }, [audio, currentPlayingId, handleTimeUpdate]);
 
-  if (loading)
+  if (loading && page === 1)
     return (
       <div>
         <div className="space-y-2">
@@ -213,7 +222,8 @@ const Page = () => {
           const circleLength = 2 * Math.PI * 50; // Radius = 50, so circumference = 2πr = 2π(50)
           const strokeDasharray = circleLength; // Full circle
           const progress = progressPapers[paper._id] || 0;
-          const strokeDashoffset = circleLength - (progress / 100) * circleLength;
+          const strokeDashoffset =
+            circleLength - (progress / 100) * circleLength;
           const currentTime = currentTimePapers[paper._id] || 0;
           const duration = durationPapers[paper._id] || 0;
           const remainingTime = duration - currentTime;
@@ -221,8 +231,9 @@ const Page = () => {
           return (
             <Card
               key={paper._id}
-              className={`relative shadow-sm hover:shadow transition-shadow duration-200 w-full flex rounded-sm ${index % 2 === 0 ? "bg-[#F9F9F9]" : "bg-white"
-                } items-center justify-between pr-3`}
+              className={`relative shadow-sm hover:shadow transition-shadow duration-200 w-full flex rounded-sm ${
+                index % 2 === 0 ? "bg-[#F9F9F9]" : "bg-white"
+              } items-center justify-between pr-3`}
             >
               <div className="flex items-center">
                 <CardHeader className="relative flex-shrink-0">
@@ -250,18 +261,18 @@ const Page = () => {
                       <strong>Authors :</strong>{" "}
                       {paper.author.length > 3
                         ? `${paper.author
-                          .slice(0, 3)
-                          .map(
-                            (author) =>
-                              `${author.first_name} ${author.last_name}`
-                          )
-                          .join(", ")}...`
+                            .slice(0, 3)
+                            .map(
+                              (author) =>
+                                `${author.first_name} ${author.last_name}`
+                            )
+                            .join(", ")}...`
                         : paper.author
-                          .map(
-                            (author) =>
-                              `${author.first_name} ${author.last_name}`
-                          )
-                          .join(", ")}
+                            .map(
+                              (author) =>
+                                `${author.first_name} ${author.last_name}`
+                            )
+                            .join(", ")}
                     </div>
                   </div>
 
@@ -316,7 +327,9 @@ const Page = () => {
                                 : "Play audio"
                             }
                           >
-                            {currentPlayingId === paper._id && audio && !audio.paused ? (
+                            {currentPlayingId === paper._id &&
+                            audio &&
+                            !audio.paused ? (
                               <Pause className="size-6 pt-1 cursor-pointer" />
                             ) : (
                               <Play className="size-6 pt-1 cursor-pointer" />
@@ -339,24 +352,36 @@ const Page = () => {
                       </div>
                     </div>
                     <DialogTrigger className="text-base font-semibold bg-[#59C009] text-gray-50 px-5 py-2 flex items-center justify-center gap-1 rounded-full">
-                      <Book className="size-5" />Read
+                      <Book className="size-5" />
+                      Read
                     </DialogTrigger>
                   </div>
                   <DialogContent className="max-w-4xl">
                     <DialogHeader>
-                      <DialogTitle className="mb-3">{paper.paper_title}</DialogTitle>
+                      <DialogTitle className="mb-3">
+                        {paper.paper_title}
+                      </DialogTitle>
                       <DialogDescription>
-                        <span>{paper?.creative_summary?.creative_summary ?? "Summary Not Available."}</span>
+                        <span>
+                          {paper?.creative_summary?.creative_summary ??
+                            "Summary Not Available."}
+                        </span>
 
                         <h2 className="text-lg font-semibold leading-none tracking-tight py-5 text-black">
                           What you will learn:
                         </h2>
                         <div className="space-y-2">
-                          {paper?.creative_summary?.concepts_learned.map((concept, index) => (
-                            <div key={index} className="flex items-start gap-1">
-                              <CircleDot className="mt-1" size={14} /> <span>{concept}</span>
-                            </div>
-                          ))}
+                          {paper?.creative_summary?.concepts_learned.map(
+                            (concept, index) => (
+                              <div
+                                key={index}
+                                className="flex items-start gap-1"
+                              >
+                                <CircleDot className="mt-1" size={14} />{" "}
+                                <span>{concept}</span>
+                              </div>
+                            )
+                          )}
                         </div>
                       </DialogDescription>
                       <DialogFooter>
@@ -374,6 +399,18 @@ const Page = () => {
             </Card>
           );
         })}
+      </div>
+      <div className="text-center mt-5">
+        {isLoadingMore ? (
+          <div className="spinner my-5" />
+        ) : (
+          <button
+            className="bg-[#59C009] text-white px-4 py-2 rounded-md hover:bg-[#4da007] focus:outline-none"
+            onClick={() => setPage((prev) => prev + 1)}
+          >
+            Load More
+          </button>
+        )}
       </div>
     </>
   );
