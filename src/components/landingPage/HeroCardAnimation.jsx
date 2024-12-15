@@ -5,11 +5,13 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const initialCards = [
-  { id: "one", src: "/research-Paper/Paper-1.png" },
-  { id: "two", src: "/research-Paper/Paper-2.png" },
-  { id: "three", src: "/research-Paper/Paper-3.png" },
-  { id: "five", src: "/research-Paper/Paper-5.png" },
-  { id: "six", src: "/research-Paper/Paper-6.png" },
+  { id: "3", src: "/research-Paper/Paper-3.png" },
+  { id: "4", src: "/research-Paper/Paper-4.png" },
+  { id: "6", src: "/research-Paper/Paper-6.png" },
+  { id: "8", src: "/research-Paper/Paper-8.png" },
+  { id: "9", src: "/research-Paper/Paper-9.png" },
+  { id: "10", src: "/research-Paper/Paper-10.png" },
+  { id: "12", src: "/research-Paper/Paper-12.png" },
 ];
 
 const HeroCardAnimation = () => {

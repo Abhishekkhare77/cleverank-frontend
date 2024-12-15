@@ -9,56 +9,56 @@ const ScheduleEasy = () => {
       description:
         "Discover research tailored to your interests and career goals. Our AI ensures you stay updated with the most relevant and impactful content.",
       imgSrc: "/LandingPageIcon/icon-1.png",
-      imgAlt: "Easy embeds",
+      imgAlt: "img",
     },
     {
       title: "Interactive Learning",
       description:
         "Engage with research using tools like concept breakdowns, quizzes, and AI-powered chats that simplify complex topics for better understanding.",
       imgSrc: "/LandingPageIcon/icon-2.png",
-      imgAlt: "Easy embeds",
+      imgAlt: "img",
     },
     {
       title: "Track Your Progress",
       description:
         "Monitor your learning journey with real-time assessments and progress reports to continuously improve your expertise.",
       imgSrc: "/LandingPageIcon/icon-3.png",
-      imgAlt: "Easy embeds",
+      imgAlt: "img",
     },
     {
       title: "Earn While You Learn",
       description:
         "Explore research papers with bounties and earn rewards as you complete assignments and build knowledge in your field.",
       imgSrc: "/LandingPageIcon/icon-4.png",
-      imgAlt: "Easy embeds",
+      imgAlt: "img",
     },
     {
       title: "Build Your Profile",
       description:
         "Showcase your research achievements and stand out to employers, academic advisors, and institutions for scholarships and job opportunities.",
       imgSrc: "/LandingPageIcon/icon-5.png",
-      imgAlt: "Easy embeds",
+      imgAlt: "img",
     },
     {
       title: "Global Leaderboard",
       description:
         "Earn Karma points and badges to compete with a global community of learners and establish yourself as a top researcher.",
       imgSrc: "/LandingPageIcon/icon-6.png",
-      imgAlt: "Easy embeds",
+      imgAlt: "img",
     },
     {
       title: "Explore Career Opportunities",
       description:
         "Unlock scholarships, PhD placements, and career advancements by validating your expertise through your Cleverank profile.",
       imgSrc: "/LandingPageIcon/icon-7.png",
-      imgAlt: "Easy embeds",
+      imgAlt: "img",
     },
     {
       title: "Stay Ahead of Trends",
       description:
         "Access the latest research and emerging trends in your field to stay ahead and continuously grow in your career.",
       imgSrc: "/LandingPageIcon/icon-8.png",
-      imgAlt: "Easy embeds",
+      imgAlt: "img",
     },
   ];
 

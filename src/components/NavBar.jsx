@@ -27,8 +27,8 @@ const NavBar = () => {
         <Image
           src="/cleverank-logo-final.png"
           alt="logo"
-          width={90}
-          height={90}
+          width={120}
+          height={120}
           quality={100}
           className="object-cover "
         />
