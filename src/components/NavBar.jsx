@@ -25,7 +25,7 @@ const NavBar = () => {
     >
       <Link href="/">
         <Image
-          src="/assets/cleverank-logo-final-black.png"
+          src="/cleverank-logo-final.png"
           alt="logo"
           width={90}
           height={90}
@@ -36,7 +36,7 @@ const NavBar = () => {
       <div className="flex gap-6">
         <Link href="/about-us">
           <div className=" hover:bg-gray-100/85 py-1 px-1.5 rounded-lg hover:text-black/75 ">
-            About Us
+            About
           </div>
         </Link>
         <Link href="/mission">
@@ -44,11 +44,7 @@ const NavBar = () => {
             Mission
           </div>
         </Link>
-        <Link href="/faq">
-          <div className=" hover:bg-gray-100/85 py-1 px-1.5 rounded-lg hover:text-black/75 ">
-            FAQ
-          </div>
-        </Link>
+
         <Link href="/why">
           <div className=" hover:bg-gray-100/85 py-1 px-1.5 rounded-lg hover:text-black/75 ">
             Why
@@ -57,6 +53,11 @@ const NavBar = () => {
         <Link href="/how-it-works">
           <div className=" hover:bg-gray-100/85 py-1 px-1.5 rounded-lg hover:text-black/75">
             How it works?
+          </div>
+        </Link>
+        <Link href="/faq">
+          <div className=" hover:bg-gray-100/85 py-1 px-1.5 rounded-lg hover:text-black/75 ">
+            FAQ
           </div>
         </Link>
       </div>

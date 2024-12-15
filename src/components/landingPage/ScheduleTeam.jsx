@@ -34,20 +34,12 @@ const ScheduleTeam = () => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <div className="relative grid aspect-video w-full grid-cols-1 ">
-              <div className="absolute bg-yellow-100 h-full w-full bg-opacity-55">
-                <div className="text-white p-4"> Empower your Team:</div>
-                <div className="absolute text-white bottom-4 px-4 w-96 ">
-                  {" "}
-                  Use our AI-powered insights, shared annotations, and group
-                  discussions to enhance your team&apos;s research capabilities
-                  and efficiency.
-                </div>
-              </div>
+            <div className=" grid aspect-video w-full grid-cols-1 ">
+              {" "}
               <img
-                src="https://www.datocms-assets.com/77432/1733237333-team-photo-from-campsite.png"
+                src="/students-image.png"
                 alt="See how Shimmer transformed ADHD coaching with Cal.com"
-                className="aspect-video w-full object-cover rounded-xl"
+                className="w-full object-cover rounded-xl opacity-50 "
               />
             </div>
           </div>
@@ -58,25 +50,6 @@ const ScheduleTeam = () => {
         subtitle="Read how Cleverank has transformed the way our users engage with research, grow their expertise, and unlock amazing opportunities."
       />
       <ShowMore />
-      <Card className="h-64 mt-20 relative flex items-center justify-center">
-        <img
-          src="https://cal.com/_next/image?url=%2Fsquares-footer.png&w=1080&q=100"
-          alt="img"
-          className="object-cover h-[15.8rem] w-full"
-        />
-
-        <div className=" absolute flex flex-col items-center gap-4">
-          <div className="text-4xl font-bold text-center">
-            Explor, Learn <br /> Excel
-          </div>
-          <Link href="/register">
-            <Button className="bg-black hover:bg-black/85">
-              {" "}
-              Get Started <ChevronRight />
-            </Button>
-          </Link>
-        </div>
-      </Card>
     </div>
   );
 };

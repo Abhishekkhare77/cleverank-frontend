@@ -1,3 +1,4 @@
+import Image from "next/image";
 import TitleSubTitle from "../TitleSubTitle";
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
 
@@ -67,18 +68,22 @@ const ScheduleEasy = () => {
       title: "Personalized Research Recommendations",
       description:
         "Our AI curates research papers tailored to your academic interests and career goals, saving you time on endless searches.",
+      img: "/Learnicon/personalized-learning.png",
     },
     {
       id: "02",
       title: "Engage and Learn Efficiently",
       description:
         "Break down complex concepts, interact with papers, and reinforce your learning with quizzes and assessments.",
+      img: "/Learnicon/learn-efficiently.png",
     },
     {
       id: "03",
       title: "Earn and Unlock Opportunities",
       description:
         "Complete research tasks, earn Karma points, and unlock rewards like bounties, badges, and career advancement opportunities.",
+
+      img: "/Learnicon/learning-badges.png",
     },
   ];
   return (
@@ -89,21 +94,26 @@ const ScheduleEasy = () => {
         subtitle="Effortless discovery of research, interactive learning, and career-boosting rewards—designed for students, researchers, and professionals alike.
 "
       />
+
       <div className="flex w-full gap-10">
         {cardData.map((card) => (
           <Card key={card.id} className="w-full h-[26.5rem]">
             <CardHeader className="flex gap-4">
+              <CardDescription className="flex items-center justify-center">
+                <Image src={card.img} alt="img" height={200} width={200} />
+              </CardDescription>
               <CardDescription className="bg-slate-200 w-8 rounded-md text-center py-1">
                 {card.id}
               </CardDescription>
               <CardTitle>{card.title}</CardTitle>
-              <CardDescription className="text-lg ">
+              <CardDescription className=" ">
                 {card.description}
               </CardDescription>
             </CardHeader>
           </Card>
         ))}
       </div>
+
       <TitleSubTitle
         title="Cleverank simplifies the research process for you"
         subtitle="Effortlessly explore research papers, learn interactively, and showcase your expertise with advanced AI-powered tools."
@@ -118,7 +128,6 @@ const ScheduleEasy = () => {
               className="shadow-fade group relative grid h-full w-full overflow-clip rounded-2xl bg-white 
                 [&>*]:[grid-area:1/1] "
             >
-              {/* Front Side */}
               <div
                 className="flex h-full w-full flex-col items-center p-4 transition-opacity duration-300 
                   group-hover:opacity-0 group-focus-visible:opacity-0"

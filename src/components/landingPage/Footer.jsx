@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="w-full">
           <Link href="/">
             <Image
-              src="/assets/cleverank-logo-final-white.png"
+              src="/cleverank-logo-final.png"
               alt="logo"
               width={180}
               height={180}
@@ -21,8 +21,34 @@ const Footer = () => {
             cleverank is a registered trademark <br /> by cleverank.org, Inc.
             All rights reserved.
           </p>
+          <div className="mt-4">
+            <Link href="https://cloud.google.com/vertex-ai" target="_blank">
+              <Image
+                src="/gemini-powered.png"
+                alt=""
+                width={160}
+                height={150}
+                quality={100}
+                className="object-cover"
+              />
+            </Link>
+          </div>
         </div>
         <div className="flex gap-24 justify-end w-full ml-8 ">
+          <div>
+            <div className=" text-lg font-semibold mb-1"> Company Info</div>
+            <Link href="/about-us">
+              <div className="text-gray-300 hover:text-gray-100">About</div>
+            </Link>
+            <Link href="/mission">
+              <div className="text-gray-300 hover:text-gray-100">Mission</div>
+            </Link>
+            <Link href="/institution">
+              <div className="text-gray-300 hover:text-gray-100">
+                Institution
+              </div>
+            </Link>
+          </div>
           <div className="">
             <div className=" text-lg font-semibold mb-1">Support</div>
 
@@ -39,22 +65,7 @@ const Footer = () => {
               <div className="text-gray-300 hover:text-gray-100">Why</div>
             </Link>
           </div>
-          <div>
-            <div className=" text-lg font-semibold mb-1"> Company Info</div>
-            <Link href="/about-us">
-              <div className="text-gray-300 hover:text-gray-100">About Us</div>
-            </Link>
-            <Link href="/mission">
-              <div className="text-gray-300 hover:text-gray-100">
-                Vision-Mission
-              </div>
-            </Link>
-            <Link href="/institution">
-              <div className="text-gray-300 hover:text-gray-100">
-                Institution
-              </div>
-            </Link>
-          </div>
+
           <div>
             <div className=" text-lg font-semibold mb-1"> Legal</div>
             <Link href="/privacy-policy">
