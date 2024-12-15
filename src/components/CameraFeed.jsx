@@ -151,13 +151,13 @@ export default function CameraFeed({
 
   return (
     <div>
-      <div className="bg-gray-100 rounded-md relative">
+      <div className="bg-gray-100 rounded-md relative w-[75vw]">
         <Webcam
           audio={true}
           ref={webcamRef}
           screenshotFormat="image/jpeg"
           videoConstraints={{ facingMode: 'user' }}
-          style={{ borderRadius: '8px', height: '24rem', width: '50rem' }}
+          style={{ borderRadius: '8px', height: '24rem', width: '100%' }}
           onUserMedia={() => {
             // Start recording once webcam is ready
             handleStartRecording();
@@ -173,7 +173,7 @@ export default function CameraFeed({
         )}
         {(isRecordingComplete || isRecording) && (
           <Button
-            className="absolute -right-[51%] bottom-4 w-[48%]"
+            className="absolute right-[25%] -bottom-10 w-[48%]"
             onClick={() => {
               // Stop recording and upload only if we have at least one chunk
               if (!hasFirstChunk) {
@@ -207,7 +207,7 @@ export default function CameraFeed({
                     d="M4 12a8 8 0 018-8v8H4z"
                   ></path>
                 </svg>
-                Uploading...
+                Processing...
               </div>
             ) : (
               "Submit Answer"
