@@ -5,7 +5,7 @@ const page = () => {
   return (
     <div className="py-4 px-2">
       <div>
-        <h1 className="text-3xl font-semibold">Good Morning, Null</h1>
+        <h1 className="text-3xl font-semibold">Good Morning, User</h1>
         <p className="my-1 text-gray-500">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores
           error debitis ratione quaerat ex eum.
@@ -21,7 +21,9 @@ const page = () => {
           </div>
           <div className="h-[120px] w-52 shadow-md">
             <div className="py-2 px-4 flex">
-              <h1 className="text-[#327202] font-semibold text-lg ">Completed</h1>
+              <h1 className="text-[#327202] font-semibold text-lg ">
+                Completed
+              </h1>
             </div>
             <div className="w-full flex items-center justify-start px-4 text-5xl font-bold bg-gradient-to-r from-[#59C009] to-[#295A04] text-transparent bg-clip-text">
               3
@@ -29,7 +31,9 @@ const page = () => {
           </div>
           <div className="h-[120px] w-52 shadow-md">
             <div className="py-2 px-4 flex">
-              <h1 className="text-[#327202] font-semibold text-lg ">Assessment</h1>
+              <h1 className="text-[#327202] font-semibold text-lg ">
+                Assessment
+              </h1>
             </div>
             <div className="w-full flex items-center justify-start px-4 text-5xl font-bold bg-gradient-to-r from-[#59C009] to-[#295A04] text-transparent bg-clip-text">
               2
@@ -37,7 +41,9 @@ const page = () => {
           </div>
           <div className="h-[120px] w-52 shadow-md">
             <div className="py-2 px-4 flex">
-              <h1 className="text-[#327202] font-semibold text-lg ">Bounties</h1>
+              <h1 className="text-[#327202] font-semibold text-lg ">
+                Bounties
+              </h1>
             </div>
             <div className="w-full flex items-center justify-start px-4 text-5xl font-bold bg-gradient-to-r from-[#59C009] to-[#295A04] text-transparent bg-clip-text">
               79
