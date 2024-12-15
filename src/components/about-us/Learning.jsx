@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 const Learning = () => {
   const content = [
@@ -42,7 +43,7 @@ const Learning = () => {
         },
         {
           title: "Interactive Learning Tools",
-          text: "AI-powered explanations, quizzes, and live chat with research papers help you learn effectively.",
+          text: "Gemini AI-powered explanations, quizzes, and chat with research papers help you learn effectively.",
         },
         {
           title: "Rewards and Recognition",
@@ -108,7 +109,9 @@ const Learning = () => {
               or advancing your career, we provide the tools, resources, and
               opportunities you need to succeed.
             </div>
-            <Button className="bg-black hover:bg-black/85"> Join Now </Button>
+            <Link href="/register">
+              <Button className="bg-black hover:bg-black/85"> Join Now </Button>
+            </Link>
           </div>
         </div>
       </div>

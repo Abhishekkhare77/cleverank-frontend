@@ -12,13 +12,15 @@ const ScheduleTeam = () => {
           <div className="flex items-center">
             <div className="flex flex-col pb-3.5 w-full items-center text-center md:items-start md:text-left">
               <h1 className="text-6xl pb-3 font-semibold ">
-                Collaboration for Research Simplified
+                Engage with Research Leaders Worldwide
               </h1>
 
               <p className=" text-[#898989] ">
-                Unlock seamless teamwork with Cleverank&apos;s advanced
-                collaboration features. Share, discuss, and work on research
-                papers together to achieve more.
+                Connect with top minds globally through Cleverank. <br />
+                Discuss groundbreaking ideas, climb leaderboards, earn badges,{" "}
+                <br />
+                and rise through the ranks as you collaborate on research
+                projects.
               </p>
 
               <div className="mt-6 flex items-center justify-center gap-4">

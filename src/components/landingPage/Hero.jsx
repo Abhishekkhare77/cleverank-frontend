@@ -46,7 +46,7 @@ const Hero = () => {
       <Card className="py-5 flex justify-between mt-8">
         <CardHeader className="flex flex-col gap-6 w-1/2 ml-3">
           <CardTitle className="text-6xl">
-            Elevate Your <br /> Intellectual Persona
+            Research Knowledge <br /> that Grows You
           </CardTitle>
           <CardDescription>
             Transform the way the world sees your intellect. Keep track of the

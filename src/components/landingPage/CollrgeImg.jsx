@@ -16,12 +16,14 @@ const CollrgeImg = () => {
 
       <div className=" absolute flex flex-col items-center gap-4   ">
         <div className="text-4xl font-bold text-center">
-          Explor, Learn <br /> Excel
+          Explore latest Research Papers, <br />
+          Engage and Excel
         </div>
         <Link href="/register">
           <Button className="bg-black hover:bg-black/85">
             {" "}
-            Get Started <ChevronRight />
+            Start Cleverank Journey Elevate Your
+            <ChevronRight />
           </Button>
         </Link>
       </div>

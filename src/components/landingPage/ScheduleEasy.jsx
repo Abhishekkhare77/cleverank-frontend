@@ -67,7 +67,7 @@ const ScheduleEasy = () => {
       id: "01",
       title: "Personalized Research Recommendations",
       description:
-        "Our AI curates research papers tailored to your academic interests and career goals, saving you time on endless searches.",
+        "Our Gemini AI curates research papers tailored to your academic interests and career goals, saving you time on endless searches.",
       img: "/Learnicon/personalized-learning.png",
     },
     {
@@ -115,8 +115,8 @@ const ScheduleEasy = () => {
       </div>
 
       <TitleSubTitle
-        title="Cleverank simplifies the research process for you"
-        subtitle="Effortlessly explore research papers, learn interactively, and showcase your expertise with advanced AI-powered tools."
+        title="Cleverank simplifies acqusition of knowledge for you"
+        subtitle="Effortlessly explore research papers, learn interactively, and showcase your expertise with advanced Gemini AI-powered tools."
       />
       <div className=" grid grid-cols-2  sm:grid-cols-4 md:w-max  lg:grid-cols-4 gap-4">
         {cardData2.map((card, index) => (
