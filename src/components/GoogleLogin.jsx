@@ -6,55 +6,50 @@ import { Button } from "./ui/button";
 
 const GoogleLogin = ({ onSuccess }) => {
   const { data: session, status } = useSession();
-  const [hasLoggedIn, setHasLoggedIn] = useState(false); // Flag to track if login has been handled
+  const [loginHandled, setLoginHandled] = useState(false);
 
-  // Handle Google login success and trigger the callback only once when session is authenticated
   useEffect(() => {
-    if (status === "authenticated" && session && session.user && !hasLoggedIn) {
+    if (
+      status === "authenticated" &&
+      session &&
+      session.user &&
+      !loginHandled
+    ) {
       const { name, email } = session.user;
-      // Ensure name and email are available and trigger onSuccess only once
       if (name && email && onSuccess) {
         onSuccess({ email, name });
-        setHasLoggedIn(true); // Set flag to true to prevent re-triggering
+        setLoginHandled(true);
       }
     }
-  }, [status, session, onSuccess, hasLoggedIn]); // Dependency on hasLoggedIn to prevent re-triggering
+  }, [status, session, onSuccess, loginHandled]);
 
   if (status === "loading") {
     return (
-      <div>
-        <Button className="w-full py-5" variant="outline" disabled>
-          <Image
-            src="/assets/google-icon.png"
-            alt="google"
-            width={22}
-            height={22}
-            className=" text-center mx-2"
-          />
-          <span>Loading...</span>
-        </Button>
-      </div>
+      <Button className="w-full py-5" variant="outline" disabled>
+        <Image
+          src="/assets/google-icon.png"
+          alt="google"
+          width={22}
+          height={22}
+          className="text-center mx-2"
+        />
+        <span>Loading...</span>
+      </Button>
     );
   }
 
   if (status === "authenticated") {
     return (
-      <div>
-        <Button
-          className="w-full py-5"
-          variant="outline"
-          onClick={signOut}
-        >
-          <Image
-            src="/assets/google-icon.png"
-            alt="google"
-            width={22}
-            height={22}
-            className=" text-center mx-2"
-          />
-          <span>Logout</span>
-        </Button>
-      </div>
+      <Button className="w-full py-5" variant="outline" onClick={signOut}>
+        <Image
+          src="/assets/google-icon.png"
+          alt="google"
+          width={22}
+          height={22}
+          className="text-center mx-2"
+        />
+        <span>Logout</span>
+      </Button>
     );
   }
 
@@ -69,11 +64,9 @@ const GoogleLogin = ({ onSuccess }) => {
         alt="google"
         width={22}
         height={22}
-        className=" text-center mx-2"
+        className="text-center mx-2"
       />
-      <span>
-        Google
-      </span>
+      <span>Google</span>
     </Button>
   );
 };
