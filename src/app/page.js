@@ -20,7 +20,7 @@ export default function Home() {
           </div>
           <CollrgeImg />
         </div>
-        <div className="bg-black -mt-10">
+        <div className="bg-black -mt-24">
           <Footer />
         </div>
       </div>

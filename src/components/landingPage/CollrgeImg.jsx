@@ -10,7 +10,7 @@ const CollrgeImg = () => {
         <img
           src="/college-building.png"
           alt="img"
-          className="absolute rounded-lg h-full w-full left-0 object-cover opacity-20"
+          className="absolute rounded-t-lg h-full w-full left-0 object-cover opacity-20"
         />
       </div>
 

@@ -77,7 +77,7 @@ const Hero = () => {
       </Card>
       <div className=" border-b border-t flex justify-between items-center py-5 mt-6 px-2">
         <p className="text-[#898989] w-64">
-          Trusted by students <br /> accros the colleges
+          Trusted by students <br /> across the colleges
         </p>
         <Marquee className="mt-2 md:mt-0 text-white">
           <div className="flex gap-14  mr-14 ">

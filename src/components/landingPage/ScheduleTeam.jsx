@@ -33,15 +33,12 @@ const ScheduleTeam = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
-            <div className=" grid aspect-video w-full grid-cols-1 ">
-              {" "}
-              <img
-                src="/students-image.png"
-                alt="See how Shimmer transformed ADHD coaching with Cal.com"
-                className="w-full object-cover rounded-xl opacity-50 "
-              />
-            </div>
+          <div className=" ">
+            <img
+              src="/students-image.png"
+              alt="img"
+              className=" object-cover rounded-xl opacity-50 "
+            />
           </div>
         </div>
       </div>
