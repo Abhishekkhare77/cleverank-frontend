@@ -153,10 +153,12 @@ const Page = () => {
       <Tabs defaultValue="pdf" className="w-full flex items-center justify-center flex-col">
         <TabsList className="flex items-center w-full justify-between bg-white">
           <div className="bg-secondary rounded-md p-1">
-            <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="pdf">View PDF</TabsTrigger>
+            <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="pdf">View</TabsTrigger>
             <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="summary">Summary</TabsTrigger>
             <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="explanation" >Explanation</TabsTrigger>
-            <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="quiz" >Test Your Understanding</TabsTrigger>
+            <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="concepts">Concepts</TabsTrigger>
+            <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="chat" >Chat</TabsTrigger>
+            <TabsTrigger className="data-[state=active]:bg-primary data-[state=active]:text-white" value="quiz" >Flash</TabsTrigger>
           </div>
           <div className="flex items-center justify-end space-y-4">
             {isComplete && !isStarted ? (

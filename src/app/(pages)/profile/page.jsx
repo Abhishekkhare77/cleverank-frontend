@@ -27,8 +27,10 @@ const Page = () => {
           />
         ),
       },
-      { value: "Interests", label: "Interests", component: <Interests /> },
-      { value: "Followers", label: "Followers", component: <Followers /> },
+      { value: "Intellect", label: "Intellect", component: <Submission /> },
+      { value: "Interests", label: "Interests", component: <Interests interests={profileData.interest_names} /> },
+      { value: "Papers", label: "Papers", component: <Submission /> },
+      { value: "Activity", label: "Activity", component: <Submission /> },
       { value: "Peers", label: "Peers", component: <Peers /> },
       { value: "Submission", label: "Submission", component: <Submission /> },
     ]
@@ -87,7 +89,7 @@ const Page = () => {
         <div className="flex flex-col items-center mt-8">
           <div className="w-36 h-36 rounded-full border ml-4">
             <Image
-              src={profileData.profileImage || "/assets/gaurav-mehta.png"}
+              src={profileData.public_image_url || "/assets/gaurav-mehta.png"}
               alt="Profile"
               width={1000}
               height={1000}
@@ -98,28 +100,24 @@ const Page = () => {
           <h1 className="text-2xl font-semibold text-center mt-4">
             {profileData.name || "User Name"}
           </h1>
-          <h1 className="text-sm mt-2 text-center">
-            {profileData?.interests[0]?.interest_stream || "No Stream Provided"}
+          <h1 className="text-sm text-center">
+            {profileData?.email}
           </h1>
           <div className="flex flex-col items-center mt-4">
             <Button className="w-44">Follow</Button>
-            <Button className="w-44 mt-2">Edit Profile</Button>
             <div className="flex flex-col gap-3 my-8">
-              <div className="flex items-center gap-2 text-sm">
+              {profileData.social_details?.instagram && <div className="flex items-center gap-2 text-sm">
                 <Instagram />{" "}
                 {profileData.social_details?.instagram || "Intellect124"}
-              </div>
-              <div className="flex items-center gap-2 text-sm">
+              </div>}
+              {profileData.social_details?.linkedin && <div className="flex items-center gap-2 text-sm">
                 <Linkedin />{" "}
                 {profileData.social_details?.linkedin || "Intellect124"}
-              </div>
-              <div className="flex items-center gap-2 text-sm">
+              </div>}
+              {profileData.social_details?.twitter && <div className="flex items-center gap-2 text-sm">
                 <Twitter />{" "}
                 {profileData.social_details?.twitter || "Intellect124"}
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <Mail /> {profileData.email.split("@")[0]}
-              </div>
+              </div>}
             </div>
             <Button variant={"outline"} className="w-44 mt-2 border-2">
               Download PDF
