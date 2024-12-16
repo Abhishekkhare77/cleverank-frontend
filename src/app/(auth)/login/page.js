@@ -27,7 +27,7 @@ const Login = () => {
         console.log("User logged in:", response.data);
         setLoading(false);
         localStorage.setItem("token", response.data.access_token);
-        router.push("/dashboard");
+        router.push("/recommended");
       })
       .catch((error) => {
         setLoading(false);
