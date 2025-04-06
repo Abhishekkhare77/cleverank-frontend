@@ -63,7 +63,7 @@ const Page = () => {
     try {
       setIsLoadingMore(true); // Indicate "Load More" is in progress
       const response = await fetch(
-        `https://cleverank.adnan-qasim.me/papers/recommend-from-model?paper_to_recommend=${papersToFetch}`,
+        `https://cleverank.cumulate.live/papers/recommend-from-model?paper_to_recommend=${papersToFetch}`,
         {
           method: "POST",
           headers: {
@@ -115,7 +115,7 @@ const Page = () => {
 
     try {
       const response = await fetch(
-        `https://cleverank.adnan-qasim.me/convert-text-to-speech/${paper_id}`,
+        `https://cleverank.cumulate.live/convert-text-to-speech/${paper_id}`,
         {
           method: "POST",
           headers: {

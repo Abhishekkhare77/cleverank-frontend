@@ -14,7 +14,7 @@ const Page = () => {
   useEffect(() => {
     const fetchPaper = async () => {
       try {
-        const response = await fetch(`https://cleverank.adnan-qasim.me/papers/get-paper/${paperId}`);
+        const response = await fetch(`https://cleverank.cumulate.live/papers/get-paper/${paperId}`);
         if (!response.ok) {
           throw new Error("Failed to fetch paper");
         }

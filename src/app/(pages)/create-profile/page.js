@@ -18,7 +18,7 @@ const Page = () => {
   useEffect(() => {
     // Fetch academic details on load
     axios
-      .get("https://cleverank.adnan-qasim.me/category/get_academic_levels")
+      .get("https://cleverank.cumulate.live/category/get_academic_levels")
       .then((response) => {
         setAcademicDetails(response.data);
         // console.log(response.data);
@@ -30,7 +30,7 @@ const Page = () => {
       // Fetch stream details when course is selected
       axios
         .get(
-          `https://cleverank.adnan-qasim.me/category/get_streams/${selectedCourseId}`
+          `https://cleverank.cumulate.live/category/get_streams/${selectedCourseId}`
         )
         .then((response) => {
           setStreamDetails(response.data);
@@ -44,7 +44,7 @@ const Page = () => {
       // Fetch interest details when stream is selected
       axios
         .get(
-          `https://cleverank.adnan-qasim.me/category/get_academic_interest/{id}?acad_level_id=${selectedCourseId}&acad_stream_idx=1`
+          `https://cleverank.cumulate.live/category/get_academic_interest/{id}?acad_level_id=${selectedCourseId}&acad_stream_idx=1`
         )
         .then((response) => {
           setInterestDetails(response.data);
@@ -58,7 +58,7 @@ const Page = () => {
       // Make a POST request with the selectedInterestIds array as the payload
       axios
         .post(
-          "https://cleverank.adnan-qasim.me/category/get_academic_focus",
+          "https://cleverank.cumulate.live/category/get_academic_focus",
           selectedInterestIds, // Sending the array directly as JSON
           {
             headers: {
@@ -83,7 +83,7 @@ const Page = () => {
     console.log("token is:", localStorage.getItem("token"));
     axios
       .post(
-        "https://cleverank.adnan-qasim.me/auth/add_academic_focus",
+        "https://cleverank.cumulate.live/auth/add_academic_focus",
         selectedFocusIds,
         {
           headers: {

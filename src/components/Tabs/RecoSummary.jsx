@@ -13,7 +13,7 @@ const RecoSummary = ({ paper, id }) => {
 
     const fetchPaperKTC = async () => {
         try {
-            const response = await fetch(`https://cleverank.adnan-qasim.me/papers/get-paper-KTC/${id}`, {
+            const response = await fetch(`https://cleverank.cumulate.live/papers/get-paper-KTC/${id}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const RecoSummary = ({ paper, id }) => {
     const fetchConceptExplanation = async (concept) => {
         setExplanationLoading(true);
         try {
-            const response = await fetch(`https://cleverank.adnan-qasim.me/papers/get-concepts-explanation/${concept}?academic_level=undergraduate`, {
+            const response = await fetch(`https://cleverank.cumulate.live/papers/get-concepts-explanation/${concept}?academic_level=undergraduate`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

@@ -43,7 +43,7 @@ export default function Dashboard() {
       setLoading(true);
       setError(null);
       const response = await fetch(
-        "https://cleverank.adnan-qasim.me/monitor/api_usage?last_day_call=7"
+        "https://cleverank.cumulate.live/monitor/api_usage?last_day_call=7"
       );
       if (!response.ok) {
         throw new Error("Failed to fetch data");

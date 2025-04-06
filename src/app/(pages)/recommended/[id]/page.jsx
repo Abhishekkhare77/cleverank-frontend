@@ -31,7 +31,7 @@ const Page = () => {
 
   const handleDownloadPaper = async () => {
     try {
-      const response = await fetch(`https://cleverank.adnan-qasim.me/papers/download-paper/${id}`, {
+      const response = await fetch(`https://cleverank.cumulate.live/papers/download-paper/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +53,7 @@ const Page = () => {
 
     const fetchPaper = async () => {
       try {
-        const response = await fetch(`https://cleverank.adnan-qasim.me/papers/get-paper/${id}`, {
+        const response = await fetch(`https://cleverank.cumulate.live/papers/get-paper/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const Page = () => {
   }, [endTime]);
   const handleStart = async () => {
     try {
-      const response = await fetch(`https://cleverank.adnan-qasim.me/papers/start-reading-paper/${id}`, {
+      const response = await fetch(`https://cleverank.cumulate.live/papers/start-reading-paper/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -112,7 +112,7 @@ const Page = () => {
 
   const handleComplete = async () => {
     try {
-      const response = await fetch(`https://cleverank.adnan-qasim.me/papers/finish-reading-paper/${id}`, {
+      const response = await fetch(`https://cleverank.cumulate.live/papers/finish-reading-paper/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

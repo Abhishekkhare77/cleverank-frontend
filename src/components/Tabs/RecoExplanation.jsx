@@ -17,7 +17,7 @@ const RecoExplanation = ({ paper, id }) => {
     const fetchPaperExplanations = async () => {
         setExplanationLoading(true);
         try {
-            const response = await fetch(`https://cleverank.adnan-qasim.me/papers/get-detailed-explanation/${id}?academic_level=${academicLevel}`, {
+            const response = await fetch(`https://cleverank.cumulate.live/papers/get-detailed-explanation/${id}?academic_level=${academicLevel}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

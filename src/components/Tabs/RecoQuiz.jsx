@@ -9,7 +9,7 @@ const RecoQuiz = ({ paper, id }) => {
 
     const handleGetQuiz = async () => {
         try {
-            const response = await fetch(`https://cleverank.adnan-qasim.me/research-paper/get-quiz/${id}`, {
+            const response = await fetch(`https://cleverank.cumulate.live/research-paper/get-quiz/${id}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

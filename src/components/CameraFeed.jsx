@@ -99,7 +99,7 @@ export default function CameraFeed({
 
     try {
       const response = await axios.post(
-        'https://cleverank.adnan-qasim.me/answers/answer-assessment',
+        'https://cleverank.cumulate.live/answers/answer-assessment',
         formData,
         {
           headers: {

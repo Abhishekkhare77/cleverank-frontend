@@ -18,7 +18,7 @@ const Page = () => {
                 'Content-Type': 'application/json',
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             },
-            url: 'https://cleverank.adnan-qasim.me/research-paper/get-all-assessment'
+            url: 'https://cleverank.cumulate.live/research-paper/get-all-assessment'
         }
 
         axios.request(options).then((response) => {

@@ -28,7 +28,7 @@ const Page = () => {
   const fetchQuestions = async () => {
     try {
       const response = await fetch(
-        `https://cleverank.adnan-qasim.me/research-paper/start-assessment/${paperId}?difficulty=${difficulty}`,
+        `https://cleverank.cumulate.live/research-paper/start-assessment/${paperId}?difficulty=${difficulty}`,
         {
           method: "POST",
           headers: {
@@ -76,7 +76,7 @@ const Page = () => {
   const handleEndAssessment = async () => {
     try {
       const response = await fetch(
-        `https://cleverank.adnan-qasim.me/research-paper/end-assessment/${paperId}`,
+        `https://cleverank.cumulate.live/research-paper/end-assessment/${paperId}`,
         {
           method: "POST",
           headers: {

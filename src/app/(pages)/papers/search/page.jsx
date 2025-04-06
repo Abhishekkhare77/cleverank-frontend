@@ -17,7 +17,7 @@ const Page = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://cleverank.adnan-qasim.me/papers/search-paper-pdf?query=${debouncedSearch}`, 
+        `https://cleverank.cumulate.live/papers/search-paper-pdf?query=${debouncedSearch}`, 
         {
           method: "GET",
           headers: {

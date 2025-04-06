@@ -117,7 +117,7 @@ const Page = () => {
 
     const fetchPaper = async () => {
       try {
-        const response = await fetch(`https://cleverank.adnan-qasim.me/papers/get-paper/${paperId}`, {
+        const response = await fetch(`https://cleverank.cumulate.live/papers/get-paper/${paperId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

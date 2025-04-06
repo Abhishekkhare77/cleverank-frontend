@@ -50,7 +50,7 @@ const Page = () => {
 
       try {
         const response = await fetch(
-          "https://cleverank.adnan-qasim.me/auth/my-profile",
+          "https://cleverank.cumulate.live/auth/my-profile",
           {
             method: "GET",
             headers: {

@@ -22,7 +22,7 @@ const Page = () => {
     e.preventDefault();
     setLoading(true);
     axios
-      .post("https://cleverank.adnan-qasim.me/auth/register", {
+      .post("https://cleverank.cumulate.live/auth/register", {
         email,
         name,
         password,
@@ -47,7 +47,7 @@ const Page = () => {
 
     const options = {
       method: "POST",
-      url: "https://cleverank.adnan-qasim.me/auth/google",
+      url: "https://cleverank.cumulate.live/auth/google",
       data: { email: googleData.email, name: googleData.name },
     };
     console.log(options);

@@ -24,7 +24,7 @@ const Page = () => {
         const fetchPapers = async () => {
             setLoading(true);
             try {
-                const response = await fetch("https://cleverank.adnan-qasim.me/papers/get-reading-status", {
+                const response = await fetch("https://cleverank.cumulate.live/papers/get-reading-status", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
